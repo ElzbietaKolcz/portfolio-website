@@ -34,11 +34,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm' # Zmieniono na 'pnpm' z 'npm'
+          cache: 'npm'
       - name: Install dependencies
-        run: pnpm install # Zmieniono na 'pnpm install' z 'npm install'
+        run: npm install
       - name: Build
-        run: pnpm run build # Zmieniono na 'pnpm run build' z 'npm run build'
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
