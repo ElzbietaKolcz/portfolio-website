@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "LifeSugarlyUP";
+  src: url("assets/fonts/LifeSugaralyUP.otf");
+}
+
+@layer base {
+  body {
+    font-family: "Work Sans", sans-serif;
+  }
+
+  h3 {
+    @apply text-xl font-PlayfairDisplay  leading-5  pb-1;
+  }
+
+  h4 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .button {
+    @apply uppercase gap-2 min-h-[50px] font-semibold text-base text-center  drop-shadow-shadow;
+  }
+  .btn-animation {
+    @apply transition ease-in-out delay-150 mobilehover:hover:text-white mobilehover:hover:-translate-y-1 mobilehover:hover:scale-110 mobilehover:hover:bg-primary-100 mobilehover:hover:border-primary-100  duration-300 mobilehover:hover:drop-shadow-shadow-focus;
+  }
+  .btn-primary {
+    @apply text-white bg-primary-50 pl-5 pr-4 py-[10px] rounded;
+  }
+
+  .btn-secendary {
+    @apply border-2 border-primary-50 text-primary-50 px-4 py-[10px] rounded;
+  }
+
+  .icon-animation {
+    @apply px-2 py-2 rounded-full  shadow-lg shadow-black/10 mobilehover:hover:shadow-inner mobilehover:hover:shadow-black/10 duration-300;
+  }
+
+  .nav-menu {
+    transform: translateX(0);
+    @apply hidden md:flex md:justify-between md:items-center  md:px-10 md:py-4 xl:px-24 ;
+  }
+
+  .nav-active {
+    transform: translateX(0);
+    @apply md:hidden fixed h-screen w-1/2 p-5 top-11 right-0 px-4 bg-white transition-transform duration-300 ease-in-out;;
+  }
+
+  .nav-active.nav-menu {
+    transform: translateX(100%);
+  }
+
+  .active {
+    @apply border-b-4  pb-2  border-primary-100 font-bold text-primary-100;
+  }
+
+ 
+
+  .skew-x-12 {
+    transform: skewX(-12deg);
+  }
+
+  .translate-x-1-2 {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes anchor-underline {
+  0%,
+  10% {
+    left: 0;
+    right: 100%;
+  }
+  40%,
+  60% {
+    left: 0;
+    right: 0;
+  }
+  90%,
+  100% {
+    left: 100%;
+    right: 0;
+  }
+}
+
+a:hover .underline-animation {
+  animation: anchor-underline 2s cubic-bezier(0, 0.5, 0, 1) infinite;
+}
