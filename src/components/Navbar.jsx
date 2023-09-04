@@ -72,7 +72,7 @@ function Navbar() {
         data-aos-delay="200"
       >
         <a
-          href="/"
+          href="https://elzbietakolcz.github.io/portfolio-website/"
           className="flex"
         >
           <img
