@@ -12,11 +12,11 @@
     font-family: "Work Sans", sans-serif;
   }
 
-  h3 {
-    @apply text-xl font-PlayfairDisplay  leading-5  pb-1;
+  h2 {
+    @apply text-xl font-WorkSans font-medium leading-5  pb-1;
   }
 
-  h4 {
+  h3 {
     @apply font-bold;
   }
 }

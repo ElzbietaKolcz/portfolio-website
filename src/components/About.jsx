@@ -3,8 +3,9 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { Link } from "react-scroll";
 import { db } from "../firebase";
 import styles from "../style";
+import image from '../assets/images/fot_Julia_Krzemianowska.webp';
 
-function About() {
+export default function About() {
   const [aboutData, setAboutData] = useState([]);
   const [hobbyData, setHobbyData] = useState([]);
 
@@ -44,17 +45,23 @@ function About() {
                 <p>
                   {about.description}{" "}
                   <Link
+                    id="contact-link"
                     className="font-semibold underline mobilehover:hover:no-underline relative justify-center text-primary-100 mobilehover:hover:text-primary-50"
                     to="contact"
                     spy
                     smooth
                     offset={-100}
                     duration={500}
+                    role="link"
+                    tabIndex={0}
+                    title={"Go to contact section"}
+                    aria-label={"Navigate to contact section"}
                   >
                     {about.link}
-                    <span className="underline-animation absolute bottom-0 left-0 right-full h-0.5 rounded-full bg-primary-50 transition-all duration-400 ease-out" />
+                    <span className="underline-animation absolute bottom-0 left-0 right-full h-0.5 rounded-full bg-orange transition-all duration-400 ease-out" />
                   </Link>{" "}
                 </p>
+
               </div>
             </div>
           ))}
@@ -65,8 +72,9 @@ function About() {
         >
           <div className=" w-1/2 md:w-2/5 py-8 rounded-lg">
             <img
-              src="https://firebasestorage.googleapis.com/v0/b/portfolioui-962a3.appspot.com/o/images%2Ffot_Julia_Krzemianowska.jpg?alt=media&token=9ef0d948-e53a-4b4f-a6d1-520ede8cbd41"
-              alt="fot_Krzemianowska_02"
+              src={image}
+              alt="A woman in elegant clothes working at a computer and writing notes."
+              title="A woman in elegant clothes working at a computer and writing notes."
               data-aos="zoom-in"
               data-aos-delay="200"
               className="rounded-3xl"
@@ -96,4 +104,3 @@ function About() {
   );
 }
 
-export default About;

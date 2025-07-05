@@ -15,6 +15,8 @@ import linkedInFooter from "./linkedInFooter.svg";
 import favicon from "./favicon.svg";
 import leftArrow from "./leftArrow.svg";
 import rightArrow from "./rightArrow.svg";
+import listLight from "./listLight.svg";
+import closeLight from "./closeLight.svg";
 
 export {
   logo,
@@ -33,4 +35,6 @@ export {
   favicon,
   leftArrow,
   rightArrow,
+  listLight, 
+  closeLight
 };

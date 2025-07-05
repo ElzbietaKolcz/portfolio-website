@@ -7,14 +7,16 @@ module.exports = {
         mobilehover: { raw: "(hover: hover)" },
       },
 
+
       colors: {
         black: "hsl(250, 85%, 5%)",
         while: "hsl(20, 100%m 99%)",
+        orange: "hsl(31, 100%, 45%)",
 
         primary: {
-          40: "hsl(20,100%,85%)",
-          50: "hsl(20, 96%, 50%)",
-          100: "hsl(31, 100%, 45%)",
+          40: "hsl(280,60%,90%)",
+          50: "hsl(280, 100%, 35%)",
+          100: "hsl(295, 75%, 30%)",
         },
       },
 
@@ -34,14 +36,10 @@ module.exports = {
       },
 
       backgroundImage: {
-        bgImage01:
-          'url("https://firebasestorage.googleapis.com/v0/b/portfolioui-962a3.appspot.com/o/background%2FbgImage01.jpg?alt=media&token=f27274f9-14f0-4df9-aa58-093bf741e0a1")',
-        bgImage02:
-          'url("https://firebasestorage.googleapis.com/v0/b/portfolioui-962a3.appspot.com/o/background%2FbgImage02.jpg?alt=media&token=42ba37ad-b8dc-4eed-89fc-4e2740913afe")',
-        bgImage03:
-          'url("https://firebasestorage.googleapis.com/v0/b/portfolioui-962a3.appspot.com/o/background%2FbgImage03.jpg?alt=media&token=998934a4-9d64-4b9a-a183-64bcdf020d0c")',
-        bgImage04:
-          'url("https://firebasestorage.googleapis.com/v0/b/portfolioui-962a3.appspot.com/o/background%2FbgImage04.jpg?alt=media&token=209e9a35-8b99-4bf2-a445-c022e21661e3")',
+        bgImage01: 'url("assets/images/bgImage01.webp")',
+        bgImage02: 'url("assets/images/bgImage02.webp")',
+        bgImage03: 'url("assets/images/bgImage03.webp")',
+        bgImage04: 'url("assets/images/bgImage04.webp")',
       },
     },
   },

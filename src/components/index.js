@@ -4,8 +4,7 @@ import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Skills from "./Skills";
-import SocialButton from "./SocialButton";
-import EmailButton from "./EmailButton";
+
 import Footer from "./Footer";
 import PageNotFound from "./PageNotFound";
 
@@ -16,8 +15,7 @@ export {
   Projects,
   Contact,
   Skills,
-  SocialButton,
-  EmailButton,
+
   Footer,
   PageNotFound,
 };
