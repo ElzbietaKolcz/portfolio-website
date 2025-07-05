@@ -1,6 +1,6 @@
 import styles from "../style";
 
-function PageNotFound() {
+export default function PageNotFound() {
   return (
     <div className={`${styles.flexCenter}`}>
       <img
@@ -12,4 +12,3 @@ function PageNotFound() {
   );
 }
 
-export default PageNotFound;

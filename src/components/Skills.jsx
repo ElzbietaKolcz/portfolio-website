@@ -4,7 +4,7 @@ import { db } from "../firebase";
 
 import styles from "../style";
 
-function Skills() {
+export default function Skills() {
   const [skills, setSkills] = useState([]);
   const [certification, setCertification] = useState([]);
   const [education, setEducation] = useState([]);
@@ -67,7 +67,7 @@ function Skills() {
                         data-aos="fade-up"
                         data-aos-anchor-placement="bottom-bottom"
                       >
-                        <h4 className="px-2 pt-3 ">{skills.title}</h4>
+                        <h2 className="px-2 pt-3 ">{skills.title}</h2>
                         <p className="px-2 pb-3">{skills.description} </p>
                       </div>
                     </div>
@@ -104,7 +104,15 @@ function Skills() {
                           {certification.start}{" "}
                           <span className={`m-2 rounded-md ${bgClass}`}>
                             {" "}
-                            <a href={certification.link}>
+                            <a href={certification.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              tabIndex={0}
+                              role="link"
+                              id={certification.linkName}
+                              title={"Open Elzbieta Kolcz certificate " + certification.linkName + " confirmation link"}
+                              aria-label={"Link to Elzbieta Kolcz certificate " + certification.linkName + " confirmation link"}
+                            >
                               <strong>{certification.linkName}</strong>
                             </a>
                           </span>{" "}
@@ -140,7 +148,7 @@ function Skills() {
                       data-aos="fade-up"
                       data-aos-anchor-placement="bottom-bottom"
                     >
-                      <h4> {education.title}</h4>
+                      <h2> {education.title}</h2>
                       <div className="p-2 my-2 flex flex-col md:flex-row ">
                         <div>
                           <p className="mb-4 md:mr-10 flex flex-row min-w-[95px]">
@@ -200,7 +208,7 @@ function Skills() {
                       data-aos="fade-up"
                       data-aos-anchor-placement="bottom-bottom"
                     >
-                      <h4> {experience.title}</h4>
+                      <h2> {experience.title}</h2>
                       <div className="p-2 my-2  flex flex-col md:flex-row ">
                         <div>
                           <p className="mb-4 md:mr-10 flex flex-row min-w-[95px]">
@@ -275,5 +283,3 @@ function Skills() {
     </section>
   );
 }
-
-export default Skills;

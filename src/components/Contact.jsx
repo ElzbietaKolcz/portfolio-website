@@ -6,7 +6,7 @@ import EmailButton from "./EmailButton";
 import styles from "../style";
 import { db } from "../firebase";
 
-function Contact() {
+export default function Contact() {
   const [cvData, setCvData] = useState([]);
 
   const fetchData = async (collectionRef, setData) => {
@@ -25,7 +25,7 @@ function Contact() {
     <section
       id="contact"
       ref={contact}
-      className="bg-gray-100 h-auto"
+      className=" h-auto"
     >
       <div className="container mx-auto pb-11 md:pb-6 ">
         <div className="flex items-center justify-center ">
@@ -45,24 +45,21 @@ function Contact() {
             text="Send me an email"
             copyText="elzbieta.kolcz.13@gmail.com"
           />
-
           <SocialButton
             icon={linkedIn}
-            link="https://www.linkedin.com/in/elzbieta-kolcz"
             text="Send me a message"
+            link="https://www.linkedin.com/in/"
           />
           {cvData.map((cv) => (
             <SocialButton
               key={cv.id}
               icon={cvImage}
-              link={cv.href}
               text="Review CV"
+              link={cv.href}
             />
           ))}
         </div>
       </div>
     </section>
   );
-}
-
-export default Contact;
+};

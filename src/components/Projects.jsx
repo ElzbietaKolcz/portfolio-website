@@ -4,7 +4,7 @@ import { isMobile, isTablet } from "react-device-detect";
 import { db } from "../firebase";
 import styles from "../style";
 
-function Projects() {
+export default function Projects() {
   const [projects, setProjectsData] = useState([]);
 
   const fetchData = async (collectionRef, setData) => {
@@ -80,15 +80,14 @@ function Projects() {
                 data-aos-delay="200"
               >
                 <div className="relative md:w-1/2 lg:w-80 bg-center bg-cover aspect-container">
-                  <div
-                    className=""
+                 <div
                     style={{ paddingBottom: "100%" }}
                   >
-                    <img
-                      className="absolute inset-0 w-full h-full object-cover rounded-t-lg md:rounded-r-none md:rounded-l-24 md:rounded-l-lg lg:rounded-l-lg"
-                      src={projects[activeIndex].imageUrl}
-                      alt="Large"
-                    />
+                  <img
+                    className="absolute inset-0 w-full h-full object-cover rounded-t-lg md:rounded-r-none md:rounded-l-24 md:rounded-l-lg lg:rounded-l-lg"
+                    src={projects[activeIndex].imageUrl}
+                    alt={"Thumbnail of " + projects[activeIndex].title}
+                  />
                   </div>
                 </div>
                 <div className="flex flex-col md:justify-between rounded-b-lg bg-zinc-100 p-4 lg:h-80 md:w-1/2 lg:w-96 md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-none">
@@ -106,9 +105,14 @@ function Projects() {
                       href={projects[activeIndex].behanceUrl}
                       target="_blank"
                       rel="noreferrer"
+                      id={projects[activeIndex].title}
+                      role="link"
+                      tabIndex="0"
+                      title={"Link to " + projects[activeIndex].title + " on Behance"}
+                      aria-label={"Link to " + projects[activeIndex].title + " on Behance"}
                     >
                       Learn more on Behance
-                      <span className="underline-animation absolute bottom-0  left-0 right-full h-0.5 rounded-full bg-primary-50 transition-all duration-400 ease-out" />
+                      <span className="underline-animation absolute bottom-0  left-0 right-full h-0.5 rounded-full bg-orange transition-all duration-400 ease-out" />
                     </a>
                   </div>
                 </div>
@@ -121,9 +125,8 @@ function Projects() {
                   <div
                     key={project.id}
                     id={`thumbnail-${index}`}
-                    className={`cursor-pointer ${
-                      activeIndex === index ? "border-2 border-primary-100" : ""
-                    } object-cover bg-center bg-cover h-32 w-42 rounded-xl md:h-44 md:w-52 lg:h-32 lg:w-36`}
+                    className={`cursor-pointer ${activeIndex === index ? "border-2 border-orange" : ""
+                      } object-cover bg-center bg-cover h-32 w-42 rounded-xl md:h-44 md:w-52 lg:h-32 lg:w-36`}
                     onClick={() => handleClick(index)}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
@@ -136,7 +139,8 @@ function Projects() {
                     <img
                       className="object-cover w-full h-full rounded-xl"
                       src={project.imageUrl}
-                      alt={`Thumbnail ${index}`}
+                      alt={"Thumbnail of " + projects[activeIndex].title}
+                      title={"Thumbnail of " + projects[activeIndex].title}
                     />
                   </div>
                 ))}
@@ -148,5 +152,3 @@ function Projects() {
     </section>
   );
 }
-
-export default Projects;
