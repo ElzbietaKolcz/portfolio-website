@@ -130,9 +130,9 @@ export default function Navbar() {
             />
           </a>
 
-          <ul role="menubar" className="hidden md:flex md:justify-between md:items-center  md:px-10 md:py-1 xl:px-24">
+          <ul role="menu" className="hidden md:flex md:justify-between md:items-center  md:px-10 md:py-1 xl:px-24">
             {menu.map((menu) => (
-              <li className="mt-3 mb-6 py-1 md:my-0 mx-2" key={menu.id}>
+              <li className="mt-3 mb-6 py-1 md:my-0 mx-2" role="none" key={menu.id}>
                 <Link
                   className={`font-Assistant uppercase text-lg py-1 mt-10 transition-colors duration-300 ${activeSection === menu.name
                       ? `border-b-4 border-orange font-semibold ${onDarkSection
@@ -143,7 +143,6 @@ export default function Navbar() {
                       } hover:border-b-4 hover:border-primary-100 hover:font-semibold`
                     }`}
                   to={menu.name}
-                  tabIndex={0}
                   role="menuitem"
                   title={"Go to " + menu.name}
                   aria-label={"Go to " + menu.name}
@@ -184,12 +183,12 @@ export default function Navbar() {
                 fallbackFocus: () => firstMenuLinkRef.current,
               }}
             >
-              <ul
+              <ul role="menu"
                 className={`transform transition-transform duration-300 ease-in-out ${click ? "translate-x-0" : "translate-x-full"
                   } md:hidden fixed h-screen w-1/2 p-5 top-11 right-0 px-4 bg-white mt-10`}
               >
                 {menu.map((menu, index) => (
-                  <li key={menu.id} className="mt-3 mb-6 py-1 md:my-0 mx-2">
+                  <li key={menu.id} className="mt-3 mb-6 py-1 md:my-0 mx-2" role="none">
                     <Link
                       tabIndex={0}
                       autoFocus={index === 0}
