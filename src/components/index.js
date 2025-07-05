@@ -4,7 +4,6 @@ import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Skills from "./Skills";
-
 import Footer from "./Footer";
 import PageNotFound from "./PageNotFound";
 
@@ -15,7 +14,6 @@ export {
   Projects,
   Contact,
   Skills,
-
   Footer,
   PageNotFound,
 };

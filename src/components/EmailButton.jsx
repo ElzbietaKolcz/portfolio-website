@@ -48,9 +48,8 @@ export default function EmailButton({ icon, text, copyText }) {
       <img src={icon} alt="Email icon" className="w-6 h-6" />
       <div
         style={styleOnDesktop}
-        className={`overflow-hidden transition-all duration-300 w-full whitespace-nowrap ${
-          isCopied ? "animate-pulse text-green-500" : ""
-        }`}
+        className={`overflow-hidden transition-all duration-300 w-full whitespace-nowrap ${isCopied ? "animate-pulse text-green-500" : ""
+          }`}
       >
         <span className={`p-4 ${isCopied ? "px-2" : ""}`} ref={ref}>
           {isCopied ? "Copied to clipboard!" : text}

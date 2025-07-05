@@ -11,7 +11,7 @@ module.exports = {
       colors: {
         black: "hsl(250, 85%, 5%)",
         while: "hsl(20, 100%m 99%)",
-        orange: "hsl(31, 100%, 45%)",
+        orange: "hsl(30, 100%, 40%)",
 
         primary: {
           40: "hsl(280,60%,90%)",

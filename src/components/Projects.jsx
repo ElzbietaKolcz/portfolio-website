@@ -80,20 +80,20 @@ export default function Projects() {
                 data-aos-delay="200"
               >
                 <div className="relative md:w-1/2 lg:w-80 bg-center bg-cover aspect-container">
-                 <div
+                  <div
                     style={{ paddingBottom: "100%" }}
                   >
-                  <img
-                    className="absolute inset-0 w-full h-full object-cover rounded-t-lg md:rounded-r-none md:rounded-l-24 md:rounded-l-lg lg:rounded-l-lg"
-                    src={projects[activeIndex].imageUrl}
-                    alt={"Thumbnail of " + projects[activeIndex].title}
-                  />
+                    <img
+                      className="absolute inset-0 w-full h-full object-cover rounded-t-lg md:rounded-r-none md:rounded-l-24 md:rounded-l-lg lg:rounded-l-lg"
+                      src={projects[activeIndex].imageUrl}
+                      alt={"Thumbnail of " + projects[activeIndex].title}
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col md:justify-between rounded-b-lg bg-zinc-100 p-4 lg:h-80 md:w-1/2 lg:w-96 md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-none">
-                  <h3 className="ss:text-[24px] text-center m-2 px-2 md:text-left md:text-2xl pb-4 mt-2 md:pb-2 font-bold md:flex-shrink flex-grow">
+                  <h2 className="ss:text-[24px] text-center m-2 px-2 md:text-left md:text-2xl pb-4 mt-2 md:pb-2 font-bold md:flex-shrink flex-grow">
                     {projects[activeIndex].title}
-                  </h3>
+                  </h2>
                   <p
                     className={`${styles.paragraph} pb-4 md:pb-2 m-2 px-2 text-left md:flex-shrink flex-grow`}
                   >
