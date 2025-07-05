@@ -104,7 +104,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav role="menubar">
+    <nav role="navigation">
       <div
         className={`fixed w-full top-0 left-0 z-50 backdrop-blur-md ${onDarkSection ? "brightness-110" : ""
           }`}
@@ -130,7 +130,7 @@ export default function Navbar() {
             />
           </a>
 
-          <ul className="hidden md:flex md:justify-between md:items-center  md:px-10 md:py-1 xl:px-24">
+          <ul role="menubar" className="hidden md:flex md:justify-between md:items-center  md:px-10 md:py-1 xl:px-24">
             {menu.map((menu) => (
               <li className="mt-3 mb-6 py-1 md:my-0 mx-2" key={menu.id}>
                 <Link
