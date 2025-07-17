@@ -80,10 +80,15 @@ export default function Navbar() {
 
     if (!darkSections.length) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      const anyVisible = entries.some((entry) => entry.isIntersecting);
-      setOnDarkSection(anyVisible);
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const anyVisible = entries.some((entry) => entry.isIntersecting);
+        setOnDarkSection(anyVisible);
+      },
+      {
+        threshold: 0.5,
+      }
+    );
 
     darkSections.forEach((section) => observer.observe(section));
 
