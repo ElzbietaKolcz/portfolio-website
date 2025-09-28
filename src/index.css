@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "LifeSugarlyUP";
+  src: url("assets/fonts/LifeSugaralyUP.otf");
+}
+
+@layer base {
+  body {
+    font-family: "Work Sans", sans-serif;
+  }
+
+  h2 {
+    @apply text-xl font-medium leading-5 pb-1;
+    font-family: "Work Sans", sans-serif;
+  }
+
+  h3 {
+    @apply font-bold;
+  }
+}
+
+
+
+@keyframes anchor-underline {
+  0%,
+  10% {
+    left: 0;
+    right: 100%;
+  }
+  40%,
+  60% {
+    left: 0;
+    right: 0;
+  }
+  90%,
+  100% {
+    left: 100%;
+    right: 0;
+  }
+}
+
+a:hover .underline-animation {
+  animation: anchor-underline 2s cubic-bezier(0, 0.5, 0, 1) infinite;
+}
+
+
+@theme {
+
+  --font-LifeSugarly: "LifeSugarlyUP", sans-serif;
+  --font-PlayfairDisplay: "Playfair Display", serif;
+  --font-WorkSans: "WorkSans", sans-serif;
+
+  --color-black: hsl(250, 85%, 5%);
+  --color-white: hsl(20, 100%, 99%);
+  --color-orange: hsl(30, 100%, 35%);
+  --color-primary-40: hsl(280, 60%, 90%);
+  --color-primary-50: hsl(280, 100%, 35%);
+  --color-primary-100: hsl(295, 75%, 30%);
+
+  --drop-shadow-shadow: 15px 15px 35px rgba(194, 71, 10, 1);
+  --drop-shadow-shadow-focus: 0 1px 2px rgba(150, 75, 30, 0.7);
+
+  --border-radius-lg: 24px;
+}
+
+
+@media (hover: hover) {
+  :root {
+    --screen-mobilehover: 1;
+  }
+}
+
+@layer components {
+  .button {
+    @apply uppercase gap-2 min-h-[50px] font-semibold text-base text-center drop-shadow;
+  }
+
+  .btn-animation {
+    @apply transition ease-in-out delay-150 duration-300
+           hover:text-white hover:-translate-y-1 hover:scale-110
+           hover:bg-primary-100 hover:border-primary-100
+           hover:drop-shadow-lg;
+  }
+
+  .btn-primary {
+    @apply text-white bg-primary-50 pl-5 pr-4 py-[10px] rounded;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-primary-50 text-primary-50 px-4 py-[10px] rounded;
+  }
+
+  .icon-animation {
+    @apply px-2 py-2 rounded-full shadow-lg duration-300
+           hover:shadow-inner hover:shadow-black/10;
+  }
+
+  .nav-menu {
+    @apply hidden md:flex md:justify-between md:items-center md:px-10 md:py-4 xl:px-24;
+    transform: translateX(0);
+  }
+
+  .nav-active {
+    @apply fixed h-screen w-1/2 p-5 top-11 right-0 bg-white transition-transform duration-300 ease-in-out md:hidden;
+    transform: translateX(0);
+  }
+
+  .nav-active.nav-menu {
+    transform: translateX(100%);
+  }
+
+  .active {
+    @apply border-b-4 pb-2 font-bold text-[var(--color-primary-100)] border-[var(--color-primary-100)];
+  }
+
+  .skew-x-12 {
+    transform: skewX(-12deg);
+  }
+
+  .translate-x-1-2 {
+    transform: translateX(50%);
+  }
+}
