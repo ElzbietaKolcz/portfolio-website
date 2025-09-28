@@ -100,7 +100,7 @@ export default function Navbar() {
           {/* Logo */}
           <a
             id="ek-logo"
-            href="https://elzbietakolcz.github.io/portfolio-website/"
+            href={window.location.pathname}
             className="flex"
             role="button"
             title="Reload the page"
