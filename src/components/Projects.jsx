@@ -1,152 +1,209 @@
 import React, { useState, useEffect, useRef } from "react";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { isMobile, isTablet } from "react-device-detect";
-import { db } from "../firebase";
 import styles from "../style";
 
-export default function Projects() {
-  const [projects, setProjectsData] = useState([]);
+/* =========================
+   CONFIG CONSTANTS
+========================= */
 
-  const fetchData = async (collectionRef, setData) => {
-    const q = query(collectionRef, orderBy("id"));
-    const data = await getDocs(q);
-    setData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  };
+const AUTO_DELAY_MS = 5000;
+
+const SCROLL_OFFSET = {
+  MOBILE: 50,
+  TABLET: 20,
+  DESKTOP: 20,
+  LARGE: 60,
+};
+
+const LARGE_BREAKPOINT = 1280;
+
+/* =========================
+   LOCAL PROJECT DATA
+========================= */
+
+export const projects = [
+  {
+    id: 3,
+    title: "Event post for WWDC25 keynote",
+    description:
+      "A project focused on designing an engaging social media post to promote the joint viewing WWDC25 viewing event hosted by k7 and MacGadka.",
+    imageUrl: "/projects/wwdc.png",
+    behanceUrl:
+      "https://www.behance.net/gallery/230309835/Event-post-for-WWDC25-keynote",
+    updated: "July 14, 2025",
+  },
+  {
+    id: 1,
+    title: "MacMeeting event website",
+    description:
+      "A project focused on creating a clean, informative event page that consolidates all essential details about MacMeeting while providing an intuitive registration process for attendees.",
+    imageUrl: "/projects/macmeeting.jpg",
+    behanceUrl: "https://macmeeting.pl/",
+    updated: "March 3, 2026",
+  },
+  {
+    id: 6,
+    title: "Idź Pan w UI! -  3 projects",
+    description:
+      "‘Idź Pan w UI!’ is a monthly design challenge created by Natalia Bienias. In its 26th edition, my project was featured and discussed in a video on the By Zebza YouTube channel.",
+    imageUrl: "/projects/dashbord.jpg",
+    behanceUrl: "https://www.behance.net/gallery/134270851/Idz-Pan-w-UI",
+    updated: "March 3, 2026",
+  },
+  {
+    id: 5,
+    title: "Newsletter & 404 Page",
+    description:
+      "This UI was created during the recruitment process for a design studio based in Poland.",
+    imageUrl: "/projects/newsletter.jpg",
+    behanceUrl: "https://www.behance.net/gallery/130217645/Newsletter-404-Page?tracking_source=project_owner_other_projects",
+    updated: "March 3, 2026",
+  },
+  {
+    id: 4,
+    title: "MAD logo & stickers",
+    description:
+      "Logo project for MAD Academic Club at WSB Merito in Wrocław, paired with custom stickers designed to support promotion and encourage student engagement.",
+    imageUrl: "/projects/mad.jpg",
+    behanceUrl: "https://www.behance.net/gallery/193437693/MAD-Logo-LinkedIn-Profile",
+    updated: "August 9, 2023",
+  },
+  {
+    id: 2,
+    title: "ZodiaCal - Engineering thesis",
+    description:
+      "A multifunctional personal calendar designed to enhance time management while incorporating a daily skin care planner for holistic support of users’ routines.",
+    imageUrl: "/projects/zodiacal.png",
+    behanceUrl: "https://www.behance.net/gallery/221123967/ZodiaCal-Engineering-thesis",
+    updated: "August 9, 2023",
+  },
+];
+
+
+
+export default function Projects() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef(null);
+
 
   useEffect(() => {
-    const projectsCollectionRef = collection(db, "projects");
-    fetchData(projectsCollectionRef, setProjectsData);
-  }, []);
+    if (isPaused) return;
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const largeImageRef = useRef(null);
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % projects.length);
+    }, AUTO_DELAY_MS);
 
-  const scrollToProjectsHeader = () => {
-    const scrollOffset = getScrollOffset();
-    const projectsHeaderElement = document.getElementById("projects");
-    if (projectsHeaderElement) {
-      const scrollPosition =
-        projectsHeaderElement.getBoundingClientRect().top +
-        window.scrollY -
-        scrollOffset;
-      window.scrollTo({
-        top: scrollPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+    return () => clearInterval(intervalRef.current);
+  }, [isPaused]);
+
+
 
   const getScrollOffset = () => {
-    const screenSizes = {
-      mobile: 50,
-      tablet: 20,
-      desktop: 20,
-      large: 60,
-    };
-
-    const { mobile, tablet, desktop, large } = screenSizes;
-
-    if (isMobile) {
-      return mobile;
-    }
-    if (isTablet) {
-      return tablet;
-    }
-    if (window.innerWidth >= 1280) {
-      return large;
-    }
-    return desktop;
+    if (isMobile) return SCROLL_OFFSET.MOBILE;
+    if (isTablet) return SCROLL_OFFSET.TABLET;
+    if (window.innerWidth >= LARGE_BREAKPOINT)
+      return SCROLL_OFFSET.LARGE;
+    return SCROLL_OFFSET.DESKTOP;
   };
 
-  const handleClick = (index) => {
+  const scrollToProjectsHeader = () => {
+    const offset = getScrollOffset();
+    const element = document.getElementById("projects");
+    if (!element) return;
+
+    const position =
+      element.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    window.scrollTo({
+      top: position,
+      behavior: "smooth",
+    });
+  };
+
+  const handleThumbnailClick = (index) => {
     setActiveIndex(index);
     scrollToProjectsHeader();
   };
+
+  const activeProject = projects[activeIndex];
 
   return (
     <section
       id="projects"
       className={`${styles.flexCenter}`}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       <div className={`${styles.flexCenter} flex flex-col mb-2`}>
         <h1 className={`${styles.heading1}`}>Projects</h1>
+
         <div className="flex items-center justify-center flex-col">
-          {projects.length > 0 && (
-            <div className={`${styles.flexCenter} flex flex-col mb-2 relative`}>
-              <div
-                className="drop-shadow-xl md:flex md:justify-end pb-10 lg:pb-10"
-                ref={largeImageRef}
-                data-aos="zoom-out"
-                data-aos-delay="200"
-              >
-                <div className="relative md:w-1/2 lg:w-80 bg-center bg-cover aspect-container">
-                  <div
-                    style={{ paddingBottom: "100%" }}
-                  >
-                    <img
-                      className="absolute inset-0 w-full h-full object-cover rounded-t-lg md:rounded-r-none md:rounded-l-24 md:rounded-l-lg lg:rounded-l-lg"
-                      src={projects[activeIndex].imageUrl}
-                      alt={"Thumbnail of " + projects[activeIndex].title}
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col md:justify-between rounded-b-lg bg-zinc-100 p-4 lg:h-80 md:w-1/2 lg:w-96 md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-none">
-                  <h2 className="ss:text-[24px] text-center m-2 px-2 md:text-left md:text-2xl pb-4 mt-2 md:pb-2 font-bold md:flex-shrink flex-grow">
-                    {projects[activeIndex].title}
-                  </h2>
-                  <p
-                    className={`${styles.paragraph} pb-4 md:pb-2 m-2 px-2 text-left md:flex-shrink flex-grow`}
-                  >
-                    {projects[activeIndex].description}
-                  </p>
-                  <div className="pb-4  m-2 px-2 text-center md:text-left md:flex-shrink flex-grow">
-                    <a
-                      className="font-semibold underline mobilehover:hover:no-underline relative justify-center text-primary-100 mobilehover:hover:text-primary-50"
-                      href={projects[activeIndex].behanceUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      id={projects[activeIndex].title}
-                      role="link"
-                      tabIndex="0"
-                      title={"Link to " + projects[activeIndex].title + " on Behance"}
-                      aria-label={"Link to " + projects[activeIndex].title + " on Behance"}
-                    >
-                      Learn more on Behance
-                      <span className="underline-animation absolute bottom-0  left-0 right-full h-0.5 rounded-full bg-orange transition-all duration-400 ease-out" />
-                    </a>
-                  </div>
+          <div className="flex flex-col mb-2 relative">
+
+            {/* MAIN DISPLAY */}
+            <div className="drop-shadow-xl md:flex md:justify-center md:items-center pb-10">
+              <div className="relative md:w-1/2 lg:w-80">
+                <div style={{ paddingBottom: "100%" }}>
+                  <img
+                    key={activeProject.id}
+                    className="absolute inset-0 w-full h-full object-cover rounded-t-lg md:rounded-l-lg transition-opacity duration-500"
+                    src={activeProject.imageUrl}
+                    alt={activeProject.title}
+                  />
                 </div>
               </div>
 
-              <div
-                className={`${styles.flexCenter} grid grid-cols-2 gap-4 pb-8 md:grid-cols-3 lg:grid-cols-6 lg:gap-4`}
-              >
-                {projects.map((project, index) => (
-                  <div
-                    key={project.id}
-                    id={`thumbnail-${index}`}
-                    className={`cursor-pointer ${activeIndex === index ? "border-2 border-orange" : ""
-                      } object-cover bg-center bg-cover h-32 w-42 rounded-xl md:h-44 md:w-52 lg:h-32 lg:w-36`}
-                    onClick={() => handleClick(index)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        handleClick(index);
-                      }
-                    }}
-                    role="button"
-                    tabIndex={0}
+              <div className="flex flex-col md:justify-between rounded-b-lg bg-zinc-100 p-4 lg:h-80 md:w-1/2 lg:w-96 md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-none">
+                <h2 className="text-center m-2 px-2 md:text-left text-2xl font-bold">
+                  {activeProject.title}
+                </h2>
+
+                <p className={`${styles.paragraph} pb-4 m-2 px-2`}>
+                  {activeProject.description}
+                </p>
+
+                <div className="pb-4 m-2 px-2 text-center md:text-left">
+                  <a
+                    className="font-semibold underline hover:no-underline text-primary-100"
+                    href={activeProject.behanceUrl}
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    <img
-                      className="object-cover w-full h-full rounded-xl"
-                      src={project.imageUrl}
-                      alt={"Thumbnail of " + projects[activeIndex].title}
-                      title={"Thumbnail of " + projects[activeIndex].title}
-                    />
-                  </div>
-                ))}
+                    Learn more on Behance
+                  </a>
+                </div>
               </div>
             </div>
-          )}
+
+            {/* THUMBNAILS */}
+            <div className="grid grid-cols-2 gap-4 pb-8 md:grid-cols-3 lg:grid-cols-6">
+              {projects.map((project, index) => (
+                <div
+                  key={project.id}
+                  className={`cursor-pointer rounded-xl overflow-hidden transition-all ${
+                    activeIndex === index
+                      ? "border-2 border-orange scale-105"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
+                  onClick={() => handleThumbnailClick(index)}
+                  role="button"
+                  tabIndex={0}
+                >
+                  <img
+                    className="object-cover w-full h-32"
+                    src={project.imageUrl}
+                    alt={project.title}
+                    title={project.title}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+
+          </div>
         </div>
       </div>
     </section>

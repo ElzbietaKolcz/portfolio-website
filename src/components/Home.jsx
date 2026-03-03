@@ -101,31 +101,9 @@ export default function Home() {
             data-aos-delay="400"
             data-aos-once="true"
           >
-            {cvData.map((cv) => (
-              <a
-                id="cv-link"
-                tabIndex={0}
-                role="link"
-                key={cv.id}
-                href={cv.href}
-                target="_blank"
-                className="items-center button btn-primary btn-animation whitespace-nowrap flex"
-                rel="noreferrer"
-                title="Open Elzbieta Kolcz CV"
-                aria-label="Link to Elzbieta Kolcz CV"
-              >
-                Review CV{" "}
-                <img
-                  className="pl-2 min-h-[20px] min-w-[20px]"
-                  alt="pdf-icon"
-                  src={pdf}
-                />
-              </a>
-            ))}
-
             <Link
-              id="projects-link"
-              className={`${styles.flexCenter} button rounded btn-secondary btn-animation`}
+              id="projects-link-cta"
+              className="items-center button btn-primary btn-animation whitespace-nowrap flex"
               to="projects"
               role="link"
               tabIndex={0}
@@ -138,57 +116,22 @@ export default function Home() {
             >
               Projects
             </Link>
-          </div>
 
-          <div className="items-center justify-center pt-2 pb-16 flex gap-8 md:justify-start xl:py-5">
-            <a
-              className="icon-animation"
-              href="https://www.behance.net/elbietakocz/"
-              target="_blank"
-              rel="noreferrer"
-              id="behance-link"
+            <Link
+              id="contact-link"
+              className={`${styles.flexCenter} button rounded btn-secondary btn-animation`}
+              to="contact"
               role="link"
               tabIndex={0}
-              title="Open Elzbieta Kolcz behance profile"
-              aria-label="Link to Elzbieta Kolcz behance profile"
-              data-aos="zoom-in"
-              data-aos-delay="300"
-              data-aos-once="true"
+              spy
+              smooth
+              offset={-100}
+              duration={500}
+              title="Go to contact section"
+              aria-label="Navigate to contact section"
             >
-              <img src={behance} alt="behance-logo" />
-            </a>
-            <a
-              className="icon-animation"
-              href="https://www.github.com/ElzbietaKolcz"
-              target="_blank"
-              rel="noreferrer"
-              id="github-link"
-              role="link"
-              tabIndex={0}
-              title="Open Elzbieta Kolcz GitHub profile"
-              aria-label="Link to Elzbieta Kolcz GitHub profile"
-              data-aos="zoom-in"
-              data-aos-delay="400"
-              data-aos-once="true"
-            >
-              <img src={gitHub} alt="gitHub-logo" />
-            </a>
-            <a
-              className="icon-animation"
-              href="https://www.linkedin.com/in/elzbietakolcz/"
-              target="_blank"
-              rel="noreferrer"
-              id="linkedin-link"
-              role="link"
-              tabIndex={0}
-              title="Open Elzbieta Kolcz LinkedIn profile"
-              aria-label="Link to Elzbieta Kolcz LinkedIn profile"
-              data-aos="zoom-in"
-              data-aos-delay="500"
-              data-aos-once="true"
-            >
-              <img src={linkedIn} alt="linkedIn-logo" />
-            </a>
+              Contact
+            </Link>
           </div>
         </div>
       </section>

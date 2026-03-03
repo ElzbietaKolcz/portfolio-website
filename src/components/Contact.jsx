@@ -1,24 +1,11 @@
-import { useState, useEffect, useRef } from "react";
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { useRef } from "react";
 import { email, cvImage, linkedIn } from "../assets";
 import SocialButton from "./SocialButton";
 import EmailButton from "./EmailButton";
 import styles from "../style";
-import { db } from "../firebase";
 
 export default function Contact() {
-  const [cvData, setCvData] = useState([]);
-
-  const fetchData = async (collectionRef, setData) => {
-    const q = query(collectionRef, orderBy("id"));
-    const data = await getDocs(q);
-    setData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  };
-
-  useEffect(() => {
-    const cvCollectionRef = collection(db, "cv");
-    fetchData(cvCollectionRef, setCvData);
-  }, []);
+  
 
   const contact = useRef(null);
   return (
@@ -50,14 +37,11 @@ export default function Contact() {
             text="Send me a message"
             link="https://www.linkedin.com/in/"
           />
-          {cvData.map((cv) => (
-            <SocialButton
-              key={cv.id}
-              icon={cvImage}
-              text="Review CV"
-              link={cv.href}
-            />
-          ))}
+          <SocialButton
+            icon={cvImage}
+            text="Review CV"
+            link="/CV/Kolcz_CV.pdf"
+          />
         </div>
       </div>
     </section>
