@@ -149,7 +149,7 @@ export default function Navbar() {
           </ul>
 
           <button
-            className="md:hidden mr-3 cursor-pointer"
+            className="md:hidden mr-3"
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -164,7 +164,7 @@ export default function Navbar() {
                   : list
               }
               alt={isMenuOpen ? "close-icon" : "list-icon"}
-              className="w-6 h-6 object-contain block"
+              className="w-6 h-6 object-contain"
             />
           </button>
 
@@ -190,7 +190,11 @@ export default function Navbar() {
                     <Link
                       tabIndex={0}
                       autoFocus={index === 0}
-                      className="font-Assistant uppercase text-lg hover:border-b-4 hover:border-primary-100 hover:font-semibold hover:text-primary-100"
+                      className={`font-Assistant uppercase text-lg ${
+                        activeSection === menuItem.name.toLowerCase()
+                          ? "border-b-4 border-primary-100 font-semibold text-primary-100"
+                          : "hover:border-b-4 hover:border-primary-100 hover:font-semibold hover:text-primary-100"
+                      }`}
                       to={menuItem.name}
                       role="menuitem"
                       title={"Go to " + menuItem.name}

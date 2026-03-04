@@ -3,7 +3,7 @@ import { behanceFooter, gitHubFooter, linkedInFooter } from "../assets";
 export default function Footer() {
   return (
 
-    <div className="bg-primary-40 p-4 flex flex-row justify-between items-center">
+    <div className="bg-primary-40 p-4 flex justify-between items-center">
       <p className="text-xs md:text-sm md:font-medium text-[#45024B]">
         {" "}
         © {new Date().getFullYear()} Copyright: Elżbieta Kołcz {" "}

@@ -28,7 +28,7 @@ export default function SocialButton({ icon, link, text }) {
       type="button"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium whitespace-nowrap p-1"
+      className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium p-1"
       onClick={() => window.open(link, "_blank")}
       aria-label={ariaText}
       title={ariaText}

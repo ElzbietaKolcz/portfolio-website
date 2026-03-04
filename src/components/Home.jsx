@@ -40,17 +40,17 @@ export default function Home() {
     <header role="banner">
       <section
         id="home"
-        className={`${styles.flexCenter} flex flex-col md:flex-row`}
+        className={`${styles.flexCenter} flex-col md:flex-row`}
       >
         <img
           src={avatarImage}
           alt="A woman in elegant clothes standing with her hands at waist level, smiling gently."
-          className="w-1/2 md:w-2/5 pt-28 md:pl-2 mb-2 lg:px-5 lg:mx-10"
+          className="w-1/2 md:w-2/5 pt-28 md:pl-2 lg:px-5 lg:mx-10"
           data-aos="zoom-in"
           data-aos-delay="300"
         />
 
-        <div className="flex-1 flex-col md:w-3/5 text-center px-6 pt-2 md:pt-20 md:text-left md:mx-5 xl:mx-10">
+        <div className="flex-1 flex-col md:w-3/5 text-center px-6 md:pt-20 md:text-left md:mx-5 xl:mx-10">
            {homeData.title?.title && (
             <h1
               className={`${styles.heading1}`}
@@ -74,7 +74,7 @@ export default function Home() {
           
           {homeData.description?.start && (
             <p
-              className={`${styles.paragraph} font-medium max-w-[500px] lg:pb-5 px-5 mt-8 sm:px-10 md:pl-0 md:mt-4 text-left md:max-w-[450px]`}
+              className={`${styles.paragraph} font-medium max-w-[500px] lg:pb-5 px-5 my-3 sm:px-10 md:pl-0 md:mt-4 text-left md:max-w-[450px]`}
               data-aos="fade-down"
               data-aos-delay="400"
             >
@@ -96,14 +96,14 @@ export default function Home() {
           )}
 
           <div
-            className={`${styles.flexCenter} pt-6 pb-8 px-2 flex gap-8 grid-cols-2 md:justify-start md:px-0 md:gap-10 xl:py-5`}
+            className={`${styles.flexCenter} gap-8 pt-6 pb-8 px-2 md:justify-start md:px-0 md:gap-10 xl:py-5`}
             data-aos="fade-down"
             data-aos-delay="400"
             data-aos-once="true"
           >
             <Link
               id="projects-link-cta"
-              className="items-center button btn-primary btn-animation whitespace-nowrap flex"
+              className="flex items-center button btn-primary btn-animation whitespace-nowrap"
               to="projects"
               role="link"
               tabIndex={0}

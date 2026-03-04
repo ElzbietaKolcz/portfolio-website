@@ -12,7 +12,6 @@ export default function Contact() {
     <section
       id="contact"
       ref={contact}
-      className=" h-auto"
     >
       <div className="container mx-auto pb-11 md:pb-6 ">
         <div className="flex items-center justify-center ">
@@ -26,7 +25,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="items-center justify-center flex flex-col lg:flex-row gap-8 pb-2">
+        <div className={`${styles.flexCenter} flex-col lg:flex-row gap-8 pb-2`}>
           <EmailButton
             icon={email}
             text="Send me an email"

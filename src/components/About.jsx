@@ -23,10 +23,12 @@ export default function About() {
     fetchData(hobbyCollectionRef, setHobbyData);
   }, []);
 
+  const paraClass = `${styles.paragraph} max-w-[500px] px-5 mt-1 sm:px-10 md:mt-4 text-left`;
+
   return (
     <section
       id="about"
-      className={`${styles.flexCenter} flex flex-col `}
+      className={`${styles.flexCenter} flex-col`}
     >
       <h1 className={`${styles.heading1}`}>About me</h1>
 
@@ -35,7 +37,7 @@ export default function About() {
           {aboutData.map((about) => (
             <div
               key={about.id}
-              className={`${styles.paragraph} max-w-[500px]  md:max-w-4xl lg:max-w-7xl  px-5 mt-1 sm:px-10 md:mt-4 text-left  `}
+              className={`${paraClass} md:max-w-4xl lg:max-w-7xl`}
             >
               <div
                 className="mb-4"
@@ -46,7 +48,7 @@ export default function About() {
                   {about.description}{" "}
                   <Link
                     id="contact-link"
-                    className="font-semibold underline mobilehover:hover:no-underline relative justify-center text-primary-100 mobilehover:hover:text-primary-50"
+                    className="font-semibold underline mobilehover:hover:no-underline relative text-primary-100 mobilehover:hover:text-primary-50"
                     to="contact"
                     spy
                     smooth
@@ -85,7 +87,7 @@ export default function About() {
             {hobbyData.map((hobby) => (
               <div
                 key={hobby.id}
-                className={`${styles.paragraph} max-w-[500px] px-5 mt-1 sm:px-10 md:mt-4 text-left md:max-w-[450px]`}
+                className={`${paraClass} md:max-w-[450px]`}
                 data-aos="fade-left"
                 data-aos-delay="100"
               >

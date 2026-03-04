@@ -36,7 +36,7 @@ export default function EmailButton({ icon, text, copyText }) {
       onMouseLeave={handleMouseLeave}
       onClick={handleCopyToClipboard}
       onTouchEnd={handleTouchEnd}
-      className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium whitespace-nowrap p-1 overflow-hidden h-9"
+      className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium p-1 overflow-hidden h-9"
       aria-label={`Copy email address "${copyText}" to clipboard`}
       title={`Copy email address "${copyText}" to clipboard`}
     >

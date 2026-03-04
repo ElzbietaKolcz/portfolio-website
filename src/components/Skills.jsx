@@ -37,10 +37,10 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className={`${styles.flexCenter} flex flex-col `}
+      className={`${styles.flexCenter} flex-col`}
     >
-      <div className="lg:flex  lg:flex-row  pb-6  ">
-        <div className="lg:flex-col ">
+      <div className="lg:flex lg:gap-6 pb-6">
+        <div className="lg:flex-col">
           <div
             className="lg:flex lg:flex-col p-2 m-2 pb-4"
             data-aos="fade-right"
@@ -60,7 +60,6 @@ export default function Skills() {
                   return (
                     <div
                       key={skills.id}
-                      className=" h-auto "
                     >
                       <div
                         className={`m-2 rounded-md  ${bgClass}`}
@@ -94,7 +93,6 @@ export default function Skills() {
                   return (
                     <div
                       key={certification.id}
-                      className=" h-auto "
                     >
                       <div
                         data-aos="fade-up"
@@ -127,7 +125,7 @@ export default function Skills() {
           </div>
         </div>
 
-        <div className="lg:flex  lg:flex-col p-2 m-2 pb-4">
+        <div className="lg:flex lg:flex-col p-2 m-2 pb-4">
           <div
             className="mb-4"
             data-aos="fade-left"
@@ -142,7 +140,6 @@ export default function Skills() {
                 {education.map((education) => (
                   <div
                     key={education.id}
-                    className="h-auto"
                   >
                     <div
                       data-aos="fade-up"
@@ -202,7 +199,6 @@ export default function Skills() {
                 {experience.map((experience) => (
                   <div
                     key={experience.id}
-                    className=" h-auto "
                   >
                     <div
                       data-aos="fade-up"
@@ -255,7 +251,6 @@ export default function Skills() {
                 {accomplishments.map((accomplishments) => (
                   <div
                     key={accomplishments.id}
-                    className=" h-auto "
                   >
                     <div
                       data-aos="fade-up"
