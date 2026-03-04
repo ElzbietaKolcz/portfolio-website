@@ -17,7 +17,7 @@ At long last! After numerous hours of commitment, even amidst my university stud
     📱 Mocku-up: Freepik
 
 ## Contact 
-    Email: contact@elzbietakol.cz
+    Email:    contact@elzbietakol.cz
     LinkedIn: www.linkedin.com/in/elzbieta-kolcz
     Behance:  www.behance.net/elbietakocz
   
