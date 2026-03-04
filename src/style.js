@@ -19,7 +19,7 @@ const styles = {
   marginY: "sm:my-16 my-6",
 
   bgAnimation:
-    "h-[160px] md:h-[250px] bg-fixed bg-cover bg-center bg-no-repate  lg:my-20",
+    "bg-scroll md:bg-fixed h-[160px] md:h-[250px] bg-cover bg-center bg-no-repeat lg:my-20",
 };
 
 export const layout = {
