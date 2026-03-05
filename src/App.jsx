@@ -35,7 +35,7 @@ export default function App() {
       <main role="main">
         <div
           data-dark="true"
-          className={`${styles.bgAnimation} bg-[url("assets/images/bgImage01.webp")]`}
+          className={`${styles.bgAnimation} bg-[url("/background/bgImage01.webp")]`}
           role="img"
           aria-label="A woman working on a website design project in Figma."
         />
@@ -48,7 +48,7 @@ export default function App() {
 
         <div
           data-dark="true"
-          className={`${styles.bgAnimation} bg-[url("assets/images/bgImage02.webp")]`}
+          className={`${styles.bgAnimation} bg-[url("/background/bgImage02.webp")]`}
           role="img"
           aria-label="A woman drawing different versions of a page's appearance."
          
@@ -62,7 +62,7 @@ export default function App() {
 
         <div
           data-dark="true"
-          className={`${styles.bgAnimation} bg-[url("assets/images/bgImage03.webp")]`}
+          className={`${styles.bgAnimation} bg-[url("/background/bgImage03.webp")]`}
           role="img"
           aria-label="A woman sitting at a computer analyzing graphic designs made on paper."
         />
@@ -76,7 +76,7 @@ export default function App() {
 
       <footer role="contentinfo">
         <div
-          className={`${styles.bgAnimation} bg-[url("assets/images/bgImage04.webp")]`}
+          className={`${styles.bgAnimation} bg-[url("/background/bgImage04.webp")]`}
           role="img"
           aria-label="Elegantly dressed woman holding a diary and a pen."
         />

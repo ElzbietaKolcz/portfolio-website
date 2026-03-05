@@ -28,12 +28,6 @@ export default {
       borderRadius: {
         lg: "24px",
       },
-      backgroundImage: {
-        bgImage01: 'url("assets/images/bgImage01.webp")',
-        bgImage02: 'url("assets/images/bgImage02.webp")',
-        bgImage03: 'url("assets/images/bgImage03.webp")',
-        bgImage04: 'url("assets/images/bgImage04.webp")',
-      },
     },
   },
   plugins: [],

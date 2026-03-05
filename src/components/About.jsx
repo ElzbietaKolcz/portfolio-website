@@ -3,7 +3,7 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { Link } from "react-scroll";
 import { db } from "../firebase";
 import styles from "../style";
-import image from '../assets/images/fot_Julia_Krzemianowska.webp';
+const image = '/images/fot_Julia_Krzemianowska.webp';
 
 export default function About() {
   const [aboutData, setAboutData] = useState([]);

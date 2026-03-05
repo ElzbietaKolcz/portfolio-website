@@ -22,23 +22,50 @@ const LARGE_BREAKPOINT = 1280;
 ========================= */
 
 export const projects = [
+    {
+    id: 1,
+    title: "MacMeeting event website",
+    description:
+      "A project focused on creating a clean, informative event page that consolidates all essential details about MacMeeting while providing an intuitive registration process for attendees.",
+    imageUrl: "/projects/macmeeting.webp",
+    behanceUrl: "https://macmeeting.pl/",
+    updated: "March 3, 2026",
+  },
+  {
+    id: 2,
+    title: "ZodiaCal - Engineering thesis",
+    description:
+      "A multifunctional personal calendar designed to enhance time management while incorporating a daily skin care planner for holistic support of users’ routines.",
+    imageUrl: "/projects/zodiacal.webp",
+    behanceUrl: "https://www.behance.net/gallery/221123967/ZodiaCal-Engineering-thesis",
+    updated: "August 9, 2023",
+  },
   {
     id: 3,
     title: "Event post for WWDC25 keynote",
     description:
       "A project focused on designing an engaging social media post to promote the joint viewing WWDC25 viewing event hosted by k7 and MacGadka.",
-    imageUrl: "/projects/wwdc.png",
+    imageUrl: "/projects/wwdc.webp",
     behanceUrl:
       "https://www.behance.net/gallery/230309835/Event-post-for-WWDC25-keynote",
     updated: "July 14, 2025",
   },
   {
-    id: 1,
-    title: "MacMeeting event website",
+    id: 4,
+    title: "MAD logo & stickers",
     description:
-      "A project focused on creating a clean, informative event page that consolidates all essential details about MacMeeting while providing an intuitive registration process for attendees.",
-    imageUrl: "/projects/macmeeting.jpg",
-    behanceUrl: "https://macmeeting.pl/",
+      "Logo project for MAD Academic Club at WSB Merito in Wrocław, paired with custom stickers designed to support promotion and encourage student engagement.",
+    imageUrl: "/projects/mad.webp",
+    behanceUrl: "https://www.behance.net/gallery/193437693/MAD-Logo-LinkedIn-Profile",
+    updated: "August 9, 2023",
+  },
+    {
+    id: 5,
+    title: "Newsletter & 404 Page",
+    description:
+      "This UI was created during the recruitment process for a design studio based in Poland.",
+    imageUrl: "/projects/newsletter.webp",
+    behanceUrl: "https://www.behance.net/gallery/130217645/Newsletter-404-Page?tracking_source=project_owner_other_projects",
     updated: "March 3, 2026",
   },
   {
@@ -46,36 +73,9 @@ export const projects = [
     title: "Idź Pan w UI! -  3 projects",
     description:
       "‘Idź Pan w UI!’ is a monthly design challenge created by Natalia Bienias. In its 26th edition, my project was featured and discussed in a video on the By Zebza YouTube channel.",
-    imageUrl: "/projects/dashbord.jpg",
+    imageUrl: "/projects/dashbord.webp",
     behanceUrl: "https://www.behance.net/gallery/134270851/Idz-Pan-w-UI",
     updated: "March 3, 2026",
-  },
-  {
-    id: 5,
-    title: "Newsletter & 404 Page",
-    description:
-      "This UI was created during the recruitment process for a design studio based in Poland.",
-    imageUrl: "/projects/newsletter.jpg",
-    behanceUrl: "https://www.behance.net/gallery/130217645/Newsletter-404-Page?tracking_source=project_owner_other_projects",
-    updated: "March 3, 2026",
-  },
-  {
-    id: 4,
-    title: "MAD logo & stickers",
-    description:
-      "Logo project for MAD Academic Club at WSB Merito in Wrocław, paired with custom stickers designed to support promotion and encourage student engagement.",
-    imageUrl: "/projects/mad.jpg",
-    behanceUrl: "https://www.behance.net/gallery/193437693/MAD-Logo-LinkedIn-Profile",
-    updated: "August 9, 2023",
-  },
-  {
-    id: 2,
-    title: "ZodiaCal - Engineering thesis",
-    description:
-      "A multifunctional personal calendar designed to enhance time management while incorporating a daily skin care planner for holistic support of users’ routines.",
-    imageUrl: "/projects/zodiacal.png",
-    behanceUrl: "https://www.behance.net/gallery/221123967/ZodiaCal-Engineering-thesis",
-    updated: "August 9, 2023",
   },
 ];
 

@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 import { collection, getDocs } from "firebase/firestore";
 import styles from "../style";
-import { pdf, behance, gitHub, linkedIn } from "../assets";
 import { db } from "../firebase";
-import avatarImage from '../assets/images/avatar_fot_Julia_Krzemianowska.webp';
+const avatarImage = '/images/avatar_fot_Julia_Krzemianowska.webp';
 
 export default function Home() {
   const [cvData, setCvData] = useState([]);
