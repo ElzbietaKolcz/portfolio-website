@@ -1,13 +1,15 @@
+import { lazy, Suspense } from 'preact/compat';
 import styles from "./style";
 import {
   Navbar,
   Home,
   About,
-  Projects,
-  Skills,
-  Contact,
-  Footer,
 } from "./components";
+
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 
 export default function App() {
@@ -33,62 +35,66 @@ export default function App() {
       </div>
 
       <main role="main">
-        <div
-          data-dark="true"
-          className={`${styles.bgAnimation} bg-[url("/background/bgImage01.webp")]`}
-          role="img"
-          aria-label="A woman working on a website design project in Figma."
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <div
+            data-dark="true"
+            className={`${styles.bgAnimation} bg-[url("/background/bgImage01.webp")]`}
+            role="img"
+            aria-label="A woman working on a website design project in Figma."
+          />
 
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
-            <Projects />
+          <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.boxWidth}`}>
+              <Projects />
+            </div>
           </div>
-        </div>
 
-        <div
-          data-dark="true"
-          className={`${styles.bgAnimation} bg-[url("/background/bgImage02.webp")]`}
-          role="img"
-          aria-label="A woman drawing different versions of a page's appearance."
-         
-        />
+          <div
+            data-dark="true"
+            className={`${styles.bgAnimation} bg-[url("/background/bgImage02.webp")]`}
+            role="img"
+            aria-label="A woman drawing different versions of a page's appearance."
+           
+          />
 
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
-            <About />
+          <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.boxWidth}`}>
+              <About />
+            </div>
           </div>
-        </div>
 
-        <div
-          data-dark="true"
-          className={`${styles.bgAnimation} bg-[url("/background/bgImage03.webp")]`}
-          role="img"
-          aria-label="A woman sitting at a computer analyzing graphic designs made on paper."
-        />
+          <div
+            data-dark="true"
+            className={`${styles.bgAnimation} bg-[url("/background/bgImage03.webp")]`}
+            role="img"
+            aria-label="A woman sitting at a computer analyzing graphic designs made on paper."
+          />
 
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
-            <Skills />
+          <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.boxWidth}`}>
+              <Skills />
+            </div>
           </div>
-        </div>
+        </Suspense>
       </main>
 
       <footer role="contentinfo">
-        <div
-          className={`${styles.bgAnimation} bg-[url("/background/bgImage04.webp")]`}
-          role="img"
-          aria-label="Elegantly dressed woman holding a diary and a pen."
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <div
+            className={`${styles.bgAnimation} bg-[url("/background/bgImage04.webp")]`}
+            role="img"
+            aria-label="Elegantly dressed woman holding a diary and a pen."
+          />
 
-        <div className="w-full">
-          <Contact />
-        </div>
+          <div className="w-full">
+            <Contact />
+          </div>
 
-        <div className="w-full">
-          <Footer />
-        </div>
-        <div className="bg-[#45024B] p-2" />
+          <div className="w-full">
+            <Footer />
+          </div>
+          <div className="bg-[#45024B] p-2" />
+        </Suspense>
       </footer>
     </div>
   );

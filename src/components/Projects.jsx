@@ -149,7 +149,7 @@ export default function Projects() {
                 <div style={{ paddingBottom: "100%" }}>
                   <img
                     key={activeProject.id}
-                    className="absolute inset-0 w-full h-full object-cover rounded-t-lg md:rounded-l-lg transition-opacity duration-500"
+                    className="absolute aspect-auto inset-0 w-full h-full object-cover rounded-t-lg md:rounded-l-lg transition-opacity duration-500"
                     src={activeProject.imageUrl}
                     alt={activeProject.title}
                   />
@@ -193,7 +193,7 @@ export default function Projects() {
                   tabIndex={0}
                 >
                   <img
-                    className="object-cover w-full h-32"
+                    className="object-cover w-full h-32 aspect-auto"
                     src={project.imageUrl}
                     alt={project.title}
                     title={project.title}

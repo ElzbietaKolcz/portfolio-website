@@ -79,7 +79,7 @@ export default function About() {
               title="A woman in elegant clothes working at a computer and writing notes."
               data-aos="zoom-in"
               data-aos-delay="200"
-              className="rounded-3xl"
+              className="rounded-3xl w-full aspect-auto"
             />
           </div>
 

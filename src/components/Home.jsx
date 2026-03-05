@@ -44,7 +44,7 @@ export default function Home() {
         <img
           src={avatarImage}
           alt="A woman in elegant clothes standing with her hands at waist level, smiling gently."
-          className="w-1/2 md:w-2/5 pt-28 md:pl-2 lg:px-5 lg:mx-10"
+          className="w-1/2 md:w-2/5 pt-28 md:pl-2 lg:px-5 lg:mx-10 aspect-auto"
           data-aos="zoom-in"
           data-aos-delay="300"
         />
