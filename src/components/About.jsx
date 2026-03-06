@@ -76,7 +76,6 @@ export default function About() {
             <img
               src={image}
               alt="A woman in elegant clothes working at a computer and writing notes."
-              title="A woman in elegant clothes working at a computer and writing notes."
               data-aos="zoom-in"
               data-aos-delay="200"
               className="rounded-3xl w-full aspect-auto"
