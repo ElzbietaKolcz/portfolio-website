@@ -20,6 +20,8 @@ const styles = {
 
   bgAnimation:
     "bg-scroll md:bg-fixed h-[160px] md:h-[250px] bg-cover bg-center bg-no-repeat lg:my-20",
+
+  loadingOverlay: "fixed inset-0 w-full h-full bg-opacity-50 backdrop-blur-lg md:bg-auto bg-center bg-no-repeat bg-contain sm:bg-cover z-50 flex justify-center items-center",
 };
 
 export const layout = {
