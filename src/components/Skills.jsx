@@ -5,9 +5,84 @@ import { db } from "../firebase";
 import styles from "../style";
 import { t } from "../i18n";
 
-export default function Skills() {
-  const COLLECTIONS = ["skills", "certification", "education", "experience", "accomplishments"];
+function SkillCard({ title, description, color }) {
+  return (
+    <div
+      className="m-2 rounded-md"
+      style={{ backgroundColor: color }}
+      data-aos="fade-up"
+      data-aos-anchor-placement="bottom-bottom"
+    >
+      <h2 className="px-2 pt-3">{title}</h2>
+      <p className="px-2 pb-3">{description}</p>
+    </div>
+  );
+}
 
+function CertificationItem({ start, end, linkName, link, color }) {
+  return (
+    <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+      <p className="px-2 pb-3">
+        {start}{" "}
+        <span className="m-2 rounded-md" style={{ backgroundColor: color }}>
+          {" "}
+          <a
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            tabIndex={0}
+            role="link"
+            id={linkName}
+            title={t("skills.certificateTitle", { name: linkName })}
+            aria-label={t("skills.certificateAriaLabel", { name: linkName })}
+          >
+            <strong>{linkName}</strong>
+          </a>
+        </span>{" "}
+        {end}{" "}
+      </p>
+    </div>
+  );
+}
+
+function TimelineEntry({ title, dateStart, dateEnd, children }) {
+  return (
+    <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+      {title && <h2>{title}</h2>}
+      <div className="timeline-row">
+        <div>
+          <p className="timeline-date">
+            {dateStart}
+            {dateEnd && (
+              <>
+                {" -\u00A0"}
+                <span className="font-bold">{dateEnd}</span>
+              </>
+            )}
+          </p>
+        </div>
+        <div className="timeline-body">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+function SkillsPanel({ heading, aosDirection, className = "", children }) {
+  return (
+    <div
+      className={`lg:flex lg:flex-col p-2 m-2 ${className}`}
+      data-aos={aosDirection}
+      data-aos-delay="200"
+    >
+      <h1 className={`${styles.heading1Left}`}>{heading}</h1>
+      {children}
+    </div>
+  );
+}
+
+const COLLECTIONS = ["skills", "certification", "education", "experience", "accomplishments"];
+
+export default function Skills() {
   const [data, setData] = useState({
     skills: [],
     certification: [],
@@ -31,235 +106,99 @@ export default function Skills() {
   }, []);
 
   return (
-    <section
-      id="skills"
-      className={`${styles.flexCol}`}
-    >
+    <section id="skills" className={`${styles.flexCol}`}>
       <div className="lg:flex lg:gap-6 pb-6">
         <div className="lg:flex-col">
-          <div
-            className="lg:flex lg:flex-col p-2 m-2 pb-4"
-            data-aos="fade-right"
-            data-aos-delay="200"
-          >
-            <h1 className={`${styles.heading1Left}`}>{t("skills.heading")}</h1>
-
+          <SkillsPanel heading={t("skills.heading")} aosDirection="fade-right" className="pb-4">
             <div className={`${styles.flexCenter} md:max-w-xl`}>
               <div className="flex flex-wrap pr-8">
-                {data.skills.map((skills) => {
-                  return (
-                    <div
-                      key={skills.id}
-                    >
-                      <div
-                        className="m-2 rounded-md"
-                        style={{ backgroundColor: skills.color }}
-                        data-aos="fade-up"
-                        data-aos-anchor-placement="bottom-bottom"
-                      >
-                        <h2 className="px-2 pt-3 ">{skills.title}</h2>
-                        <p className="px-2 pb-3">{skills.description} </p>
-                      </div>
-                    </div>
-                  );
-                })}
+                {data.skills.map((skill) => (
+                  <SkillCard
+                    key={skill.id}
+                    title={skill.title}
+                    description={skill.description}
+                    color={skill.color}
+                  />
+                ))}
               </div>
             </div>
-          </div>
+          </SkillsPanel>
 
-          <div
-            className="lg:flex lg:flex-col p-2 m-2"
-            data-aos="fade-right"
-            data-aos-delay="200"
-          >
-            <h1 className={`${styles.heading1Left} pb-5`}>
-              {t("skills.certification")}
-            </h1>
-
-            <div className={`${styles.flexCenter}   lg:mr-5`}>
-              <div className="flex flex-wrap  ">
-                {data.certification.map((certification) => {
-                  return (
-                    <div
-                      key={certification.id}
-                    >
-                      <div
-                        data-aos="fade-up"
-                        data-aos-anchor-placement="bottom-bottom"
-                      >
-                        <p className="px-2 pb-3">
-                          {certification.start}{" "}
-                          <span className="m-2 rounded-md" style={{ backgroundColor: certification.color }}>
-                            {" "}
-                            <a href={certification.link}
-                              target="_blank"
-                              rel="noreferrer"
-                              tabIndex={0}
-                              role="link"
-                              id={certification.linkName}
-                              title={t("skills.certificateTitle", { name: certification.linkName })}
-                              aria-label={t("skills.certificateAriaLabel", { name: certification.linkName })}
-                            >
-                              <strong>{certification.linkName}</strong>
-                            </a>
-                          </span>{" "}
-                          {certification.end}{" "}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
+          <SkillsPanel heading={t("skills.certification")} aosDirection="fade-right">
+            <div className={`${styles.flexCenter} lg:mr-5`}>
+              <div className="flex flex-wrap">
+                {data.certification.map((cert) => (
+                  <CertificationItem
+                    key={cert.id}
+                    start={cert.start}
+                    end={cert.end}
+                    linkName={cert.linkName}
+                    link={cert.link}
+                    color={cert.color}
+                  />
+                ))}
               </div>
             </div>
-          </div>
+          </SkillsPanel>
         </div>
 
         <div className="lg:flex lg:flex-col p-2 m-2 pb-4">
-          <div
-            className="mb-4"
-            data-aos="fade-left"
-            data-aos-delay="200"
-          >
-            <h1 className={`${styles.heading1Left}`}>
-              {t("skills.education")}
-            </h1>
-
-            <div className={`${styles.flexCenter}  lg:mr-5`}>
-              <div className="flex flex-wrap ">
-                {data.education.map((education) => (
-                  <div
-                    key={education.id}
-                  >
-                    <div
-                      data-aos="fade-up"
-                      data-aos-anchor-placement="bottom-bottom"
-                    >
-                      <h2> {education.title}</h2>
-                      <div className="timeline-row">
-                        <div>
-                          <p className="timeline-date">
-                            {education.timeStart}
-                            {" -\u00A0"}
-                            <span className="font-bold">
-                              {education.timeEnd}
-                            </span>
-                          </p>
-                        </div>
-
-                        <div className="timeline-body">
-                          <p>
-                            {education.fieldTitle01}{" "}
-                            <span className="font-bold">
-                              {education.field01}
-                            </span>
-                          </p>
-                          <p className="font-bold">
-                            <span className="font-normal">
-                              {education.fieldTitle02}{" "}
-                            </span>{" "}
-                            {education.field02}
-                          </p>
-                          <p>
-                            {education.fieldTitle03}
-                            <span className="font-bold">
-                              {education.field03}{" "}
-                            </span>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+          <div className="mb-4" data-aos="fade-left" data-aos-delay="200">
+            <h1 className={`${styles.heading1Left}`}>{t("skills.education")}</h1>
+            <div className={`${styles.flexCenter} lg:mr-5`}>
+              <div className="flex flex-wrap">
+                {data.education.map((edu) => (
+                  <div key={edu.id}>
+                    <TimelineEntry title={edu.title} dateStart={edu.timeStart} dateEnd={edu.timeEnd}>
+                      <p>
+                        {edu.fieldTitle01}{" "}
+                        <span className="font-bold">{edu.field01}</span>
+                      </p>
+                      <p className="font-bold">
+                        <span className="font-normal">{edu.fieldTitle02}{" "}</span>{" "}
+                        {edu.field02}
+                      </p>
+                      <p>
+                        {edu.fieldTitle03}
+                        <span className="font-bold">{edu.field03}{" "}</span>
+                      </p>
+                    </TimelineEntry>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          <div
-            className="mb-4"
-            data-aos="fade-left"
-            data-aos-delay="200"
-          >
-            <h1 className={`${styles.heading1Left}`}>
-              {t("skills.experience")}
-            </h1>
-
-            <div>
-              <div className="flex flex-wrap ">
-                {data.experience.map((experience) => (
-                  <div
-                    key={experience.id}
-                  >
-                    <div
-                      data-aos="fade-up"
-                      data-aos-anchor-placement="bottom-bottom"
-                    >
-                      <h2> {experience.title}</h2>
-                      <div className="timeline-row">
-                        <div>
-                          <p className="timeline-date">
-                            {experience.timeStart} {" -\u00A0"}
-                            <span className="font-bold">
-                              {experience.timeEnd}
-                            </span>
-                          </p>
-                        </div>
-
-                        <div className="timeline-body">
-                          <p className="font-normal">
-                            {experience.fieldTitle01}{" "}
-                            <span className="font-bold">
-                              {experience.position}
-                            </span>
-                          </p>
-                          <p className="font-bold">
-                            <span className="font-normal">
-                              {experience.fieldTitle02}{" "}
-                            </span>{" "}
-                            {experience.schedule}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <div className="mb-4" data-aos="fade-left" data-aos-delay="200">
+            <h1 className={`${styles.heading1Left}`}>{t("skills.experience")}</h1>
+            <div className="flex flex-wrap">
+              {data.experience.map((exp) => (
+                <div key={exp.id}>
+                  <TimelineEntry title={exp.title} dateStart={exp.timeStart} dateEnd={exp.timeEnd}>
+                    <p className="font-normal">
+                      {exp.fieldTitle01}{" "}
+                      <span className="font-bold">{exp.position}</span>
+                    </p>
+                    <p className="font-bold">
+                      <span className="font-normal">{exp.fieldTitle02}{" "}</span>{" "}
+                      {exp.schedule}
+                    </p>
+                  </TimelineEntry>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div
-            className="mb-4"
-            data-aos="fade-left"
-            data-aos-delay="200"
-          >
-            <h1 className={`${styles.heading1Left}`}>
-              {t("skills.accomplishments")}
-            </h1>
-
-            <div>
-              <div className="flex flex-wrap ">
-                {data.accomplishments.map((accomplishments) => (
-                  <div
-                    key={accomplishments.id}
-                  >
-                    <div
-                      data-aos="fade-up"
-                      data-aos-anchor-placement="bottom-bottom"
-                    >
-                      <div className="timeline-row">
-                        <div>
-                          <p className="timeline-date">
-                            {accomplishments.time}
-                          </p>
-                        </div>
-
-                        <div className="timeline-body">
-                          <p>{accomplishments.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <div className="mb-4" data-aos="fade-left" data-aos-delay="200">
+            <h1 className={`${styles.heading1Left}`}>{t("skills.accomplishments")}</h1>
+            <div className="flex flex-wrap">
+              {data.accomplishments.map((acc) => (
+                <div key={acc.id}>
+                  <TimelineEntry dateStart={acc.time}>
+                    <p>{acc.description}</p>
+                  </TimelineEntry>
+                </div>
+              ))}
             </div>
           </div>
         </div>
