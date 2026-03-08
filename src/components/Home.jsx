@@ -45,6 +45,9 @@ export default function Home() {
           src={avatarImage}
           alt="A woman in elegant clothes standing with her hands at waist level, smiling gently."
           className="w-1/2 md:w-2/5 pt-28 md:pl-2 lg:px-5 lg:mx-10 aspect-auto"
+          fetchpriority="high"
+          width="600"
+          height="600"
           data-aos="zoom-in"
           data-aos-delay="300"
         />
