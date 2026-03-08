@@ -89,7 +89,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav role="navigation">
+    <nav aria-label={t("nav.ariaLabel")}>
       <div
         className={`fixed w-full left-0 z-50 backdrop-blur-md ${
           onDarkSection ? "brightness-110" : ""
@@ -105,7 +105,6 @@ export default function Navbar() {
             id="ek-logo"
             href={window.location.pathname}
             className="flex"
-            role="button"
             title={t("nav.logo.title")}
             aria-label={t("nav.logo.ariaLabel")}
           >
@@ -118,13 +117,12 @@ export default function Navbar() {
 
           {/* Menu desktop */}
           <ul
-            role="menu"
+            aria-label={t("nav.menu.ariaLabel")}
             className="hidden md:flex md:justify-between md:items-center md:pl-10 xl:pl-24"
           >
             {menu.map((menuItem) => (
               <li
                 className="mx-2"
-                role="none"
                 key={menuItem.id}
               >
                 <Link
@@ -136,7 +134,6 @@ export default function Navbar() {
                         } hover:border-b-4 hover:border-primary-100 hover:font-semibold`
                   }`}
                   to={menuItem.name}
-                  role="menuitem"
                   title={t("nav.menu.goTo", { section: menuItem.name })}
                   aria-label={t("nav.menu.goTo", { section: menuItem.name })}
                   spy
@@ -181,7 +178,7 @@ export default function Navbar() {
               }}
             >
               <ul
-                role="menu"
+                aria-label={t("nav.menu.ariaLabel")}
                 className={`transform transition-transform duration-300 ease-in-out ${
                   isMenuOpen ? "translate-x-0" : "translate-x-full"
                 } md:hidden fixed h-screen w-1/2 p-5 top-13 right-0 bg-white mt-10`}
@@ -190,10 +187,8 @@ export default function Navbar() {
                   <li
                     key={menuItem.id}
                     className="mb-6 mx-2"
-                    role="none"
                   >
                     <Link
-                      tabIndex={0}
                       autoFocus={index === 0}
                       className={`font-Assistant uppercase text-lg ${
                         activeSection === menuItem.name.toLowerCase()
@@ -201,7 +196,6 @@ export default function Navbar() {
                           : "hover:border-b-4 hover:border-primary-100 hover:font-semibold hover:text-primary-100"
                       }`}
                       to={menuItem.name}
-                      role="menuitem"
                       title={t("nav.menu.goTo", { section: menuItem.name })}
                       aria-label={t("nav.menu.goTo", { section: menuItem.name })}
                       spy

@@ -1,11 +1,13 @@
 {
   "nav": {
+    "ariaLabel": "Hlavní navigace",
     "logo": {
       "alt": "Logo EK",
       "title": "Obnovit stránku",
       "ariaLabel": "Tlačítko s logem pro obnovení stránky"
     },
     "menu": {
+      "ariaLabel": "Navigační odkazy",
       "open": "Otevřít menu",
       "close": "Zavřít menu",
       "openIconAlt": "ikona otevření menu",

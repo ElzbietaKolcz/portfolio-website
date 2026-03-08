@@ -1,11 +1,13 @@
 {
   "nav": {
+    "ariaLabel": "Main navigation",
     "logo": {
       "alt": "EK logo",
       "title": "Reload the page",
       "ariaLabel": "Logo button that refreshes the page"
     },
     "menu": {
+      "ariaLabel": "Site navigation links",
       "open": "Open menu",
       "close": "Close menu",
       "openIconAlt": "open menu icon",

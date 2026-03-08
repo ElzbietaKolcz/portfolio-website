@@ -1,11 +1,13 @@
 {
   "nav": {
+    "ariaLabel": "Główna nawigacja",
     "logo": {
       "alt": "Logo EK",
       "title": "Odśwież stronę",
       "ariaLabel": "Przycisk z logo odświeżający stronę"
     },
     "menu": {
+      "ariaLabel": "Linki nawigacyjne",
       "open": "Otwórz menu",
       "close": "Zamknij menu",
       "openIconAlt": "ikona otwierania menu",
