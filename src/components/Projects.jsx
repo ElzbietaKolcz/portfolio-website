@@ -24,9 +24,9 @@ function ProjectCard({ project }) {
       </div>
 
       <div className="flex flex-col md:justify-between rounded-b-lg bg-zinc-100 p-4 lg:h-80 md:w-1/2 lg:w-96 md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-none">
-        <h2 className="text-center m-2 px-2 md:text-left text-2xl font-bold">
+        <h3 className="text-center m-2 px-2 md:text-left text-2xl font-bold">
           {project.title}
-        </h2>
+        </h3>
         <p className={`${styles.paragraph} pb-4 m-2 px-2`}>
           {project.description}
         </p>
@@ -188,7 +188,7 @@ export default function Projects() {
       onMouseLeave={() => setIsPaused(false)}
     >
       <div className={`${styles.flexCol} mb-2`}>
-        <h1 className={`${styles.heading1}`}>{t("projects.heading")}</h1>
+        <h2 className={`${styles.heading1}`}>{t("projects.heading")}</h2>
 
         <div className={`${styles.flexCol}`}>
           <div className="flex flex-col mb-2 relative">

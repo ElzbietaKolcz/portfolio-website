@@ -48,7 +48,7 @@ function CertificationItem({ start, end, linkName, link, color }) {
 function TimelineEntry({ title, dateStart, dateEnd, children }) {
   return (
     <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-      {title && <h2>{title}</h2>}
+      {title && <h3>{title}</h3>}
       <div className="timeline-row">
         <div>
           <p className="timeline-date">
@@ -74,7 +74,7 @@ function SkillsPanel({ heading, aosDirection, className = "", children }) {
       data-aos={aosDirection}
       data-aos-delay="200"
     >
-      <h1 className={`${styles.heading1Left}`}>{heading}</h1>
+      <h2 className={`${styles.heading1Left}`}>{heading}</h2>
       {children}
     </div>
   );
@@ -144,7 +144,7 @@ export default function Skills() {
 
         <div className="lg:flex lg:flex-col p-2 m-2 pb-4">
           <div className="mb-4" data-aos="fade-left" data-aos-delay="200">
-            <h1 className={`${styles.heading1Left}`}>{t("skills.education")}</h1>
+            <h2 className={`${styles.heading1Left}`}>{t("skills.education")}</h2>
             <div className={`${styles.flexCenter} lg:mr-5`}>
               <div className="flex flex-wrap">
                 {data.education.map((edu) => (
@@ -170,7 +170,7 @@ export default function Skills() {
           </div>
 
           <div className="mb-4" data-aos="fade-left" data-aos-delay="200">
-            <h1 className={`${styles.heading1Left}`}>{t("skills.experience")}</h1>
+            <h2 className={`${styles.heading1Left}`}>{t("skills.experience")}</h2>
             <div className="flex flex-wrap">
               {data.experience.map((exp) => (
                 <div key={exp.id}>
@@ -190,7 +190,7 @@ export default function Skills() {
           </div>
 
           <div className="mb-4" data-aos="fade-left" data-aos-delay="200">
-            <h1 className={`${styles.heading1Left}`}>{t("skills.accomplishments")}</h1>
+            <h2 className={`${styles.heading1Left}`}>{t("skills.accomplishments")}</h2>
             <div className="flex flex-wrap">
               {data.accomplishments.map((acc) => (
                 <div key={acc.id}>

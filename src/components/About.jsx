@@ -31,7 +31,7 @@ export default function About() {
       id="about"
       className={`${styles.flexCol}`}
     >
-      <h1 className={`${styles.heading1}`}>{t("about.heading")}</h1>
+      <h2 className={`${styles.heading1}`}>{t("about.heading")}</h2>
 
       <div className="lg:flex lg:flex-row pb-12">
         <div>

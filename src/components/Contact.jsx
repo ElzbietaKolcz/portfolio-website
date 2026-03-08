@@ -11,7 +11,7 @@ export default function Contact() {
     >
       <div className="container mx-auto pb-11 md:pb-6 ">
         <div className="flex items-center justify-center ">
-          <h1 className={`${styles.heading1}`}>{t("contact.heading")}</h1>
+          <h2 className={`${styles.heading1}`}>{t("contact.heading")}</h2>
         </div>
 
         <div className="flex justify-center pb-10 md:pb-8 ">
