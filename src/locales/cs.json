@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "logo": {
+      "alt": "Logo EK",
+      "title": "Obnovit stránku",
+      "ariaLabel": "Tlačítko s logem pro obnovení stránky"
+    },
+    "menu": {
+      "open": "Otevřít menu",
+      "close": "Zavřít menu",
+      "openIconAlt": "ikona otevření menu",
+      "closeIconAlt": "ikona zavření menu",
+      "goTo": "Přejít na {section}"
+    }
+  },
+  "home": {
+    "projects": "Projekty",
+    "contact": "Kontakt",
+    "goToProjects": "Přejít na sekci projektů",
+    "navigateToProjects": "Navigovat na sekci projektů",
+    "goToContact": "Přejít na sekci kontaktu",
+    "navigateToContact": "Navigovat na sekci kontaktu"
+  },
+  "about": {
+    "heading": "O mně"
+  },
+  "skills": {
+    "heading": "Dovednosti",
+    "certification": "Certifikáty",
+    "education": "Vzdělání",
+    "experience": "Zkušenosti",
+    "accomplishments": "Úspěchy",
+    "certificateTitle": "Otevřít potvrzení certifikátu {name} Elžbiety Kołcz",
+    "certificateAriaLabel": "Odkaz na potvrzení certifikátu {name} Elžbiety Kołcz"
+  },
+  "projects": {
+    "heading": "Projekty",
+    "learnMore": "Více na Behance"
+  },
+  "contact": {
+    "heading": "Pojďme si promluvit!",
+    "description": "Ráda si udělám čas a probereme možnosti spolupráce. Mluvím anglicky a polsky.",
+    "emailButton": "Napište mi e-mail",
+    "linkedinButton": "Pošlete mi zprávu",
+    "cvButton": "Zobrazit CV"
+  },
+  "emailButton": {
+    "iconAlt": "Ikona e-mailu",
+    "copied": "Zkopírováno!",
+    "ariaLabel": "Zkopírovat e-mailovou adresu \"{email}\" do schránky"
+  },
+  "socialButton": {
+    "cvIconAlt": "Ikona CV",
+    "linkedinIconAlt": "Ikona LinkedIn",
+    "defaultIconAlt": "Ikona sociálního odkazu",
+    "openCv": "Otevřít dokument CV na nové kartě",
+    "openLinkedin": "Otevřít LinkedIn a odeslat zprávu",
+    "openLink": "Otevřít odkaz: {link}"
+  },
+  "footer": {
+    "copyright": "© {year} Copyright: Elżbieta Kołcz",
+    "behance": {
+      "title": "Otevřít profil Elžbiety Kołcz na Behance",
+      "ariaLabel": "Odkaz na profil Elžbiety Kołcz na Behance",
+      "imgAlt": "Logo Behance"
+    },
+    "github": {
+      "title": "Otevřít profil Elžbiety Kołcz na GitHubu",
+      "ariaLabel": "Odkaz na profil Elžbiety Kołcz na GitHubu",
+      "imgAlt": "Logo GitHub"
+    },
+    "linkedin": {
+      "title": "Otevřít profil Elžbiety Kołcz na LinkedIn",
+      "ariaLabel": "Odkaz na profil Elžbiety Kołcz na LinkedIn",
+      "imgAlt": "Logo LinkedIn"
+    }
+  }
+}

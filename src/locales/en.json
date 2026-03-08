@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "logo": {
+      "alt": "EK logo",
+      "title": "Reload the page",
+      "ariaLabel": "Logo button that refreshes the page"
+    },
+    "menu": {
+      "open": "Open menu",
+      "close": "Close menu",
+      "openIconAlt": "open menu icon",
+      "closeIconAlt": "close menu icon",
+      "goTo": "Go to {section}"
+    }
+  },
+  "home": {
+    "projects": "Projects",
+    "contact": "Contact",
+    "goToProjects": "Go to projects section",
+    "navigateToProjects": "Navigate to projects section",
+    "goToContact": "Go to contact section",
+    "navigateToContact": "Navigate to contact section"
+  },
+  "about": {
+    "heading": "About me"
+  },
+  "skills": {
+    "heading": "Skills",
+    "certification": "Certification",
+    "education": "Education",
+    "experience": "Experience",
+    "accomplishments": "Accomplishments",
+    "certificateTitle": "Open Elzbieta Kolcz certificate {name} confirmation link",
+    "certificateAriaLabel": "Link to Elzbieta Kolcz certificate {name} confirmation link"
+  },
+  "projects": {
+    "heading": "Projects",
+    "learnMore": "Learn more on Behance"
+  },
+  "contact": {
+    "heading": "Let's chat!",
+    "description": "I am more than happy to take the time and discuss how we can collaborate. I speak English and Polish.",
+    "emailButton": "Send me an email",
+    "linkedinButton": "Send me a message",
+    "cvButton": "Review CV"
+  },
+  "emailButton": {
+    "iconAlt": "Email icon",
+    "copied": "Copied to clipboard!",
+    "ariaLabel": "Copy email address \"{email}\" to clipboard"
+  },
+  "socialButton": {
+    "cvIconAlt": "CV icon",
+    "linkedinIconAlt": "LinkedIn icon",
+    "defaultIconAlt": "Social link icon",
+    "openCv": "Open CV document in new tab",
+    "openLinkedin": "Open LinkedIn to send a message",
+    "openLink": "Open link: {link}"
+  },
+  "footer": {
+    "copyright": "© {year} Copyright: Elżbieta Kołcz",
+    "behance": {
+      "title": "Open Elzbieta Kolcz Behance profile",
+      "ariaLabel": "Link to Elzbieta Kolcz Behance profile",
+      "imgAlt": "Behance logo"
+    },
+    "github": {
+      "title": "Open Elzbieta Kolcz GitHub profile",
+      "ariaLabel": "Link to Elzbieta Kolcz GitHub profile",
+      "imgAlt": "GitHub logo"
+    },
+    "linkedin": {
+      "title": "Open Elzbieta Kolcz LinkedIn profile",
+      "ariaLabel": "Link to Elzbieta Kolcz LinkedIn profile",
+      "imgAlt": "LinkedIn logo"
+    }
+  }
+}

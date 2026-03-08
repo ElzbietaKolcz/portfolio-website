@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "logo": {
+      "alt": "Logo EK",
+      "title": "Odśwież stronę",
+      "ariaLabel": "Przycisk z logo odświeżający stronę"
+    },
+    "menu": {
+      "open": "Otwórz menu",
+      "close": "Zamknij menu",
+      "openIconAlt": "ikona otwierania menu",
+      "closeIconAlt": "ikona zamykania menu",
+      "goTo": "Przejdź do {section}"
+    }
+  },
+  "home": {
+    "projects": "Projekty",
+    "contact": "Kontakt",
+    "goToProjects": "Przejdź do sekcji projektów",
+    "navigateToProjects": "Nawiguj do sekcji projektów",
+    "goToContact": "Przejdź do sekcji kontaktu",
+    "navigateToContact": "Nawiguj do sekcji kontaktu"
+  },
+  "about": {
+    "heading": "O mnie"
+  },
+  "skills": {
+    "heading": "Umiejętności",
+    "certification": "Certyfikaty",
+    "education": "Edukacja",
+    "experience": "Doświadczenie",
+    "accomplishments": "Osiągnięcia",
+    "certificateTitle": "Otwórz potwierdzenie certyfikatu {name} Elżbiety Kołcz",
+    "certificateAriaLabel": "Link do potwierdzenia certyfikatu {name} Elżbiety Kołcz"
+  },
+  "projects": {
+    "heading": "Projekty",
+    "learnMore": "Więcej na Behance"
+  },
+  "contact": {
+    "heading": "Porozmawiajmy!",
+    "description": "Chętnie poświęcę czas i omówię możliwości współpracy. Mówię po angielsku i po polsku.",
+    "emailButton": "Napisz do mnie",
+    "linkedinButton": "Wyślij wiadomość",
+    "cvButton": "Zobacz CV"
+  },
+  "emailButton": {
+    "iconAlt": "Ikona e-mail",
+    "copied": "Skopiowano!",
+    "ariaLabel": "Skopiuj adres e-mail \"{email}\" do schowka"
+  },
+  "socialButton": {
+    "cvIconAlt": "Ikona CV",
+    "linkedinIconAlt": "Ikona LinkedIn",
+    "defaultIconAlt": "Ikona linku społecznościowego",
+    "openCv": "Otwórz dokument CV w nowej karcie",
+    "openLinkedin": "Otwórz LinkedIn, aby wysłać wiadomość",
+    "openLink": "Otwórz link: {link}"
+  },
+  "footer": {
+    "copyright": "© {year} Copyright: Elżbieta Kołcz",
+    "behance": {
+      "title": "Otwórz profil Elżbiety Kołcz na Behance",
+      "ariaLabel": "Link do profilu Elżbiety Kołcz na Behance",
+      "imgAlt": "Logo Behance"
+    },
+    "github": {
+      "title": "Otwórz profil Elżbiety Kołcz na GitHub",
+      "ariaLabel": "Link do profilu Elżbiety Kołcz na GitHub",
+      "imgAlt": "Logo GitHub"
+    },
+    "linkedin": {
+      "title": "Otwórz profil Elżbiety Kołcz na LinkedIn",
+      "ariaLabel": "Link do profilu Elżbiety Kołcz na LinkedIn",
+      "imgAlt": "Logo LinkedIn"
+    }
+  }
+}
