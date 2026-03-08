@@ -6,6 +6,7 @@ import { logo, list, close, listLight, closeLight } from "../assets/index";
 import FocusTrap from "focus-trap-react";
 import { SCROLL, TIMING, INTERSECTION } from "../constants";
 import { t } from "../i18n";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -149,6 +150,8 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
+          <LanguageSwitcher />
 
           <button
             className="md:hidden mr-3"

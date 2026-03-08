@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'preact/compat';
+import { useState } from 'react';
 import styles from "./style";
+import { LangContext } from "./LangContext";
 import {
   Navbar,
   Home,
@@ -13,8 +15,15 @@ const Footer = lazy(() => import('./components/Footer'));
 
 
 export default function App() {
+  const [lang, setLang] = useState(() => document.documentElement.lang?.slice(0, 2) || "en");
+
+  const setLanguage = (newLang) => {
+    document.documentElement.lang = newLang;
+    setLang(newLang);
+  };
 
   return (
+    <LangContext.Provider value={{ lang, setLang: setLanguage }}>
     <div className="w-full overflow-hidden text-black bg-white">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div  className={`${styles.boxWidth}`}>
@@ -94,5 +103,6 @@ export default function App() {
         </Suspense>
       </main>
     </div>
+    </LangContext.Provider>
   );
 }
