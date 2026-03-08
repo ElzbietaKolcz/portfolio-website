@@ -6,7 +6,6 @@ import { db } from "../firebase";
 const avatarImage = '/images/avatar_fot_Julia_Krzemianowska.webp';
 
 export default function Home() {
-  const [cvData, setCvData] = useState([]);
   const [homeData, setHomeData] = useState({
     fullName: {},
     title: {},
@@ -25,14 +24,7 @@ export default function Home() {
       setHomeData(home);
     };
 
-    const fetchCv = async () => {
-      const cvCollectionRef = collection(db, "cv");
-      const cvSnapshot = await getDocs(cvCollectionRef);
-      setCvData(cvSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
     fetchData();
-    fetchCv();
   }, []);
 
   return (
@@ -45,6 +37,9 @@ export default function Home() {
           src={avatarImage}
           alt="A woman in elegant clothes standing with her hands at waist level, smiling gently."
           className="w-1/2 md:w-2/5 pt-28 md:pl-2 lg:px-5 lg:mx-10 aspect-auto"
+          fetchpriority="high"
+          width="600"
+          height="600"
           data-aos="zoom-in"
           data-aos-delay="300"
         />

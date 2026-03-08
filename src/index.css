@@ -121,4 +121,16 @@ a:hover .underline-animation {
   .translate-x-1-2 {
     transform: translateX(50%);
   }
+
+  .timeline-row {
+    @apply p-2 my-2 flex flex-col md:flex-row;
+  }
+
+  .timeline-date {
+    @apply mb-4 md:mr-10 flex flex-row min-w-[95px];
+  }
+
+  .timeline-body {
+    @apply flex flex-col min-w-[350px];
+  }
 }

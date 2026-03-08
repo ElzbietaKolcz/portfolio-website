@@ -28,7 +28,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className={`${styles.flexCenter} flex-col`}
+      className={`${styles.flexCol}`}
     >
       <h1 className={`${styles.heading1}`}>About me</h1>
 

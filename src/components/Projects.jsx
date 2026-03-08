@@ -137,10 +137,10 @@ export default function Projects() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className={`${styles.flexCenter} flex-col mb-2`}>
+      <div className={`${styles.flexCol} mb-2`}>
         <h1 className={`${styles.heading1}`}>Projects</h1>
 
-        <div className={`${styles.flexCenter} flex-col`}>
+        <div className={`${styles.flexCol}`}>
           <div className="flex flex-col mb-2 relative">
 
             {/* MAIN DISPLAY */}

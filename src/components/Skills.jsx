@@ -37,7 +37,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className={`${styles.flexCenter} flex-col`}
+      className={`${styles.flexCol}`}
     >
       <div className="lg:flex lg:gap-6 pb-6">
         <div className="lg:flex-col">
@@ -46,23 +46,18 @@ export default function Skills() {
             data-aos="fade-right"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2`}>Skills</h1>
+            <h1 className={`${styles.heading1Left}`}>Skills</h1>
 
             <div className={`${styles.flexCenter} md:max-w-xl`}>
               <div className="flex flex-wrap pr-8">
                 {skills.map((skills) => {
-                  const bgClass = `bg-[${skills.color}]`;
-                  // bg-[#ffe5fa] - pink
-                  // bg-[#fef4d0] - yellow
-                  // bg-[#eaf7fd] - blue
-                  // bg-[#eefdd9] - green
-
                   return (
                     <div
                       key={skills.id}
                     >
                       <div
-                        className={`m-2 rounded-md  ${bgClass}`}
+                        className="m-2 rounded-md"
+                        style={{ backgroundColor: skills.color }}
                         data-aos="fade-up"
                         data-aos-anchor-placement="bottom-bottom"
                       >
@@ -81,15 +76,13 @@ export default function Skills() {
             data-aos="fade-right"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2 pb-5`}>
+            <h1 className={`${styles.heading1Left} pb-5`}>
               Certification
             </h1>
 
             <div className={`${styles.flexCenter}   lg:mr-5`}>
               <div className="flex flex-wrap  ">
                 {certification.map((certification) => {
-                  const bgClass = `bg-[${certification.color}]`;
-
                   return (
                     <div
                       key={certification.id}
@@ -100,7 +93,7 @@ export default function Skills() {
                       >
                         <p className="px-2 pb-3">
                           {certification.start}{" "}
-                          <span className={`m-2 rounded-md ${bgClass}`}>
+                          <span className="m-2 rounded-md" style={{ backgroundColor: certification.color }}>
                             {" "}
                             <a href={certification.link}
                               target="_blank"
@@ -131,7 +124,7 @@ export default function Skills() {
             data-aos="fade-left"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2`}>
+            <h1 className={`${styles.heading1Left}`}>
               Education
             </h1>
 
@@ -146,9 +139,9 @@ export default function Skills() {
                       data-aos-anchor-placement="bottom-bottom"
                     >
                       <h2> {education.title}</h2>
-                      <div className="p-2 my-2 flex flex-col md:flex-row ">
+                      <div className="timeline-row">
                         <div>
-                          <p className="mb-4 md:mr-10 flex flex-row min-w-[95px]">
+                          <p className="timeline-date">
                             {education.timeStart}
                             {" -\u00A0"}
                             <span className="font-bold">
@@ -157,7 +150,7 @@ export default function Skills() {
                           </p>
                         </div>
 
-                        <div className="flex flex-col min-w-[350px]">
+                        <div className="timeline-body">
                           <p>
                             {education.fieldTitle01}{" "}
                             <span className="font-bold">
@@ -190,7 +183,7 @@ export default function Skills() {
             data-aos="fade-left"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2`}>
+            <h1 className={`${styles.heading1Left}`}>
               Experience
             </h1>
 
@@ -205,9 +198,9 @@ export default function Skills() {
                       data-aos-anchor-placement="bottom-bottom"
                     >
                       <h2> {experience.title}</h2>
-                      <div className="p-2 my-2  flex flex-col md:flex-row ">
+                      <div className="timeline-row">
                         <div>
-                          <p className="mb-4 md:mr-10 flex flex-row min-w-[95px]">
+                          <p className="timeline-date">
                             {experience.timeStart} {" -\u00A0"}
                             <span className="font-bold">
                               {experience.timeEnd}
@@ -215,7 +208,7 @@ export default function Skills() {
                           </p>
                         </div>
 
-                        <div className="flex flex-col min-w-[350px]">
+                        <div className="timeline-body">
                           <p className="font-normal">
                             {experience.fieldTitle01}{" "}
                             <span className="font-bold">
@@ -242,7 +235,7 @@ export default function Skills() {
             data-aos="fade-left"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2`}>
+            <h1 className={`${styles.heading1Left}`}>
               Accomplishments
             </h1>
 
@@ -256,14 +249,14 @@ export default function Skills() {
                       data-aos="fade-up"
                       data-aos-anchor-placement="bottom-bottom"
                     >
-                      <div className="p-2 my-2  flex flex-col md:flex-row ">
+                      <div className="timeline-row">
                         <div>
-                          <p className="mb-4 md:mr-10 flex flex-row min-w-[95px]">
+                          <p className="timeline-date">
                             {accomplishments.time}
                           </p>
                         </div>
 
-                        <div className="flex flex-col min-w-[350px] ">
+                        <div className="timeline-body">
                           <p>{accomplishments.description}</p>
                         </div>
                       </div>
