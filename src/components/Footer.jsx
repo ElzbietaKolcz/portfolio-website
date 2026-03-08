@@ -1,6 +1,12 @@
 import { behanceFooter, gitHubFooter, linkedInFooter } from "../assets";
 import { t } from "../i18n";
 
+const SOCIAL_LINKS = [
+  { id: "behance-link", href: "https://www.behance.net/elbietakocz/", icon: behanceFooter, key: "behance" },
+  { id: "github-link", href: "https://www.github.com/ElzbietaKolcz", icon: gitHubFooter, key: "github" },
+  { id: "linkedin-link", href: "https://www.linkedin.com/in/elzbieta-kolcz", icon: linkedInFooter, key: "linkedin" },
+];
+
 export default function Footer() {
   return (
     <div className="bg-primary-40 p-4 flex justify-between items-center">
@@ -8,55 +14,23 @@ export default function Footer() {
         {" "}
         {t("footer.copyright", { year: new Date().getFullYear() })}{" "}
       </p>
-      <div className="flex space-x-2 ">
-        <a
-          href="https://www.behance.net/elbietakocz/"
-          target="_blank"
-          rel="noreferrer"
-          id="behance-link"
-          role="link"
-          tabIndex="0"
-          title={t("footer.behance.title")}
-          aria-label={t("footer.behance.ariaLabel")}
-        >
-          <img
-            src={behanceFooter}
-            alt={t("footer.behance.imgAlt")}
-          />
-        </a>
-
-        <a
-          href="https://www.github.com/ElzbietaKolcz"
-          target="_blank"
-          rel="noreferrer"
-          id="github-link"
-          role="link"
-          tabIndex="0"
-          title={t("footer.github.title")}
-          aria-label={t("footer.github.ariaLabel")}
-        >
-          <img
-            src={gitHubFooter}
-            alt={t("footer.github.imgAlt")}
-          />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/elzbieta-kolcz"
-          target="_blank"
-          rel="noreferrer"
-          id="linkedin-link"
-          role="link"
-          tabIndex="0"
-          title={t("footer.linkedin.title")}
-          aria-label={t("footer.linkedin.ariaLabel")}
-        >
-          <img
-            src={linkedInFooter}
-            alt={t("footer.linkedin.imgAlt")}
-          />
-        </a>
+      <div className="flex space-x-2">
+        {SOCIAL_LINKS.map(({ id, href, icon, key }) => (
+          <a
+            key={id}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            id={id}
+            role="link"
+            tabIndex="0"
+            title={t(`footer.${key}.title`)}
+            aria-label={t(`footer.${key}.ariaLabel`)}
+          >
+            <img src={icon} alt={t(`footer.${key}.imgAlt`)} />
+          </a>
+        ))}
       </div>
-
     </div>
   );
 }

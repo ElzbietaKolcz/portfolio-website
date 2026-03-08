@@ -6,33 +6,28 @@ import styles from "../style";
 import { t } from "../i18n";
 
 export default function Skills() {
-  const [skills, setSkills] = useState([]);
-  const [certification, setCertification] = useState([]);
-  const [education, setEducation] = useState([]);
-  const [experience, setExperience] = useState([]);
-  const [accomplishments, setAccomplishments] = useState([]);
+  const COLLECTIONS = ["skills", "certification", "education", "experience", "accomplishments"];
 
-  const fetchData = async (collectionRef, setData) => {
-    const q = query(collectionRef, orderBy("id"));
-    const data = await getDocs(q);
-    setData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  };
+  const [data, setData] = useState({
+    skills: [],
+    certification: [],
+    education: [],
+    experience: [],
+    accomplishments: [],
+  });
 
   useEffect(() => {
-    const skillsCollectionRef = collection(db, "skills");
-    fetchData(skillsCollectionRef, setSkills);
+    const fetchCollection = async (name) => {
+      const q = query(collection(db, name), orderBy("id"));
+      const snapshot = await getDocs(q);
+      return snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    };
 
-    const certificationCollectionRef = collection(db, "certification");
-    fetchData(certificationCollectionRef, setCertification);
-
-    const educationCollectionRef = collection(db, "education");
-    fetchData(educationCollectionRef, setEducation);
-
-    const experienceCollectionRef = collection(db, "experience");
-    fetchData(experienceCollectionRef, setExperience);
-
-    const accomplishmentsCollectionRef = collection(db, "accomplishments");
-    fetchData(accomplishmentsCollectionRef, setAccomplishments);
+    Promise.all(COLLECTIONS.map(fetchCollection)).then(
+      ([skills, certification, education, experience, accomplishments]) => {
+        setData({ skills, certification, education, experience, accomplishments });
+      }
+    );
   }, []);
 
   return (
@@ -51,7 +46,7 @@ export default function Skills() {
 
             <div className={`${styles.flexCenter} md:max-w-xl`}>
               <div className="flex flex-wrap pr-8">
-                {skills.map((skills) => {
+                {data.skills.map((skills) => {
                   return (
                     <div
                       key={skills.id}
@@ -83,7 +78,7 @@ export default function Skills() {
 
             <div className={`${styles.flexCenter}   lg:mr-5`}>
               <div className="flex flex-wrap  ">
-                {certification.map((certification) => {
+                {data.certification.map((certification) => {
                   return (
                     <div
                       key={certification.id}
@@ -131,7 +126,7 @@ export default function Skills() {
 
             <div className={`${styles.flexCenter}  lg:mr-5`}>
               <div className="flex flex-wrap ">
-                {education.map((education) => (
+                {data.education.map((education) => (
                   <div
                     key={education.id}
                   >
@@ -190,7 +185,7 @@ export default function Skills() {
 
             <div>
               <div className="flex flex-wrap ">
-                {experience.map((experience) => (
+                {data.experience.map((experience) => (
                   <div
                     key={experience.id}
                   >
@@ -242,7 +237,7 @@ export default function Skills() {
 
             <div>
               <div className="flex flex-wrap ">
-                {accomplishments.map((accomplishments) => (
+                {data.accomplishments.map((accomplishments) => (
                   <div
                     key={accomplishments.id}
                   >
