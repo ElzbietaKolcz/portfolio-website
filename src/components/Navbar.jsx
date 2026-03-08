@@ -199,8 +199,8 @@ export default function Navbar() {
                       }`}
                       to={menuItem.name}
                       role="menuitem"
-                      title={"Go to " + menuItem.name}
-                      aria-label={"Go to " + menuItem.name}
+                      title={t("nav.menu.goTo", { section: menuItem.name })}
+                      aria-label={t("nav.menu.goTo", { section: menuItem.name })}
                       spy
                       smooth
                       offset={SCROLL.OFFSET_DEFAULT}

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { BREAKPOINTS } from "../constants";
 
-export default function SocialButton({ icon, link, text }) {
+export default function SocialButton({ icon, link, text, alt, ariaLabel }) {
   const [hovered, setHovered] = useState(false);
   const ref = useRef(null);
 
@@ -12,18 +12,6 @@ export default function SocialButton({ icon, link, text }) {
     ? { width: hovered ? ref.current?.offsetWidth || 0 : 0 }
     : {};
 
-  const altText = text.toLowerCase().includes("cv")
-    ? "CV icon"
-    : text.toLowerCase().includes("message")
-    ? "LinkedIn icon"
-    : "Social link icon";
-
-  const ariaText = text.toLowerCase().includes("cv")
-    ? "Open CV document in new tab"
-    : text.toLowerCase().includes("message")
-    ? "Open LinkedIn to send a message"
-    : `Open link: ${link}`;
-
   return (
     <button
       type="button"
@@ -31,13 +19,13 @@ export default function SocialButton({ icon, link, text }) {
       onMouseLeave={() => setHovered(false)}
       className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium p-1"
       onClick={() => window.open(link, "_blank")}
-      aria-label={ariaText}
-      title={ariaText}
+      aria-label={ariaLabel}
+      title={ariaLabel}
       tabIndex={0}
       role="link"
-      id={altText}
+      id={alt}
     >
-      <img src={icon} alt={altText} className="w-6 h-6" title={ariaText} />
+      <img src={icon} alt={alt} className="w-6 h-6" title={ariaLabel} />
       <div
         style={styleOnDesktop}
         className="overflow-hidden transition-all duration-300 w-full whitespace-nowrap"
@@ -45,8 +33,8 @@ export default function SocialButton({ icon, link, text }) {
         <span
           className="p-2"
           ref={ref}
-          title={ariaText}
-          aria-label={ariaText}
+          title={ariaLabel}
+          aria-label={ariaLabel}
         >
           {text}
         </span>
