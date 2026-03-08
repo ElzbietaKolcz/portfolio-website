@@ -46,7 +46,7 @@ export default function Skills() {
             data-aos="fade-right"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2`}>Skills</h1>
+            <h1 className={`${styles.heading1Left}`}>Skills</h1>
 
             <div className={`${styles.flexCenter} md:max-w-xl`}>
               <div className="flex flex-wrap pr-8">
@@ -76,7 +76,7 @@ export default function Skills() {
             data-aos="fade-right"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2 pb-5`}>
+            <h1 className={`${styles.heading1Left} pb-5`}>
               Certification
             </h1>
 
@@ -124,7 +124,7 @@ export default function Skills() {
             data-aos="fade-left"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2`}>
+            <h1 className={`${styles.heading1Left}`}>
               Education
             </h1>
 
@@ -183,7 +183,7 @@ export default function Skills() {
             data-aos="fade-left"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2`}>
+            <h1 className={`${styles.heading1Left}`}>
               Experience
             </h1>
 
@@ -235,7 +235,7 @@ export default function Skills() {
             data-aos="fade-left"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1} lg:text-left my-2`}>
+            <h1 className={`${styles.heading1Left}`}>
               Accomplishments
             </h1>
 
