@@ -28,6 +28,7 @@ export const projects = [
     description:
       "A project focused on creating a clean, informative event page that consolidates all essential details about MacMeeting while providing an intuitive registration process for attendees.",
     imageUrl: "/projects/macmeeting.webp",
+    alt:"Open laptop displaying the MacMeeting website on a workspace desk.",
     behanceUrl: "https://macmeeting.pl/",
     updated: "March 3, 2026",
   },
@@ -37,6 +38,7 @@ export const projects = [
     description:
       "A multifunctional personal calendar designed to enhance time management while incorporating a daily skin care planner for holistic support of users’ routines.",
     imageUrl: "/projects/zodiacal.webp",
+    alt:"Six smartphone screens showing different features of the ZodiaCal mobile app interface",
     behanceUrl: "https://www.behance.net/gallery/221123967/ZodiaCal-Engineering-thesis",
     updated: "August 9, 2023",
   },
@@ -46,6 +48,7 @@ export const projects = [
     description:
       "A project focused on designing an engaging social media post to promote the joint viewing WWDC25 viewing event hosted by k7 and MacGadka.",
     imageUrl: "/projects/wwdc.webp",
+    alt:"Hand holding a smartphone displaying a LinkedIn post promoting an WWDC25 keynote event.",
     behanceUrl:
       "https://www.behance.net/gallery/230309835/Event-post-for-WWDC25-keynote",
     updated: "July 14, 2025",
@@ -56,6 +59,7 @@ export const projects = [
     description:
       "Logo project for MAD Academic Club at WSB Merito in Wrocław, paired with custom stickers designed to support promotion and encourage student engagement.",
     imageUrl: "/projects/mad.webp",
+    alt:"Laptop keyboard with a circular club logo sticker placed below the arrow keys",
     behanceUrl: "https://www.behance.net/gallery/193437693/MAD-Logo-LinkedIn-Profile",
     updated: "August 9, 2023",
   },
@@ -65,6 +69,7 @@ export const projects = [
     description:
       "This UI was created during the recruitment process for a design studio based in Poland.",
     imageUrl: "/projects/newsletter.webp",
+    alt:"Young woman using a laptop with a 404 error page displayed on the screen.",
     behanceUrl: "https://www.behance.net/gallery/130217645/Newsletter-404-Page?tracking_source=project_owner_other_projects",
     updated: "March 3, 2026",
   },
@@ -72,8 +77,9 @@ export const projects = [
     id: 6,
     title: "Idź Pan w UI! -  3 projects",
     description:
-      "‘Idź Pan w UI!’ is a monthly design challenge created by Natalia Bienias. In its 26th edition, my project was featured and discussed in a video on the By Zebza YouTube channel.",
+      "Idź Pan w UI! is a monthly design challenge created by Natalia Bienias. In its 26th edition, my project was featured and discussed in a video on the By Zebza YouTube channel.",
     imageUrl: "/projects/dashbord.webp",
+    alt:"Three floating screens showing a healthy nutrition and diet tracking mobile app interface.",
     behanceUrl: "https://www.behance.net/gallery/134270851/Idz-Pan-w-UI",
     updated: "March 3, 2026",
   },
@@ -151,7 +157,8 @@ export default function Projects() {
                     key={activeProject.id}
                     className="absolute aspect-auto inset-0 w-full h-full object-cover rounded-t-lg md:rounded-l-lg transition-opacity duration-500"
                     src={activeProject.imageUrl}
-                    alt={activeProject.title}
+                    alt={activeProject.alt}
+                    title={activeProject.description}
                   />
                 </div>
               </div>
@@ -195,7 +202,7 @@ export default function Projects() {
                   <img
                     className="object-cover w-full h-32 aspect-auto"
                     src={project.imageUrl}
-                    alt={project.title}
+                    alt={project.alt}
                     title={project.title}
                     loading="lazy"
                   />
