@@ -5,6 +5,7 @@ import { db } from "../firebase";
 import { logo, list, close, listLight, closeLight } from "../assets/index";
 import FocusTrap from "focus-trap-react";
 import { SCROLL, TIMING, INTERSECTION } from "../constants";
+import { t } from "../i18n";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -104,12 +105,12 @@ export default function Navbar() {
             href={window.location.pathname}
             className="flex"
             role="button"
-            title="Reload the page"
-            aria-label="Logo button that refreshes the page"
+            title={t("nav.logo.title")}
+            aria-label={t("nav.logo.ariaLabel")}
           >
             <img
               src={logo}
-              alt="Ek logo"
+              alt={t("nav.logo.alt")}
               className="h-11"
             />
           </a>
@@ -135,8 +136,8 @@ export default function Navbar() {
                   }`}
                   to={menuItem.name}
                   role="menuitem"
-                  title={"Go to " + menuItem.name}
-                  aria-label={"Go to " + menuItem.name}
+                  title={t("nav.menu.goTo", { section: menuItem.name })}
+                  aria-label={t("nav.menu.goTo", { section: menuItem.name })}
                   spy
                   smooth
                   offset={SCROLL.OFFSET_DEFAULT}
@@ -152,7 +153,7 @@ export default function Navbar() {
           <button
             className="md:hidden mr-3"
             onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? t("nav.menu.close") : t("nav.menu.open")}
           >
             <img
               src={
@@ -164,7 +165,7 @@ export default function Navbar() {
                   ? listLight
                   : list
               }
-              alt={isMenuOpen ? "close-icon" : "list-icon"}
+              alt={isMenuOpen ? t("nav.menu.closeIconAlt") : t("nav.menu.openIconAlt")}
               className="w-6 h-6 object-contain"
             />
           </button>
@@ -202,8 +203,8 @@ export default function Navbar() {
                       aria-label={"Go to " + menuItem.name}
                       spy
                       smooth
-                      offset={-60}
-                      duration={500}
+                      offset={SCROLL.OFFSET_DEFAULT}
+                      duration={SCROLL.DURATION}
                       onClick={(e) => {
                         e.preventDefault();
                         handleMenuClick(menuItem.name);

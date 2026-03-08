@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { isMobile, isTablet } from "react-device-detect";
 import styles from "../style";
 import { SCROLL, TIMING, BREAKPOINTS } from "../constants";
+import { t } from "../i18n";
 
 /* =========================
    LOCAL PROJECT DATA
@@ -129,7 +130,7 @@ export default function Projects() {
       onMouseLeave={() => setIsPaused(false)}
     >
       <div className={`${styles.flexCol} mb-2`}>
-        <h1 className={`${styles.heading1}`}>Projects</h1>
+        <h1 className={`${styles.heading1}`}>{t("projects.heading")}</h1>
 
         <div className={`${styles.flexCol}`}>
           <div className="flex flex-col mb-2 relative">
@@ -164,7 +165,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Learn more on Behance
+                    {t("projects.learnMore")}
                   </a>
                 </div>
               </div>

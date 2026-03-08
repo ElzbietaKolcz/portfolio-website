@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { BREAKPOINTS, TIMING } from "../constants";
+import { t } from "../i18n";
 
 export default function EmailButton({ icon, text, copyText }) {
   const [hovered, setHovered] = useState(false);
@@ -38,10 +39,10 @@ export default function EmailButton({ icon, text, copyText }) {
       onClick={handleCopyToClipboard}
       onTouchEnd={handleTouchEnd}
       className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium p-1 overflow-hidden h-9"
-      aria-label={`Copy email address "${copyText}" to clipboard`}
-      title={`Copy email address "${copyText}" to clipboard`}
+      aria-label={t("emailButton.ariaLabel", { email: copyText })}
+      title={t("emailButton.ariaLabel", { email: copyText })}
     >
-      <img src={icon} alt="Email icon" className="w-6 h-6" />
+      <img src={icon} alt={t("emailButton.iconAlt")} className="w-6 h-6" />
 
       <div
         className={`overflow-hidden transition-all duration-300 whitespace-nowrap ${
@@ -55,7 +56,7 @@ export default function EmailButton({ icon, text, copyText }) {
             isCopied ? "animate-pulse text-green-500" : ""
           }`}
         >
-          {isCopied ? "Copied to clipboard!" : text}
+          {isCopied ? t("emailButton.copied") : text}
         </span>
       </div>
     </button>

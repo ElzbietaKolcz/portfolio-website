@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import { collection, getDocs } from "firebase/firestore";
 import styles from "../style";
 import { db } from "../firebase";
+import { t } from "../i18n";
 const avatarImage = '/images/avatar_fot_Julia_Krzemianowska.webp';
 
 export default function Home() {
@@ -105,10 +106,10 @@ export default function Home() {
               smooth
               offset={-100}
               duration={500}
-              title="Go to projects section"
-              aria-label="Navigate to projects section"
+              title={t("home.goToProjects")}
+              aria-label={t("home.navigateToProjects")}
             >
-              Projects
+              {t("home.projects")}
             </Link>
 
             <Link
@@ -121,10 +122,10 @@ export default function Home() {
               smooth
               offset={-100}
               duration={500}
-              title="Go to contact section"
-              aria-label="Navigate to contact section"
+              title={t("home.goToContact")}
+              aria-label={t("home.navigateToContact")}
             >
-              Contact
+              {t("home.contact")}
             </Link>
           </div>
         </div>

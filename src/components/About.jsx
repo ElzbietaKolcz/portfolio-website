@@ -3,6 +3,7 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { Link } from "react-scroll";
 import { db } from "../firebase";
 import styles from "../style";
+import { t } from "../i18n";
 const image = '/images/fot_Julia_Krzemianowska.webp';
 
 export default function About() {
@@ -30,7 +31,7 @@ export default function About() {
       id="about"
       className={`${styles.flexCol}`}
     >
-      <h1 className={`${styles.heading1}`}>About me</h1>
+      <h1 className={`${styles.heading1}`}>{t("about.heading")}</h1>
 
       <div className="lg:flex lg:flex-row pb-12">
         <div>

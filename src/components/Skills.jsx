@@ -3,6 +3,7 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
 
 import styles from "../style";
+import { t } from "../i18n";
 
 export default function Skills() {
   const [skills, setSkills] = useState([]);
@@ -46,7 +47,7 @@ export default function Skills() {
             data-aos="fade-right"
             data-aos-delay="200"
           >
-            <h1 className={`${styles.heading1Left}`}>Skills</h1>
+            <h1 className={`${styles.heading1Left}`}>{t("skills.heading")}</h1>
 
             <div className={`${styles.flexCenter} md:max-w-xl`}>
               <div className="flex flex-wrap pr-8">
@@ -77,7 +78,7 @@ export default function Skills() {
             data-aos-delay="200"
           >
             <h1 className={`${styles.heading1Left} pb-5`}>
-              Certification
+              {t("skills.certification")}
             </h1>
 
             <div className={`${styles.flexCenter}   lg:mr-5`}>
@@ -101,8 +102,8 @@ export default function Skills() {
                               tabIndex={0}
                               role="link"
                               id={certification.linkName}
-                              title={"Open Elzbieta Kolcz certificate " + certification.linkName + " confirmation link"}
-                              aria-label={"Link to Elzbieta Kolcz certificate " + certification.linkName + " confirmation link"}
+                              title={t("skills.certificateTitle", { name: certification.linkName })}
+                              aria-label={t("skills.certificateAriaLabel", { name: certification.linkName })}
                             >
                               <strong>{certification.linkName}</strong>
                             </a>
@@ -125,7 +126,7 @@ export default function Skills() {
             data-aos-delay="200"
           >
             <h1 className={`${styles.heading1Left}`}>
-              Education
+              {t("skills.education")}
             </h1>
 
             <div className={`${styles.flexCenter}  lg:mr-5`}>
@@ -184,7 +185,7 @@ export default function Skills() {
             data-aos-delay="200"
           >
             <h1 className={`${styles.heading1Left}`}>
-              Experience
+              {t("skills.experience")}
             </h1>
 
             <div>
@@ -236,7 +237,7 @@ export default function Skills() {
             data-aos-delay="200"
           >
             <h1 className={`${styles.heading1Left}`}>
-              Accomplishments
+              {t("skills.accomplishments")}
             </h1>
 
             <div>

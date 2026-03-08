@@ -1,12 +1,12 @@
 import { behanceFooter, gitHubFooter, linkedInFooter } from "../assets";
+import { t } from "../i18n";
 
 export default function Footer() {
   return (
-
     <div className="bg-primary-40 p-4 flex justify-between items-center">
       <p className="text-xs md:text-sm md:font-medium text-[#45024B]">
         {" "}
-        © {new Date().getFullYear()} Copyright: Elżbieta Kołcz {" "}
+        {t("footer.copyright", { year: new Date().getFullYear() })}{" "}
       </p>
       <div className="flex space-x-2 ">
         <a
@@ -16,12 +16,12 @@ export default function Footer() {
           id="behance-link"
           role="link"
           tabIndex="0"
-          title="Open to Elzbieta Kolcz behance profile"
-          aria-label="Link to Elzbieta Kolcz behance profile"
+          title={t("footer.behance.title")}
+          aria-label={t("footer.behance.ariaLabel")}
         >
           <img
             src={behanceFooter}
-            alt="behance-logo"
+            alt={t("footer.behance.imgAlt")}
           />
         </a>
 
@@ -32,12 +32,12 @@ export default function Footer() {
           id="github-link"
           role="link"
           tabIndex="0"
-          title="Open to Elzbieta Kolcz GitHub profile"
-          aria-label="Link to Elzbieta Kolcz GitHub profile"
+          title={t("footer.github.title")}
+          aria-label={t("footer.github.ariaLabel")}
         >
           <img
             src={gitHubFooter}
-            alt="gitHub-logo"
+            alt={t("footer.github.imgAlt")}
           />
         </a>
         <a
@@ -47,12 +47,12 @@ export default function Footer() {
           id="linkedin-link"
           role="link"
           tabIndex="0"
-          title="Open Elzbieta Kolcz LinkedIn profile"
-          aria-label="Link to Elzbieta Kolcz LinkedIn profile"
+          title={t("footer.linkedin.title")}
+          aria-label={t("footer.linkedin.ariaLabel")}
         >
           <img
             src={linkedInFooter}
-            alt="linkedIn-logo"
+            alt={t("footer.linkedin.imgAlt")}
           />
         </a>
       </div>
