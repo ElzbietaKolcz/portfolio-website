@@ -13,6 +13,18 @@ const Skills = lazy(() => import('./components/Skills'));
 const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 
+function BackgroundDivider({ src, alt }) {
+  return (
+    <div
+      data-dark="true"
+      className={styles.bgAnimation}
+      style={{ backgroundImage: `url("${src}")` }}
+      role="img"
+      aria-label={alt}
+    />
+  );
+}
+
 
 export default function App() {
   const [lang, setLang] = useState(() => document.documentElement.lang?.slice(0, 2) || "en");
@@ -45,12 +57,7 @@ export default function App() {
 
       <main role="main">
         <Suspense fallback={<div className={styles.loadingOverlay} style={{ backgroundImage: 'url(/images/logo_gif.gif)' }}></div>}>
-          <div
-            data-dark="true"
-            className={`${styles.bgAnimation} bg-[url("/background/bgImage01.webp")]`}
-            role="img"
-            aria-label="A woman working on a website design project in Figma."
-          />
+          <BackgroundDivider src="/background/bgImage01.webp" alt="A woman working on a website design project in Figma." />
 
           <div className={`${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
@@ -58,13 +65,7 @@ export default function App() {
             </div>
           </div>
 
-          <div
-            data-dark="true"
-            className={`${styles.bgAnimation} bg-[url("/background/bgImage02.webp")]`}
-            role="img"
-            aria-label="A woman drawing different versions of a page's appearance."
-           
-          />
+          <BackgroundDivider src="/background/bgImage02.webp" alt="A woman drawing different versions of a page's appearance." />
 
           <div className={`${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
@@ -72,12 +73,7 @@ export default function App() {
             </div>
           </div>
 
-          <div
-            data-dark="true"
-            className={`${styles.bgAnimation} bg-[url("/background/bgImage03.webp")]`}
-            role="img"
-            aria-label="A woman sitting at a computer analyzing graphic designs made on paper."
-          />
+          <BackgroundDivider src="/background/bgImage03.webp" alt="A woman sitting at a computer analyzing graphic designs made on paper." />
 
           <div className={`${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
@@ -85,12 +81,7 @@ export default function App() {
             </div>
           </div>
 
-          <div
-            data-dark="true"
-            className={`${styles.bgAnimation} bg-[url("/background/bgImage04.webp")]`}
-            role="img"
-            aria-label="Elegantly dressed woman holding a diary and a pen."
-          />
+          <BackgroundDivider src="/background/bgImage04.webp" alt="Elegantly dressed woman holding a diary and a pen." />
 
           <div className="w-full">
             <Contact />
