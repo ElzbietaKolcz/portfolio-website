@@ -51,18 +51,13 @@ export default function Skills() {
             <div className={`${styles.flexCenter} md:max-w-xl`}>
               <div className="flex flex-wrap pr-8">
                 {skills.map((skills) => {
-                  const bgClass = `bg-[${skills.color}]`;
-                  // bg-[#ffe5fa] - pink
-                  // bg-[#fef4d0] - yellow
-                  // bg-[#eaf7fd] - blue
-                  // bg-[#eefdd9] - green
-
                   return (
                     <div
                       key={skills.id}
                     >
                       <div
-                        className={`m-2 rounded-md  ${bgClass}`}
+                        className="m-2 rounded-md"
+                        style={{ backgroundColor: skills.color }}
                         data-aos="fade-up"
                         data-aos-anchor-placement="bottom-bottom"
                       >
@@ -88,8 +83,6 @@ export default function Skills() {
             <div className={`${styles.flexCenter}   lg:mr-5`}>
               <div className="flex flex-wrap  ">
                 {certification.map((certification) => {
-                  const bgClass = `bg-[${certification.color}]`;
-
                   return (
                     <div
                       key={certification.id}
@@ -100,7 +93,7 @@ export default function Skills() {
                       >
                         <p className="px-2 pb-3">
                           {certification.start}{" "}
-                          <span className={`m-2 rounded-md ${bgClass}`}>
+                          <span className="m-2 rounded-md" style={{ backgroundColor: certification.color }}>
                             {" "}
                             <a href={certification.link}
                               target="_blank"
