@@ -139,9 +139,9 @@ export default function Skills() {
                       data-aos-anchor-placement="bottom-bottom"
                     >
                       <h2> {education.title}</h2>
-                      <div className="p-2 my-2 flex flex-col md:flex-row ">
+                      <div className="timeline-row">
                         <div>
-                          <p className="mb-4 md:mr-10 flex flex-row min-w-[95px]">
+                          <p className="timeline-date">
                             {education.timeStart}
                             {" -\u00A0"}
                             <span className="font-bold">
@@ -150,7 +150,7 @@ export default function Skills() {
                           </p>
                         </div>
 
-                        <div className="flex flex-col min-w-[350px]">
+                        <div className="timeline-body">
                           <p>
                             {education.fieldTitle01}{" "}
                             <span className="font-bold">
@@ -198,9 +198,9 @@ export default function Skills() {
                       data-aos-anchor-placement="bottom-bottom"
                     >
                       <h2> {experience.title}</h2>
-                      <div className="p-2 my-2  flex flex-col md:flex-row ">
+                      <div className="timeline-row">
                         <div>
-                          <p className="mb-4 md:mr-10 flex flex-row min-w-[95px]">
+                          <p className="timeline-date">
                             {experience.timeStart} {" -\u00A0"}
                             <span className="font-bold">
                               {experience.timeEnd}
@@ -208,7 +208,7 @@ export default function Skills() {
                           </p>
                         </div>
 
-                        <div className="flex flex-col min-w-[350px]">
+                        <div className="timeline-body">
                           <p className="font-normal">
                             {experience.fieldTitle01}{" "}
                             <span className="font-bold">
@@ -249,14 +249,14 @@ export default function Skills() {
                       data-aos="fade-up"
                       data-aos-anchor-placement="bottom-bottom"
                     >
-                      <div className="p-2 my-2  flex flex-col md:flex-row ">
+                      <div className="timeline-row">
                         <div>
-                          <p className="mb-4 md:mr-10 flex flex-row min-w-[95px]">
+                          <p className="timeline-date">
                             {accomplishments.time}
                           </p>
                         </div>
 
-                        <div className="flex flex-col min-w-[350px] ">
+                        <div className="timeline-body">
                           <p>{accomplishments.description}</p>
                         </div>
                       </div>
