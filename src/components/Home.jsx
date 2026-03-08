@@ -6,7 +6,6 @@ import { db } from "../firebase";
 const avatarImage = '/images/avatar_fot_Julia_Krzemianowska.webp';
 
 export default function Home() {
-  const [cvData, setCvData] = useState([]);
   const [homeData, setHomeData] = useState({
     fullName: {},
     title: {},
@@ -25,14 +24,7 @@ export default function Home() {
       setHomeData(home);
     };
 
-    const fetchCv = async () => {
-      const cvCollectionRef = collection(db, "cv");
-      const cvSnapshot = await getDocs(cvCollectionRef);
-      setCvData(cvSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
     fetchData();
-    fetchCv();
   }, []);
 
   return (
