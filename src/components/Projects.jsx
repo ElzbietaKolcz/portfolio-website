@@ -1,21 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { isMobile, isTablet } from "react-device-detect";
 import styles from "../style";
-
-/* =========================
-   CONFIG CONSTANTS
-========================= */
-
-const AUTO_DELAY_MS = 5000;
-
-const SCROLL_OFFSET = {
-  MOBILE: 50,
-  TABLET: 20,
-  DESKTOP: 20,
-  LARGE: 60,
-};
-
-const LARGE_BREAKPOINT = 1280;
+import { SCROLL, TIMING, BREAKPOINTS } from "../constants";
 
 /* =========================
    LOCAL PROJECT DATA
@@ -98,7 +84,7 @@ export default function Projects() {
 
     intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % projects.length);
-    }, AUTO_DELAY_MS);
+    }, TIMING.CAROUSEL_INTERVAL_MS);
 
     return () => clearInterval(intervalRef.current);
   }, [isPaused]);
@@ -106,11 +92,10 @@ export default function Projects() {
 
 
   const getScrollOffset = () => {
-    if (isMobile) return SCROLL_OFFSET.MOBILE;
-    if (isTablet) return SCROLL_OFFSET.TABLET;
-    if (window.innerWidth >= LARGE_BREAKPOINT)
-      return SCROLL_OFFSET.LARGE;
-    return SCROLL_OFFSET.DESKTOP;
+    if (isMobile) return SCROLL.OFFSET_MOBILE;
+    if (isTablet) return SCROLL.OFFSET_TABLET;
+    if (window.innerWidth >= BREAKPOINTS.LARGE_PX) return SCROLL.OFFSET_LARGE;
+    return SCROLL.OFFSET_DEFAULT;
   };
 
   const scrollToProjectsHeader = () => {

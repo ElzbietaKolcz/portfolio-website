@@ -4,6 +4,7 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
 import { logo, list, close, listLight, closeLight } from "../assets/index";
 import FocusTrap from "focus-trap-react";
+import { SCROLL, TIMING, INTERSECTION } from "../constants";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function Navbar() {
         const anyVisible = entries.some((entry) => entry.isIntersecting);
         setOnDarkSection(anyVisible);
       },
-      { threshold: 0.5 },
+      { threshold: INTERSECTION.THRESHOLD },
     );
 
     darkSections.forEach((section) => observer.observe(section));
@@ -63,7 +64,7 @@ export default function Navbar() {
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold: INTERSECTION.THRESHOLD },
     );
 
     menu.forEach((menuItem) => {
@@ -79,10 +80,10 @@ export default function Navbar() {
     setTimeout(() => {
       scroller.scrollTo(sectionName, {
         smooth: true,
-        offset: -60,
-        duration: 500,
+        offset: SCROLL.OFFSET_DEFAULT,
+        duration: SCROLL.DURATION,
       });
-    }, 300);
+    }, TIMING.MENU_CLOSE_DELAY);
   };
 
   return (
@@ -138,8 +139,8 @@ export default function Navbar() {
                   aria-label={"Go to " + menuItem.name}
                   spy
                   smooth
-                  offset={-60}
-                  duration={500}
+                  offset={SCROLL.OFFSET_DEFAULT}
+                  duration={SCROLL.DURATION}
                   onClick={closeMenu}
                 >
                   {menuItem.name}

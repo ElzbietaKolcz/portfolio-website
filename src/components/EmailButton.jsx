@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { BREAKPOINTS, TIMING } from "../constants";
 
 export default function EmailButton({ icon, text, copyText }) {
   const [hovered, setHovered] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
-  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+  const isDesktop = useMediaQuery({ query: BREAKPOINTS.MD });
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(copyText);
     setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
+    setTimeout(() => setIsCopied(false), TIMING.COPY_FEEDBACK_MS);
   };
 
   // Desktop hover
@@ -26,7 +27,7 @@ export default function EmailButton({ icon, text, copyText }) {
     e.preventDefault();
     handleCopyToClipboard();
     setHovered(true); // pokazuje napis po tapnięciu
-    setTimeout(() => setHovered(false), 2000); // schowaj po czasie
+    setTimeout(() => setHovered(false), TIMING.COPY_FEEDBACK_MS);
   };
 
   return (

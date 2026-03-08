@@ -1,0 +1,22 @@
+export const SCROLL = {
+  OFFSET_DEFAULT: -60,
+  OFFSET_MOBILE: 50,
+  OFFSET_TABLET: 20,
+  OFFSET_LARGE: 60,
+  DURATION: 500,
+};
+
+export const TIMING = {
+  MENU_CLOSE_DELAY: 300,
+  COPY_FEEDBACK_MS: 2000,
+  CAROUSEL_INTERVAL_MS: 5000,
+};
+
+export const BREAKPOINTS = {
+  MD: "(min-width: 768px)",
+  LARGE_PX: 1280,
+};
+
+export const INTERSECTION = {
+  THRESHOLD: 0.5,
+};

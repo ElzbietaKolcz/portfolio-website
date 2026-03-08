@@ -1,11 +1,12 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
+import { BREAKPOINTS } from "../constants";
 
 export default function SocialButton({ icon, link, text }) {
   const [hovered, setHovered] = useState(false);
   const ref = useRef(null);
 
-  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+  const isDesktop = useMediaQuery({ query: BREAKPOINTS.MD });
 
   const styleOnDesktop = isDesktop
     ? { width: hovered ? ref.current?.offsetWidth || 0 : 0 }
