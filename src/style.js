@@ -9,6 +9,7 @@ const styles = {
   
 
   flexCenter: "flex justify-center items-center",
+  flexCol: "flex justify-center items-center flex-col",
   flexStart: "flex justify-center items-start",
 
   paddingX: "sm:px-16 px-6",

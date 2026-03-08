@@ -37,7 +37,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className={`${styles.flexCenter} flex-col`}
+      className={`${styles.flexCol}`}
     >
       <div className="lg:flex lg:gap-6 pb-6">
         <div className="lg:flex-col">
