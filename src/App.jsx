@@ -6,10 +6,10 @@ import {
   About,
 } from "./components";
 
-const Projects = lazy(() => new Promise(resolve => setTimeout(() => resolve(import('./components/Projects')), 500)));
-const Skills = lazy(() => new Promise(resolve => setTimeout(() => resolve(import('./components/Skills')), 500)));
-const Contact = lazy(() => new Promise(resolve => setTimeout(() => resolve(import('./components/Contact')), 500)));
-const Footer = lazy(() => new Promise(resolve => setTimeout(() => resolve(import('./components/Footer')), 500)));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 
 export default function App() {
