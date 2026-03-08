@@ -8,6 +8,64 @@ import { t } from "../i18n";
    LOCAL PROJECT DATA
 ========================= */
 
+function ProjectCard({ project }) {
+  return (
+    <div className="drop-shadow-xl md:flex md:justify-center md:items-center pb-10">
+      <div className="relative md:w-1/2 lg:w-80">
+        <div style={{ paddingBottom: "100%" }}>
+          <img
+            key={project.id}
+            className="absolute aspect-auto inset-0 w-full h-full object-cover rounded-t-lg md:rounded-l-lg transition-opacity duration-500"
+            src={project.imageUrl}
+            alt={project.alt}
+            title={project.description}
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col md:justify-between rounded-b-lg bg-zinc-100 p-4 lg:h-80 md:w-1/2 lg:w-96 md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-none">
+        <h2 className="text-center m-2 px-2 md:text-left text-2xl font-bold">
+          {project.title}
+        </h2>
+        <p className={`${styles.paragraph} pb-4 m-2 px-2`}>
+          {project.description}
+        </p>
+        <div className="pb-4 m-2 px-2 text-center md:text-left">
+          <a
+            className="font-semibold underline hover:no-underline text-primary-100"
+            href={project.behanceUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("projects.learnMore")}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectThumbnail({ project, isActive, onClick }) {
+  return (
+    <div
+      className={`cursor-pointer rounded-xl overflow-hidden transition-all ${
+        isActive ? "border-2 border-orange scale-105" : "opacity-70 hover:opacity-100"
+      }`}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+    >
+      <img
+        className="object-cover w-full h-32 aspect-auto"
+        src={project.imageUrl}
+        alt={project.alt}
+        title={project.title}
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
 export const projects = [
     {
     id: 1,
@@ -136,63 +194,17 @@ export default function Projects() {
           <div className="flex flex-col mb-2 relative">
 
             {/* MAIN DISPLAY */}
-            <div className="drop-shadow-xl md:flex md:justify-center md:items-center pb-10">
-              <div className="relative md:w-1/2 lg:w-80">
-                <div style={{ paddingBottom: "100%" }}>
-                  <img
-                    key={activeProject.id}
-                    className="absolute aspect-auto inset-0 w-full h-full object-cover rounded-t-lg md:rounded-l-lg transition-opacity duration-500"
-                    src={activeProject.imageUrl}
-                    alt={activeProject.alt}
-                    title={activeProject.description}
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col md:justify-between rounded-b-lg bg-zinc-100 p-4 lg:h-80 md:w-1/2 lg:w-96 md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-none">
-                <h2 className="text-center m-2 px-2 md:text-left text-2xl font-bold">
-                  {activeProject.title}
-                </h2>
-
-                <p className={`${styles.paragraph} pb-4 m-2 px-2`}>
-                  {activeProject.description}
-                </p>
-
-                <div className="pb-4 m-2 px-2 text-center md:text-left">
-                  <a
-                    className="font-semibold underline hover:no-underline text-primary-100"
-                    href={activeProject.behanceUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {t("projects.learnMore")}
-                  </a>
-                </div>
-              </div>
-            </div>
+            <ProjectCard project={activeProject} />
 
             {/* THUMBNAILS */}
             <div className="grid grid-cols-2 gap-4 pb-8 md:grid-cols-3 lg:grid-cols-6">
               {projects.map((project, index) => (
-                <div
+                <ProjectThumbnail
                   key={project.id}
-                  className={`cursor-pointer rounded-xl overflow-hidden transition-all ${
-                    activeIndex === index
-                      ? "border-2 border-orange scale-105"
-                      : "opacity-70 hover:opacity-100"
-                  }`}
+                  project={project}
+                  isActive={activeIndex === index}
                   onClick={() => handleThumbnailClick(index)}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <img
-                    className="object-cover w-full h-32 aspect-auto"
-                    src={project.imageUrl}
-                    alt={project.alt}
-                    title={project.title}
-                    loading="lazy"
-                  />
-                </div>
+                />
               ))}
             </div>
 
