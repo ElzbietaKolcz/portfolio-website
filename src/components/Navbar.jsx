@@ -151,7 +151,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <LanguageSwitcher />
+          {/* <LanguageSwitcher /> */}
 
           <button
             className="md:hidden mr-3"
