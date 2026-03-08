@@ -1,17 +1,12 @@
-import { useRef } from "react";
 import { email, cvImage, linkedIn } from "../assets";
 import SocialButton from "./SocialButton";
 import EmailButton from "./EmailButton";
 import styles from "../style";
 
 export default function Contact() {
-  
-
-  const contact = useRef(null);
   return (
     <section
       id="contact"
-      ref={contact}
     >
       <div className="container mx-auto pb-11 md:pb-6 ">
         <div className="flex items-center justify-center ">
