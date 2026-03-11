@@ -15,7 +15,7 @@ export default function Contact() {
         </div>
 
         <div className="flex justify-center pb-10 md:pb-8 ">
-          <p className="mx-10 md:mx-20 ">
+          <p className="mx-10 md:mx-20 text-center">
             {t("contact.description")}{" "}
           </p>
         </div>
