@@ -42,7 +42,7 @@ export default function EmailButton({ icon, text, copyText }) {
       aria-label={t("emailButton.ariaLabel", { email: copyText })}
       title={t("emailButton.ariaLabel", { email: copyText })}
     >
-      <img src={icon} alt={t("emailButton.iconAlt")} className="w-6 h-6" />
+      <img src={icon} alt="" className="w-6 h-6" />
 
       <div
         className={`overflow-hidden transition-all duration-300 whitespace-nowrap ${

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { BREAKPOINTS } from "../constants";
 
-export default function SocialButton({ icon, link, text, alt, ariaLabel }) {
+export default function SocialButton({ icon, link, text, ariaLabel }) {
   const [hovered, setHovered] = useState(false);
   const ref = useRef(null);
 
@@ -23,7 +23,7 @@ export default function SocialButton({ icon, link, text, alt, ariaLabel }) {
       aria-label={ariaLabel}
       title={ariaLabel}
     >
-      <img src={icon} alt={alt} className="w-6 h-6" />
+      <img src={icon} alt="" className="w-6 h-6" />
       <div
         style={styleOnDesktop}
         className="overflow-hidden transition-all duration-300 w-full whitespace-nowrap"

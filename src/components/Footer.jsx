@@ -27,7 +27,7 @@ export default function Footer() {
             title={t(`footer.${key}.title`)}
             aria-label={t(`footer.${key}.ariaLabel`)}
           >
-            <img src={icon} alt={t(`footer.${key}.imgAlt`)} />
+            <img src={icon} alt="" />
           </a>
         ))}
       </div>

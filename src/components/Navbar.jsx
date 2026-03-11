@@ -108,11 +108,7 @@ export default function Navbar() {
             title={t("nav.logo.title")}
             aria-label={t("nav.logo.ariaLabel")}
           >
-            <img
-              src={logo}
-              alt={t("nav.logo.alt")}
-              className="h-11"
-            />
+            <img src={logo} alt="" className="h-11" />
           </a>
 
           {/* Menu desktop */}
@@ -165,7 +161,7 @@ export default function Navbar() {
                   ? listLight
                   : list
               }
-              alt={isMenuOpen ? t("nav.menu.closeIconAlt") : t("nav.menu.openIconAlt")}
+              alt=""
               className="w-6 h-6 object-contain"
             />
           </button>

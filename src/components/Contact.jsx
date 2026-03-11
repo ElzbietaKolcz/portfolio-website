@@ -30,14 +30,12 @@ export default function Contact() {
             icon={linkedIn}
             text={t("contact.linkedinButton")}
             link="https://www.linkedin.com/in/"
-            alt={t("socialButton.linkedinIconAlt")}
             ariaLabel={t("socialButton.openLinkedin")}
           />
           <SocialButton
             icon={cvImage}
             text={t("contact.cvButton")}
             link="/CV/Kolcz_CV.pdf"
-            alt={t("socialButton.cvIconAlt")}
             ariaLabel={t("socialButton.openCv")}
           />
         </div>
