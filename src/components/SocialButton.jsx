@@ -13,32 +13,25 @@ export default function SocialButton({ icon, link, text, alt, ariaLabel }) {
     : {};
 
   return (
-    <button
-      type="button"
+    <a
+      href={link}
+      target="_blank"
+      rel="noreferrer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium p-1"
-      onClick={() => window.open(link, "_blank")}
       aria-label={ariaLabel}
       title={ariaLabel}
-      tabIndex={0}
-      role="link"
-      id={alt}
     >
-      <img src={icon} alt={alt} className="w-6 h-6" title={ariaLabel} />
+      <img src={icon} alt={alt} className="w-6 h-6" />
       <div
         style={styleOnDesktop}
         className="overflow-hidden transition-all duration-300 w-full whitespace-nowrap"
       >
-        <span
-          className="p-2"
-          ref={ref}
-          title={ariaLabel}
-          aria-label={ariaLabel}
-        >
+        <span className="p-2" ref={ref}>
           {text}
         </span>
       </div>
-    </button>
+    </a>
   );
 }

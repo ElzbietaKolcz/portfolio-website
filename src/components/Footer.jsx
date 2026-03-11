@@ -9,7 +9,7 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <div className="bg-primary-40 p-4 flex justify-between items-center">
+    <footer className="bg-primary-40 p-4 flex justify-between items-center">
       <p className="text-xs md:text-sm md:font-medium text-[#45024B]">
         {" "}
         {t("footer.copyright", { year: new Date().getFullYear() })}{" "}
@@ -31,6 +31,6 @@ export default function Footer() {
           </a>
         ))}
       </div>
-    </div>
+    </footer>
   );
 }
