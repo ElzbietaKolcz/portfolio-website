@@ -139,7 +139,7 @@ export default function Projects() {
 
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || isMobile) return;
 
     intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % projects.length);
