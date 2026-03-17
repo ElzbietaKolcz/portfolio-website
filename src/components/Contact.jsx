@@ -33,7 +33,7 @@ export default function Contact() {
           </div>
 
           {/* Center — logo animation */}
-          <div className="flex justify-center lg:justify-center lg:mx-30">
+          <div className="flex justify-center self-center lg:pr-4">
             <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 relative">
               <LogoAnimation size="small" />
             </div>
