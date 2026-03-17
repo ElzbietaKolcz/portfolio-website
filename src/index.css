@@ -102,7 +102,7 @@ a:hover .underline-animation {
   }
 
   .nav-active {
-    @apply fixed h-screen w-1/2 p-5 top-11 right-0 bg-white transition-transform duration-300 ease-in-out md:hidden;
+    @apply fixed h-dvh w-1/2 p-5 top-11 right-0 bg-white transition-transform duration-300 ease-in-out md:hidden;
     transform: translateX(0);
   }
 

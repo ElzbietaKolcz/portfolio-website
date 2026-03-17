@@ -177,7 +177,7 @@ export default function Navbar() {
                 aria-label={t("nav.menu.ariaLabel")}
                 className={`transform transition-transform duration-300 ease-in-out ${
                   isMenuOpen ? "translate-x-0" : "translate-x-full"
-                } md:hidden fixed h-screen w-1/2 p-5 top-13 right-0 bg-white mt-10`}
+                } md:hidden fixed h-dvh w-1/2 p-5 top-13 right-0 bg-white mt-10`}
               >
                 {menu.map((menuItem, index) => (
                   <li
