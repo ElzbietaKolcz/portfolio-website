@@ -44,7 +44,9 @@
     "description": "Chętnie poświęcę czas i omówię możliwości współpracy. Mówię po angielsku i po polsku.",
     "emailButton": "Napisz do mnie",
     "linkedinButton": "Wyślij wiadomość",
-    "cvButton": "Zobacz CV (PDF)"
+    "cvButton": "Zobacz CV (PDF)",
+    "behanceButton": "Behance",
+    "githubButton": "GitHub"
   },
   "emailButton": {
     "iconAlt": "Ikona e-mail",
@@ -57,6 +59,8 @@
     "defaultIconAlt": "Ikona linku społecznościowego",
     "openCv": "Otwórz dokument CV w nowej karcie",
     "openLinkedin": "Otwórz LinkedIn, aby wysłać wiadomość",
+    "openBehance": "Otwórz profil na Behance",
+    "openGithub": "Otwórz profil na GitHub",
     "openLink": "Otwórz link: {link}"
   },
   "footer": {

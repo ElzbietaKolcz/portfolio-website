@@ -1,13 +1,9 @@
 import { useState } from "react";
-import { useMediaQuery } from "react-responsive";
-import { BREAKPOINTS, TIMING } from "../constants";
+import { TIMING } from "../constants";
 import { t } from "../i18n";
 
 export default function EmailButton({ icon, text, copyText }) {
-  const [hovered, setHovered] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-
-  const isDesktop = useMediaQuery({ query: BREAKPOINTS.MD });
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(copyText);
@@ -15,50 +11,18 @@ export default function EmailButton({ icon, text, copyText }) {
     setTimeout(() => setIsCopied(false), TIMING.COPY_FEEDBACK_MS);
   };
 
-  // Desktop hover
-  const handleMouseEnter = () => {
-    if (isDesktop) setHovered(true);
-  };
-  const handleMouseLeave = () => {
-    if (isDesktop) setHovered(false);
-  };
-
-  // Mobile tap
-  const handleTouchEnd = (e) => {
-    e.preventDefault();
-    handleCopyToClipboard();
-    setHovered(true); // pokazuje napis po tapnięciu
-    setTimeout(() => setHovered(false), TIMING.COPY_FEEDBACK_MS);
-  };
-
   return (
     <button
       type="button"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       onClick={handleCopyToClipboard}
-      onTouchEnd={handleTouchEnd}
-      className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium p-1 overflow-hidden h-9"
+      className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium p-2 h-10 space-x-2"
       aria-label={t("emailButton.ariaLabel", { email: copyText })}
       title={t("emailButton.ariaLabel", { email: copyText })}
     >
       <img src={icon} alt="" className="w-6 h-6" />
-
-      <div
-        className={`overflow-hidden transition-all duration-300 whitespace-nowrap ${
-          (hovered || isCopied || !isDesktop)
-            ? "max-w-[500px] ml-2"
-            : "max-w-0"
-        }`}
-      >
-        <span
-          className={`inline-block p-2 ${
-            isCopied ? "animate-pulse text-green-500" : ""
-          }`}
-        >
-          {isCopied ? t("emailButton.copied") : text}
-        </span>
-      </div>
+      <span className={isCopied ? "text-green-500 font-semibold" : ""}>
+        {isCopied ? t("emailButton.copied") : text}
+      </span>
     </button>
   );
 }

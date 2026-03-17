@@ -44,7 +44,9 @@
     "description": "Ráda si udělám čas a probereme možnosti spolupráce. Mluvím anglicky a polsky.",
     "emailButton": "Napište mi e-mail",
     "linkedinButton": "Pošlete mi zprávu",
-    "cvButton": "Zobrazit CV (PDF)"
+    "cvButton": "Zobrazit CV (PDF)",
+    "behanceButton": "Behance",
+    "githubButton": "GitHub"
   },
   "emailButton": {
     "iconAlt": "Ikona e-mailu",
@@ -57,6 +59,8 @@
     "defaultIconAlt": "Ikona sociálního odkazu",
     "openCv": "Otevřít dokument CV na nové kartě",
     "openLinkedin": "Otevřít LinkedIn a odeslat zprávu",
+    "openBehance": "Otevřít profil na Behance",
+    "openGithub": "Otevřít profil na GitHubu",
     "openLink": "Otevřít odkaz: {link}"
   },
   "footer": {

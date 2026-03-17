@@ -90,7 +90,6 @@ export default function App() {
           <div className="w-full">
             <Footer />
           </div>
-          <div className="bg-[#45024B] p-2" />
         </Suspense>
       </main>
     </div>
