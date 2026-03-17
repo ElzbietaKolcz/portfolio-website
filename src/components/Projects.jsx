@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { isMobile, isTablet } from "react-device-detect";
+import { isMobile } from "react-device-detect";
 import styles from "../style";
-import { SCROLL, TIMING, BREAKPOINTS } from "../constants";
+import { TIMING } from "../constants";
 import { t } from "../i18n";
 
 /* =========================
@@ -23,7 +23,7 @@ function ProjectCard({ project }) {
         </div>
       </div>
 
-      <div className="flex flex-col md:justify-between rounded-b-lg bg-zinc-100 p-4 lg:h-80 md:w-1/2 lg:w-96 md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-none">
+      <div className="flex flex-col md:justify-between rounded-b-lg bg-zinc-100 p-4 md:h-80 md:w-1/2 lg:w-96 md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-none overflow-hidden">
         <h3 className="text-center m-2 px-2 md:text-left text-2xl font-bold">
           {project.title}
         </h3>
@@ -150,32 +150,8 @@ export default function Projects() {
 
 
 
-  const getScrollOffset = () => {
-    if (isMobile) return SCROLL.OFFSET_MOBILE;
-    if (isTablet) return SCROLL.OFFSET_TABLET;
-    if (window.innerWidth >= BREAKPOINTS.LARGE_PX) return SCROLL.OFFSET_LARGE;
-    return SCROLL.OFFSET_DEFAULT;
-  };
-
-  const scrollToProjectsHeader = () => {
-    const offset = getScrollOffset();
-    const element = document.getElementById("projects");
-    if (!element) return;
-
-    const position =
-      element.getBoundingClientRect().top +
-      window.scrollY -
-      offset;
-
-    window.scrollTo({
-      top: position,
-      behavior: "smooth",
-    });
-  };
-
   const handleThumbnailClick = (index) => {
     setActiveIndex(index);
-    scrollToProjectsHeader();
   };
 
   const activeProject = projects[activeIndex];
