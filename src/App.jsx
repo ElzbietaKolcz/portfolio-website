@@ -7,6 +7,7 @@ import {
   Home,
   About,
 } from "./components";
+import Preloader from "./components/Preloader";
 
 const Projects = lazy(() => import('./components/Projects'));
 const Skills = lazy(() => import('./components/Skills'));
@@ -37,6 +38,7 @@ export default function App() {
   return (
     <LangContext.Provider value={{ lang, setLang: setLanguage }}>
     <div className="w-full overflow-hidden text-black bg-white">
+      <Preloader />
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div  className={`${styles.boxWidth}`}>
           <Navbar />
