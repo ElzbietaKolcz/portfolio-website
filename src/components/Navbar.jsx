@@ -2,37 +2,38 @@ import { useState, useEffect } from "react";
 import { Link, scroller } from "react-scroll";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
-import { logo, list, close, listLight, closeLight } from "../assets/index";
-import FocusTrap from "focus-trap-react";
+import { logo } from "../assets/index";
+import { FocusTrap } from "focus-trap-react";
 import { SCROLL, TIMING, INTERSECTION } from "../constants";
 import { t } from "../i18n";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menu, setMenu] = useState([]);
   const [onDarkSection, setOnDarkSection] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
-  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const fetchMenu = async () => {
       const q = query(collection(db, "menu"), orderBy("id"));
       const data = await getDocs(q);
-
-      const filtered = data.docs.map((doc) => {
-        const { name, path } = doc.data();
-        return {
-          id: name,
-          name,
-          path,
-        };
-      });
-
-      setMenu(filtered);
+      setMenu(
+        data.docs.map((doc) => {
+          const { name, path } = doc.data();
+          return { id: name, name, path };
+        }),
+      );
     };
-
     fetchMenu();
   }, []);
 
@@ -41,18 +42,12 @@ export default function Navbar() {
     if (!darkSections.length) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        const anyVisible = entries.some((entry) => entry.isIntersecting);
-        setOnDarkSection(anyVisible);
-      },
+      (entries) => setOnDarkSection(entries.some((e) => e.isIntersecting)),
       { threshold: INTERSECTION.THRESHOLD },
     );
 
-    darkSections.forEach((section) => observer.observe(section));
-
-    return () => {
-      darkSections.forEach((section) => observer.unobserve(section));
-    };
+    darkSections.forEach((s) => observer.observe(s));
+    return () => darkSections.forEach((s) => observer.unobserve(s));
   }, []);
 
   useEffect(() => {
@@ -61,16 +56,15 @@ export default function Navbar() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting)
             setActiveSection(entry.target.id.toLowerCase());
-          }
         });
       },
-      { threshold: INTERSECTION.THRESHOLD },
+      { threshold: 0, rootMargin: "-10% 0px -85% 0px" },
     );
 
-    menu.forEach((menuItem) => {
-      const el = document.getElementById(menuItem.name.toLowerCase());
+    menu.forEach((item) => {
+      const el = document.getElementById(item.name.toLowerCase());
       if (el) observer.observe(el);
     });
 
@@ -78,20 +72,39 @@ export default function Navbar() {
   }, [menu]);
 
   const handleMenuClick = (sectionName) => {
-    setIsMenuOpen(false);
-    setTimeout(() => {
-      scroller.scrollTo(sectionName, {
-        smooth: true,
-        offset: SCROLL.OFFSET_DEFAULT,
-        duration: SCROLL.DURATION,
-      });
-    }, TIMING.MENU_CLOSE_DELAY);
+    closeMenu();
+    setTimeout(
+      () =>
+        scroller.scrollTo(sectionName, {
+          smooth: true,
+          offset: SCROLL.OFFSET_DEFAULT,
+          duration: SCROLL.DURATION,
+        }),
+      TIMING.MENU_CLOSE_DELAY,
+    );
   };
+
+  const iconColor = onDarkSection ? "text-orange" : "text-black";
+  const activeLinkClass =
+    "border-b-4 border-primary-100 font-semibold text-primary-100";
+  const inactiveLinkClass = `${onDarkSection ? "text-orange" : "text-black"} hover:border-b-4 hover:border-primary-100 hover:font-semibold`;
 
   return (
     <nav aria-label={t("nav.ariaLabel")}>
+      {/* Backdrop overlay — closes menu on outside click */}
       <div
-        className={`fixed w-full left-0 z-50 backdrop-blur-md ${
+        className={`fixed inset-0 z-40 bg-black/20 md:hidden transition-opacity duration-300 ${
+          isMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={closeMenu}
+        aria-hidden="true"
+      />
+
+      {/* Navbar bar */}
+      <div
+        className={`fixed w-full left-0 z-[60] backdrop-blur-md ${
           onDarkSection ? "brightness-110" : ""
         }`}
       >
@@ -111,107 +124,105 @@ export default function Navbar() {
             <img src={logo} alt="" className="h-11" />
           </a>
 
-          {/* Menu desktop */}
+          {/* Desktop menu */}
           <ul
             aria-label={t("nav.menu.ariaLabel")}
             className="hidden md:flex md:justify-between md:items-center md:pl-10 xl:pl-24"
           >
-            {menu.map((menuItem) => (
-              <li
-                className="mx-2"
-                key={menuItem.id}
-              >
+            {menu.map((item) => (
+              <li className="mx-2" key={item.id}>
                 <Link
                   className={`font-Assistant uppercase text-lg transition-colors duration-300 pb-1 ${
-                    activeSection === menuItem.name.toLowerCase()
-                      ? "border-b-4 border-primary-100 font-semibold text-primary-100"
-                      : `${
-                          onDarkSection ? "text-orange" : "text-black"
-                        } hover:border-b-4 hover:border-primary-100 hover:font-semibold`
+                    activeSection === item.name.toLowerCase()
+                      ? activeLinkClass
+                      : inactiveLinkClass
                   }`}
-                  to={menuItem.name}
-                  title={t("nav.menu.goTo", { section: menuItem.name })}
-                  aria-label={t("nav.menu.goTo", { section: menuItem.name })}
+                  to={item.name}
+                  title={t("nav.menu.goTo", { section: item.name })}
+                  aria-label={t("nav.menu.goTo", { section: item.name })}
                   spy
                   smooth
                   offset={SCROLL.OFFSET_DEFAULT}
                   duration={SCROLL.DURATION}
                   onClick={closeMenu}
                 >
-                  {menuItem.name}
+                  {item.name}
                 </Link>
               </li>
             ))}
           </ul>
 
-          {/* <LanguageSwitcher /> */}
-
+          {/* Hamburger → X button */}
           <button
-            className="md:hidden mr-3"
+            className={`md:hidden mr-3 flex flex-col justify-center gap-[5px] w-6 h-6 ${iconColor}`}
             onClick={toggleMenu}
             aria-label={isMenuOpen ? t("nav.menu.close") : t("nav.menu.open")}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
           >
-            <img
-              src={
-                isMenuOpen
-                  ? onDarkSection
-                    ? closeLight
-                    : close
-                  : onDarkSection
-                  ? listLight
-                  : list
-              }
-              alt=""
-              className="w-6 h-6 object-contain"
+            <span
+              className={`block h-0.5 w-6 bg-current rounded transition-all duration-300 origin-center ${
+                isMenuOpen ? "translate-y-[7px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-current rounded transition-all duration-300 ${
+                isMenuOpen ? "opacity-0 scale-x-0" : ""
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-current rounded transition-all duration-300 origin-center ${
+                isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+              }`}
             />
           </button>
-
-          {isMenuOpen && (
-            <FocusTrap
-              focusTrapOptions={{
-                escapeDeactivates: true,
-                returnFocusOnDeactivate: true,
-              }}
-            >
-              <ul
-                aria-label={t("nav.menu.ariaLabel")}
-                className={`transform transition-transform duration-300 ease-in-out ${
-                  isMenuOpen ? "translate-x-0" : "translate-x-full"
-                } md:hidden fixed h-dvh w-1/2 p-5 top-13 right-0 bg-white mt-10`}
-              >
-                {menu.map((menuItem, index) => (
-                  <li
-                    key={menuItem.id}
-                    className="mb-6 mx-2"
-                  >
-                    <Link
-                      autoFocus={index === 0}
-                      className={`font-Assistant uppercase text-lg ${
-                        activeSection === menuItem.name.toLowerCase()
-                          ? "border-b-4 border-primary-100 font-semibold text-primary-100"
-                          : "hover:border-b-4 hover:border-primary-100 hover:font-semibold hover:text-primary-100"
-                      }`}
-                      to={menuItem.name}
-                      title={t("nav.menu.goTo", { section: menuItem.name })}
-                      aria-label={t("nav.menu.goTo", { section: menuItem.name })}
-                      spy
-                      smooth
-                      offset={SCROLL.OFFSET_DEFAULT}
-                      duration={SCROLL.DURATION}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleMenuClick(menuItem.name);
-                      }}
-                    >
-                      {menuItem.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </FocusTrap>
-          )}
         </div>
       </div>
+
+      {/* Mobile menu — always mounted for exit animation, hidden via transform */}
+      <FocusTrap
+        active={isMenuOpen}
+        focusTrapOptions={{
+          escapeDeactivates: true,
+          onDeactivate: closeMenu,
+          returnFocusOnDeactivate: true,
+          allowOutsideClick: true,
+        }}
+      >
+        <ul
+          id="mobile-menu"
+          aria-label={t("nav.menu.ariaLabel")}
+          className={`fixed h-dvh w-1/2 p-5 pt-[88px] top-0 right-0 bg-white z-50 transition-transform duration-300 ease-in-out md:hidden ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          {...(!isMenuOpen && { inert: "" })}
+        >
+          {menu.map((item) => (
+            <li key={item.id} className="mb-6 mx-2">
+              <Link
+                className={`font-Assistant uppercase text-lg ${
+                  activeSection === item.name.toLowerCase()
+                    ? activeLinkClass
+                    : "hover:border-b-4 hover:border-primary-100 hover:font-semibold hover:text-primary-100"
+                }`}
+                to={item.name}
+                title={t("nav.menu.goTo", { section: item.name })}
+                aria-label={t("nav.menu.goTo", { section: item.name })}
+                spy
+                smooth
+                offset={SCROLL.OFFSET_DEFAULT}
+                duration={SCROLL.DURATION}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleMenuClick(item.name);
+                }}
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </FocusTrap>
     </nav>
   );
 }
