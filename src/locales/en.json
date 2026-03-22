@@ -161,12 +161,12 @@
     "learnMore": "Learn more on Behance"
   },
   "contact": {
-    "heading": "Let's chat!",
-    "description": "I'm currently looking for a UX/UI Designer role where design decisions are grounded in real user needs and accessibility is taken seriously. If that sounds like your team, I'd love to hear from you. I enjoy sharing what I know and I’m always open to sharing knowledge through workshops and talks on accessibility or design.",
+    "heading": "Let’s chat!",
+    "description": "I’m currently looking for a UX/UI Designer role where design decisions are grounded in real user needs and accessibility is taken seriously. Beyond project work, knowledge sharing matters — through workshops, talks, and conversations about accessibility and design.",
     "emailButton": "Send me an email",
     "cvButton": "Review CV (PDF)"
   },
-    "socialMedia": {
+  "socialMedia": {
     "heading": "Social Media",
     "description": "You can meet me at conferences MacMeeting. If any project caught your attention or you’d like to connect, feel free to reach out — always open to a quick chat or exchanging ideas. I speak Polish and English.",
     "location": "Poland, Wroclaw",

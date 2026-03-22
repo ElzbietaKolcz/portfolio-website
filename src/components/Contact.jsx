@@ -15,7 +15,7 @@ export default function Contact() {
           {/* Left — heading, description, email & CV */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <h2 className={`${styles.heading1}`}>{t("contact.heading")}</h2>
-            <p className="pb-6">{t("contact.description")}</p>
+            <p className="max-w-[55ch] pb-6">{t("contact.description")}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <EmailButton
                 icon={email}
@@ -43,7 +43,7 @@ export default function Contact() {
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <h2 className={`${styles.heading1}`}>{t("socialMedia.heading")}</h2>
             {/* Ten paragraf będzie wyrównany w pionie z lewym */}
-            <p className="pb-4">{t("socialMedia.description")}</p>
+            <p className="max-w-[55ch] pb-4">{t("socialMedia.description")}</p>
             
             <div className="flex flex-col sm:flex-row gap-4 lg:items-end justify-center lg:justify-start">
               <SocialButton
