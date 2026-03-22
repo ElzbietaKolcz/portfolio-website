@@ -9,6 +9,7 @@ export default function Home() {
     <header role="banner">
       <section
         id="home"
+        aria-labelledby="home-heading"
         className={`${styles.flexCenter} flex-col md:flex-row`}
       >
         <img
@@ -24,15 +25,16 @@ export default function Home() {
 
         <div className="flex-1 flex-col md:w-3/5 text-center item-center px-6 md:pt-20 md:text-left md:mx-5 xl:mx-10">
           <h1
-            className={`${styles.heading1}`}
+            id="home-heading"
+            className={`${styles.heading1} !mb-2 !pb-0`}
             data-aos="fade-left"
             data-aos-delay="200"
           >
-            <span className="text-primary-100">{t("home.titleSpan")}</span>{" "}
             {t("home.title")}
           </h1>
 
           <h2
+            aria-label="Accessibility and WCAG, UX/UI Designer, Design and Code"
             data-aos="fade-left"
             data-aos-delay="300"
           >

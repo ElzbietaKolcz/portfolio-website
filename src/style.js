@@ -2,7 +2,7 @@ const styles = {
   boxWidth: "xl:max-w-[1280px] w-full",
 
   heading1:
-    "text-5xl md:text-6xl font-medium font-LifeSugarly my-8 md:pb-4 md:mt-13 lg:pb-4  lg:mb-4 leading-5  text-primary-100  ss:text-[24px]",
+    "text-5xl md:text-6xl font-medium font-LifeSugarly my-8 md:pb-4 md:mt-13 lg:pb-4 lg:mb-4 leading-tight text-primary-100 ss:text-[24px]",
   heading1Left:
     "text-5xl md:text-6xl font-medium font-LifeSugarly my-2 md:pb-5 md:mt-4 lg:pb-4 lg:mb-4 leading-5 text-primary-100  ss:text-[24px] lg:text-left",
   heading2:

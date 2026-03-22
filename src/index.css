@@ -11,7 +11,7 @@
   }
 
   h2 {
-    @apply text-xl font-medium leading-5 pb-1;
+    @apply text-xl font-medium leading-[1.6] pb-1;
     font-family: "Work Sans", sans-serif;
   }
 
