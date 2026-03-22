@@ -16,6 +16,24 @@
     }
   },
   "home": {
+    "titleSpan": "",
+    "title": "Elżbieta Kołcz",
+    "fullName": "Accessibility & WCAG | UX/UI Designer | Design & Code",
+    "description": [
+      { "text": "My life's mission is to prove that " },
+      { "text": "accessibility can be beautiful.", "bold": true, "color": "orange" },
+      { "text": " UX/UI Designer at the intersection of " },
+      { "text": "design,", "bold": true, "color": "orange" },
+      { "text": " " },
+      { "text": "code,", "bold": true, "color": "orange" },
+      { "text": " and " },
+      { "text": "AI", "bold": true, "color": "orange" },
+      { "text": " — because good design should never come at the cost of " },
+      { "text": "inclusion", "bold": true, "color": "orange" },
+      { "text": ". Not many designers can read a dataset, audit an interface for " },
+      { "text": "WCAG", "bold": true, "color": "orange" },
+      { "text": " compliance, and write the code to fix it." }
+    ],
     "projects": "Projects",
     "contact": "Contact",
     "goToProjects": "Go to projects section",

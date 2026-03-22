@@ -1,33 +1,10 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
-import { collection, getDocs } from "firebase/firestore";
 import styles from "../style";
-import { db } from "../firebase";
 import { t } from "../i18n";
+import RichText from "./RichText";
 const avatarImage = '/images/avatar_fot_Julia_Krzemianowska.webp';
 
 export default function Home() {
-  const [homeData, setHomeData] = useState({
-    fullName: {},
-    title: {},
-    description: {},
-  });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const homeCollectionRef = collection(db, "home");
-      const homeSnapshot = await getDocs(homeCollectionRef);
-
-      const home = {};
-      homeSnapshot.forEach((doc) => {
-        home[doc.id] = doc.data();
-      });
-      setHomeData(home);
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <header role="banner">
       <section
@@ -46,49 +23,29 @@ export default function Home() {
         />
 
         <div className="flex-1 flex-col md:w-3/5 text-center item-center px-6 md:pt-20 md:text-left md:mx-5 xl:mx-10">
-           {homeData.title?.title && (
-            <h1
-              className={`${styles.heading1}`}
-              data-aos="fade-left"
-              data-aos-delay="200"
-            >
-              <span className="text-primary-100">{homeData.title.span}</span>{" "}
-              {homeData.title.title}
-            </h1>
-          )}
+          <h1
+            className={`${styles.heading1}`}
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
+            <span className="text-primary-100">{t("home.titleSpan")}</span>{" "}
+            {t("home.title")}
+          </h1>
 
-          {homeData.fullName?.fullName && (
-            <h2
-              className="${styles.heading2}"
-              data-aos="fade-left"
-              data-aos-delay="300"
-            >
-              {homeData.fullName.fullName}
-            </h2>
-          )}
-          
-          {homeData.description?.start && (
-            <p
-              className={`${styles.paragraph} font-medium max-w-[500px] lg:pb-5 px-5 my-3 sm:px-10 md:pl-0 md:mt-4 text-left`}
-              data-aos="fade-down"
-              data-aos-delay="400"
-            >
-              {homeData.description.start}
-              <span className="text-primary-100 font-bold">
-                {" "}
-                {homeData.description.span01}
-              </span>{" "}
-              {homeData.description.first}{" "}
-              <span className="text-primary-100 font-bold">
-                {homeData.description.span02}
-              </span>{" "}
-              {homeData.description.second}{" "}
-              <span className="text-primary-100 font-bold">
-                {homeData.description.span03}
-              </span>{" "}
-              {homeData.description.end}
-            </p>
-          )}
+          <h2
+            data-aos="fade-left"
+            data-aos-delay="300"
+          >
+            {t("home.fullName")}
+          </h2>
+
+          <p
+            className={`${styles.paragraph} font-medium max-w-[55ch] lg:pb-5 px-5 my-3 sm:px-10 md:pl-0 md:mt-4 text-left`}
+            data-aos="fade-down"
+            data-aos-delay="400"
+          >
+            <RichText segments={t("home.description")} />
+          </p>
 
           <div
             className={`${styles.flexCenter} gap-8 pt-6 pb-12 px-2 md:justify-start md:px-0 md:gap-10 xl:py-5`}
@@ -111,7 +68,7 @@ export default function Home() {
             >
               {t("home.contact")}
             </Link>
-                        <Link
+            <Link
               id="projects-link-cta"
               className="flex items-center button btn-secondary btn-animation whitespace-nowrap"
               to="projects"
