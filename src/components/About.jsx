@@ -53,7 +53,7 @@ export default function About() {
       </div>
 
       {/* Row 2: Interest cards */}
-      <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-5 sm:px-10 pb-12">
+      <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-5 sm:px-10 pb-12">
         {t("interests").map((interest) => (
           <InterestCard
             key={interest.id}
