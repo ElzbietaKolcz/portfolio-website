@@ -47,7 +47,7 @@ export default function App() {
 
       <div
       
-        className={`${styles.flexStart}`}
+        className={`${styles.flexStart} mb-20`}
         id="home"
       >
         <div 
@@ -63,7 +63,7 @@ export default function App() {
 
           <div className={`${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
-              <Projects />
+              <About />
             </div>
           </div>
 
@@ -71,7 +71,7 @@ export default function App() {
 
           <div className={`${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
-              <About />
+              <Projects />
             </div>
           </div>
 
