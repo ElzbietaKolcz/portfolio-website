@@ -189,39 +189,50 @@ export default function Navbar() {
           allowOutsideClick: true,
         }}
       >
-        <ul
+        <div
           id="mobile-menu"
-          aria-label={t("nav.menu.ariaLabel")}
           className={`fixed h-dvh w-1/2 p-5 pt-[88px] top-0 right-0 bg-white z-50 transition-transform duration-300 ease-in-out md:hidden ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
           {...(!isMenuOpen && { inert: "" })}
         >
-          {menu.map((item) => (
-            <li key={item.id} className="mb-6 mx-2">
-              <Link
-                className={`font-Assistant uppercase text-lg ${
-                  activeSection === item.name.toLowerCase()
-                    ? activeLinkClass
-                    : "hover:border-b-4 hover:border-primary-100 hover:font-semibold hover:text-primary-100"
-                }`}
-                to={item.name}
-                title={t("nav.menu.goTo", { section: item.name })}
-                aria-label={t("nav.menu.goTo", { section: item.name })}
-                spy
-                smooth
-                offset={SCROLL.OFFSET_DEFAULT}
-                duration={SCROLL.DURATION}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleMenuClick(item.name);
-                }}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          {/* Close button inside the menu — reliable on mobile touch */}
+          <button
+            className="absolute top-5 right-5 flex flex-col justify-center gap-[5px] w-6 h-6 text-black"
+            onClick={closeMenu}
+            aria-label={t("nav.menu.close")}
+          >
+            <span className="block h-0.5 w-6 bg-current rounded translate-y-[3px] rotate-45 origin-center" />
+            <span className="block h-0.5 w-6 bg-current rounded -translate-y-[3px] -rotate-45 origin-center" />
+          </button>
+
+          <ul aria-label={t("nav.menu.ariaLabel")}>
+            {menu.map((item) => (
+              <li key={item.id} className="mb-6 mx-2">
+                <Link
+                  className={`font-Assistant uppercase text-lg pb-1 ${
+                    activeSection === item.name.toLowerCase()
+                      ? activeLinkClass
+                      : "text-black hover:border-b-4 hover:border-primary-100 hover:font-semibold hover:text-primary-100"
+                  }`}
+                  to={item.name}
+                  title={t("nav.menu.goTo", { section: item.name })}
+                  aria-label={t("nav.menu.goTo", { section: item.name })}
+                  spy
+                  smooth
+                  offset={SCROLL.OFFSET_DEFAULT}
+                  duration={SCROLL.DURATION}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleMenuClick(item.name);
+                  }}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </FocusTrap>
     </nav>
   );
