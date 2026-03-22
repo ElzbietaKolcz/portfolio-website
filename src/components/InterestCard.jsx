@@ -5,10 +5,10 @@ export default function InterestCard({ icon, title, description }) {
         {icon}
       </div>
       <div>
-        <p className="font-Assistant font-bold text-[17px] leading-snug mb-1">
+        <p className="font-Assistant font-bold text-[1.0625rem] leading-snug mb-1">
           {title}
         </p>
-        <p className="font-Assistant text-[16px] leading-[26px] text-primary">
+        <p className="font-Assistant text-[1rem] leading-[1.625] text-primary">
           {description}
         </p>
       </div>

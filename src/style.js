@@ -7,7 +7,7 @@ const styles = {
     "text-5xl md:text-6xl font-medium font-LifeSugarly my-2 md:pb-5 md:mt-4 lg:pb-4 lg:mb-4 leading-5 text-primary-100  ss:text-[24px] lg:text-left",
   heading2:
     "font-Assistant text-lg text-white xs:leading-[76.8px] leading-[66.8px] w-full",
-  paragraph: "font-Assistant text-[18px] leading-[30px]",
+  paragraph: "font-Assistant text-[1.125rem] leading-[1.7]",
   
 
   flexCenter: "flex justify-center items-center",

@@ -10,7 +10,7 @@ const paraClass = `${styles.paragraph} text-left`;
 function AboutParagraph({ item, direction = "fade-right" }) {
   return (
     <div className="mb-4" data-aos={direction} data-aos-delay="100">
-      <p>
+      <p className="max-w-[55ch]">
         <RichText segments={item.segments} />
       </p>
     </div>
