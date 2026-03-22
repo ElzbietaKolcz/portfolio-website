@@ -6,6 +6,8 @@ import Contact from "./Contact";
 import Skills from "./Skills";
 import Footer from "./Footer";
 import PageNotFound from "./PageNotFound";
+import InterestCard from "./InterestCard";
+import RichText from "./RichText";
 
 export {
   Navbar,
@@ -16,4 +18,6 @@ export {
   Skills,
   Footer,
   PageNotFound,
+  InterestCard,
+  RichText,
 };
