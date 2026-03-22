@@ -2,7 +2,6 @@ import styles from "../style";
 import { t } from "../i18n";
 import InterestCard from "./InterestCard";
 import RichText from "./RichText";
-import aboutData from "../data/about.json";
 
 const image = "/images/fot_Julia_Krzemianowska.webp";
 
@@ -27,7 +26,7 @@ export default function About() {
       <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 items-center pb-10 px-5 sm:px-10">
         {/* Left column */}
         <div className={`${paraClass}`}>
-          {aboutData.about.left.map((item) => (
+          {t("about.left").map((item) => (
             <AboutParagraph key={item.id} item={item} direction="fade-right" />
           ))}
         </div>
@@ -47,7 +46,7 @@ export default function About() {
 
         {/* Right column */}
         <div className={`${paraClass}`}>
-          {aboutData.about.right.map((item) => (
+          {t("about.right").map((item) => (
             <AboutParagraph key={item.id} item={item} direction="fade-left" />
           ))}
         </div>
@@ -55,7 +54,7 @@ export default function About() {
 
       {/* Row 2: Interest cards */}
       <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-5 sm:px-10 pb-12">
-        {aboutData.interests.map((interest) => (
+        {t("interests").map((interest) => (
           <InterestCard
             key={interest.id}
             icon={interest.icon}
