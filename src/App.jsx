@@ -85,8 +85,10 @@ export default function App() {
 
           <BackgroundDivider src="/background/bgImage04.webp" alt="Elegantly dressed woman holding a diary and a pen." />
 
-          <div className="w-full">
-            <Contact />
+          <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.boxWidth}`}>
+              <Contact />
+            </div>
           </div>
 
           <div className="w-full">

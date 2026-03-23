@@ -8,7 +8,7 @@ import { t } from "../i18n";
 export default function Contact() {
   return (
     <section id="contact">
-      <div className="container mx-auto pb-3 md:pb-0 px-6 md:px-0">
+      <div className="pb-3 md:pb-0">
         {/* Grid layout: 3 kolumny — lewa, środek (logo), prawa */}
         <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-6 items-start">
 
@@ -33,7 +33,7 @@ export default function Contact() {
           </div>
 
           {/* Center — logo animation */}
-          <div className="flex justify-center self-center lg:pr-4">
+          <div className="flex justify-center self-center lg:px-10">
             <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 relative">
               <LogoAnimation size="small" />
             </div>
