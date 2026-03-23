@@ -4,7 +4,7 @@ import { t } from "../i18n";
 import RichText from "./RichText";
 export default function Home() {
   return (
-    <header role="banner">
+    <header>
       <section
         id="home"
         aria-labelledby="home-heading"
