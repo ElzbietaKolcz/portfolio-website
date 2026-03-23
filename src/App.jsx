@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'preact/compat';
 import { useState, useEffect, useRef } from 'preact/hooks';
+import 'aos/dist/aos.css';
 import styles from "./style";
 import { LangContext } from "./LangContext";
 import {
@@ -50,6 +51,18 @@ function BackgroundDivider({ src, alt }) {
 
 export default function App() {
   const [lang, setLang] = useState(() => document.documentElement.lang?.slice(0, 2) || "en");
+
+  useEffect(() => {
+    // Remove static hero placeholder now that React has rendered
+    document.getElementById('static-hero')?.remove();
+
+    import('aos').then(({ default: AOS }) => {
+      AOS.init({
+        once: true,
+        disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth < 768,
+      });
+    });
+  }, []);
 
   const setLanguage = (newLang) => {
     document.documentElement.lang = newLang;
