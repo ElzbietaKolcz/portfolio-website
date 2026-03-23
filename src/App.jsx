@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'preact/compat';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'preact/hooks';
 import styles from "./style";
 import { LangContext } from "./LangContext";
 import {
@@ -15,11 +15,31 @@ const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 
 function BackgroundDivider({ src, alt }) {
+  const ref = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
+      ref={ref}
       data-dark="true"
       className={styles.bgAnimation}
-      style={{ backgroundImage: `url("${src}")` }}
+      style={loaded ? { backgroundImage: `url("${src}")` } : undefined}
       role="img"
       aria-label={alt}
     />
