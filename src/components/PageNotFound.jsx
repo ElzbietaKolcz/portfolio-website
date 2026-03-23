@@ -5,7 +5,7 @@ export default function PageNotFound() {
     <div className={`${styles.flexCenter}`}>
       <img
         className={`${styles.flexCenter} p-20`}
-        src="https://firebasestorage.googleapis.com/v0/b/portfolioui-962a3.appspot.com/o/404.png?alt=media&token=dd331f69-6bb3-48bf-b5af-e02e4ac2f135"
+        src="/404.png"
         alt="404-error"
       />
     </div>
