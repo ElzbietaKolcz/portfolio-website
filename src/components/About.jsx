@@ -41,6 +41,9 @@ export default function About() {
             src={image}
             alt="A woman in elegant clothes working at a computer and writing notes."
             className="rounded-3xl w-full max-w-[280px] lg:max-w-[320px] aspect-auto"
+            width="320"
+            height="480"
+            loading="lazy"
           />
         </div>
 

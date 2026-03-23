@@ -5,8 +5,9 @@ import { LangContext } from "./LangContext";
 import {
   Navbar,
   Home,
-  About,
 } from "./components";
+
+const About = lazy(() => import('./components/About'));
 import Preloader from "./components/Preloader";
 
 const Projects = lazy(() => import('./components/Projects'));
