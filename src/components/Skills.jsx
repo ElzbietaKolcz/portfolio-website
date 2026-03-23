@@ -13,7 +13,7 @@ function SkillCard({ title, description, color }) {
       data-aos="fade-up"
       data-aos-anchor-placement="bottom-bottom"
     >
-      <h2 className="px-2 pt-3">{title}</h2>
+      <h3 className="px-2 pt-3">{title}</h3>
       <p className="px-2 pb-3">{description}</p>
     </div>
   );
@@ -30,8 +30,6 @@ function CertificationItem({ start, end, linkName, link, color }) {
             href={link}
             target="_blank"
             rel="noreferrer"
-            tabIndex={0}
-            role="link"
             id={linkName}
             title={t("skills.certificateTitle", { name: linkName })}
             aria-label={t("skills.certificateAriaLabel", { name: linkName })}
@@ -48,7 +46,7 @@ function CertificationItem({ start, end, linkName, link, color }) {
 function TimelineEntry({ title, dateStart, dateEnd, children }) {
   return (
     <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-      {title && <h3>{title}</h3>}
+      {title && <h4>{title}</h4>}
       <div className="timeline-row">
         <div>
           <p className="timeline-date">
@@ -67,14 +65,23 @@ function TimelineEntry({ title, dateStart, dateEnd, children }) {
   );
 }
 
-function SkillsPanel({ heading, aosDirection, className = "", children }) {
+function SkillsPanel({ heading, headingId, aosDirection, className = "", children }) {
   return (
     <div
       className={`lg:flex lg:flex-col p-2 m-2 ${className}`}
       data-aos={aosDirection}
       data-aos-delay="200"
     >
-      <h2 className={`${styles.heading1Left}`}>{heading}</h2>
+      <h2 id={headingId} className={`${styles.heading1Left}`}>{heading}</h2>
+      {children}
+    </div>
+  );
+}
+
+function SubSection({ heading, aosDirection, className = "", children }) {
+  return (
+    <div className={`mb-4 ${className}`} data-aos={aosDirection} data-aos-delay="200">
+      <h3 className={`${styles.heading1Left}`}>{heading}</h3>
       {children}
     </div>
   );
@@ -106,10 +113,10 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" className={`${styles.flexCol}`}>
+    <section id="skills" aria-labelledby="skills-heading" className={`${styles.flexCol}`}>
       <div className="lg:flex lg:gap-6 pb-6">
         <div className="lg:flex-col">
-          <SkillsPanel heading={t("skills.heading")} aosDirection="fade-right" className="pb-4">
+          <SkillsPanel heading={t("skills.heading")} headingId="skills-heading" aosDirection="fade-right" className="pb-4">
             <div className={`${styles.flexCenter} md:max-w-xl`}>
               <div className="flex flex-wrap pr-8">
                 {data.skills.map((skill) => (
@@ -124,7 +131,7 @@ export default function Skills() {
             </div>
           </SkillsPanel>
 
-          <SkillsPanel heading={t("skills.certification")} aosDirection="fade-right">
+          <SubSection heading={t("skills.certification")} aosDirection="fade-right">
             <div className={`${styles.flexCenter} lg:mr-5`}>
               <div className="flex flex-wrap">
                 {data.certification.map((cert) => (
@@ -139,12 +146,11 @@ export default function Skills() {
                 ))}
               </div>
             </div>
-          </SkillsPanel>
+          </SubSection>
         </div>
 
         <div className="lg:flex lg:flex-col p-2 m-2 pb-4">
-          <div className="mb-4" data-aos="fade-left" data-aos-delay="200">
-            <h2 className={`${styles.heading1Left}`}>{t("skills.education")}</h2>
+          <SubSection heading={t("skills.education")} aosDirection="fade-left">
             <div className={`${styles.flexCenter} lg:mr-5`}>
               <div className="flex flex-wrap">
                 {data.education.map((edu) => (
@@ -167,10 +173,9 @@ export default function Skills() {
                 ))}
               </div>
             </div>
-          </div>
+          </SubSection>
 
-          <div className="mb-4" data-aos="fade-left" data-aos-delay="200">
-            <h2 className={`${styles.heading1Left}`}>{t("skills.experience")}</h2>
+          <SubSection heading={t("skills.experience")} aosDirection="fade-left">
             <div className="flex flex-wrap">
               {data.experience.map((exp) => (
                 <div key={exp.id}>
@@ -187,10 +192,9 @@ export default function Skills() {
                 </div>
               ))}
             </div>
-          </div>
+          </SubSection>
 
-          <div className="mb-4" data-aos="fade-left" data-aos-delay="200">
-            <h2 className={`${styles.heading1Left}`}>{t("skills.accomplishments")}</h2>
+          <SubSection heading={t("skills.accomplishments")} aosDirection="fade-left">
             <div className="flex flex-wrap">
               {data.accomplishments.map((acc) => (
                 <div key={acc.id}>
@@ -200,7 +204,7 @@ export default function Skills() {
                 </div>
               ))}
             </div>
-          </div>
+          </SubSection>
         </div>
       </div>
     </section>
