@@ -48,8 +48,8 @@ function ProjectCard({ project }) {
 function ProjectThumbnail({ project, isActive, onClick }) {
   return (
     <div
-      className={`cursor-pointer rounded-xl overflow-hidden transition-all ${
-        isActive ? "border-2 border-orange scale-105" : "opacity-70 hover:opacity-100"
+      className={`cursor-pointer rounded-xl overflow-hidden transition-all border-2 ${
+        isActive ? "border-orange scale-105" : "border-transparent opacity-70 hover:opacity-100"
       }`}
       onClick={onClick}
       role="button"
