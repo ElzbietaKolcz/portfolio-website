@@ -3,7 +3,6 @@ import { t } from "../i18n";
 import InterestCard from "./InterestCard";
 import RichText from "./RichText";
 
-const image = "/images/fot_Julia_Krzemianowska.webp";
 
 const paraClass = `${styles.paragraph} text-left`;
 
@@ -38,7 +37,9 @@ export default function About() {
           data-aos-delay="200"
         >
           <img
-            src={image}
+            src="/images/fot_Julia_Krzemianowska.webp"
+            srcSet="/images/fot_Julia_Krzemianowska-400w.webp 400w, /images/fot_Julia_Krzemianowska-640w.webp 640w, /images/fot_Julia_Krzemianowska.webp 640w"
+            sizes="(max-width: 768px) 280px, 320px"
             alt="A woman in elegant clothes working at a computer and writing notes."
             className="rounded-3xl w-full max-w-[280px] lg:max-w-[320px] aspect-auto"
             width="320"

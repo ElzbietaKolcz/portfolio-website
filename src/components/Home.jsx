@@ -2,8 +2,6 @@ import { Link } from "react-scroll";
 import styles from "../style";
 import { t } from "../i18n";
 import RichText from "./RichText";
-const avatarImage = '/images/avatar_fot_Julia_Krzemianowska.webp';
-
 export default function Home() {
   return (
     <header role="banner">
@@ -13,13 +11,14 @@ export default function Home() {
         className={`${styles.flexCenter} flex-col md:flex-row`}
       >
         <img
-          src={avatarImage}
+          src="/images/avatar_fot_Julia_Krzemianowska.webp"
+          srcSet="/images/avatar_fot_Julia_Krzemianowska-400w.webp 400w, /images/avatar_fot_Julia_Krzemianowska-600w.webp 600w, /images/avatar_fot_Julia_Krzemianowska.webp 600w"
+          sizes="(max-width: 768px) 50vw, 40vw"
           alt="A woman in elegant clothes standing with her hands at waist level, smiling gently."
           className="w-1/2 md:w-2/5 pt-28 md:pl-2 lg:px-5 lg:mx-10 aspect-auto"
           fetchpriority="high"
           width="600"
           height="600"
-          sizes="(max-width: 768px) 50vw, 40vw"
           data-aos="zoom-in"
           data-aos-delay="300"
         />
