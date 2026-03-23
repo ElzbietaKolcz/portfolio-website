@@ -38,27 +38,35 @@ export default function App() {
   return (
     <LangContext.Provider value={{ lang, setLang: setLanguage }}>
     <div className="w-full overflow-hidden text-black bg-white">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:text-primary-100"
+      >
+        Skip to main content
+      </a>
       <Preloader />
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-        <div  className={`${styles.boxWidth}`}>
+        <div className={`${styles.boxWidth}`}>
           <Navbar />
         </div>
       </div>
 
-      <div
-      
-        className={`${styles.flexStart} mb-20`}
-        id="home"
-      >
-        <div 
-        className={`${styles.boxWidth}`}>
-          
-          <Home />
+      <main id="main-content" role="main">
+        <div className={`${styles.flexStart} mb-20`}>
+          <div className={`${styles.boxWidth}`}>
+            <Home />
+          </div>
         </div>
-      </div>
 
-      <main role="main">
-        <Suspense fallback={<div className={styles.loadingOverlay} style={{ backgroundImage: 'url(/images/logo_gif.gif)' }}></div>}>
+        <Suspense fallback={
+          <div
+            className={styles.loadingOverlay}
+            style={{ backgroundImage: 'url(/images/logo_gif.gif)' }}
+            role="status"
+            aria-label="Loading content, please wait"
+            aria-live="polite"
+          />
+        }>
           <BackgroundDivider src="/background/bgImage01.webp" alt="A woman working on a website design project in Figma." />
 
           <div className={`${styles.paddingX} ${styles.flexCenter}`}>
