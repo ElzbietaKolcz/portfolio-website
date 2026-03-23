@@ -46,19 +46,29 @@ function ProjectCard({ project }) {
 }
 
 function ProjectThumbnail({ project, isActive, onClick }) {
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <div
       className={`cursor-pointer rounded-xl overflow-hidden transition-all border-2 ${
         isActive ? "border-orange scale-105" : "border-transparent opacity-70 hover:opacity-100"
       }`}
       onClick={onClick}
+      onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
+      aria-label={project.title}
+      aria-pressed={isActive}
     >
       <img
         className="object-cover w-full h-32 aspect-auto"
         src={project.imageUrl}
-        alt={project.alt}
+        alt=""
         title={project.title}
         loading="lazy"
       />
@@ -81,7 +91,7 @@ export const projects = [
     id: 2,
     title: "ZodiaCal - Engineering thesis",
     description:
-      "A multifunctional personal calendar designed to enhance time management while incorporating a daily skin care planner for holistic support of users’ routines.",
+      "A multifunctional personal calendar designed to enhance time management while incorporating a daily skin care planner for holistic support of users' routines.",
     imageUrl: "/projects/zodiacal.webp",
     alt:"Six smartphone screens showing different features of the ZodiaCal mobile app interface",
     behanceUrl: "https://www.behance.net/gallery/221123967/ZodiaCal-Engineering-thesis",
@@ -102,7 +112,7 @@ export const projects = [
     id: 4,
     title: "MAD logo & stickers",
     description:
-      "Logo project for MAD Academic Club at WSB Merito in Wrocław, paired with custom stickers designed to support promotion and encourage student engagement.",
+      "Logo project for MAD Academic Club at WSB Merito in Wroclaw, paired with custom stickers designed to support promotion and encourage student engagement.",
     imageUrl: "/projects/mad.webp",
     alt:"Laptop keyboard with a circular club logo sticker placed below the arrow keys",
     behanceUrl: "https://www.behance.net/gallery/193437693/MAD-Logo-LinkedIn-Profile",
@@ -120,9 +130,9 @@ export const projects = [
   },
   {
     id: 6,
-    title: "Idź Pan w UI! -  3 projects",
+    title: "Idz Pan w UI! -  3 projects",
     description:
-      "Idź Pan w UI! is a monthly design challenge created by Natalia Bienias. In its 26th edition, my project was featured and discussed in a video on the By Zebza YouTube channel.",
+      "Idz Pan w UI! is a monthly design challenge created by Natalia Bienias. In its 26th edition, my project was featured and discussed in a video on the By Zebza YouTube channel.",
     imageUrl: "/projects/dashbord.webp",
     alt:"Three floating screens showing a healthy nutrition and diet tracking mobile app interface.",
     behanceUrl: "https://www.behance.net/gallery/134270851/Idz-Pan-w-UI",
@@ -136,6 +146,7 @@ export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef(null);
+  const liveRef = useRef(null);
 
 
   useEffect(() => {
@@ -152,6 +163,7 @@ export default function Projects() {
 
   const handleThumbnailClick = (index) => {
     setActiveIndex(index);
+    setIsPaused(true);
   };
 
   const activeProject = projects[activeIndex];
@@ -159,12 +171,22 @@ export default function Projects() {
   return (
     <section
       id="projects"
+      aria-labelledby="projects-heading"
       className={`${styles.flexCenter}`}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <div className={`${styles.flexCol} mb-2`}>
-        <h2 className={`${styles.heading1}`}>{t("projects.heading")}</h2>
+        <h2 id="projects-heading" className={`${styles.heading1}`}>{t("projects.heading")}</h2>
+
+        <div
+          ref={liveRef}
+          aria-live="polite"
+          aria-atomic="true"
+          className="sr-only"
+        >
+          {`${activeProject.title}, ${activeIndex + 1} of ${projects.length}`}
+        </div>
 
         <div className={`${styles.flexCol}`}>
           <div className="flex flex-col mb-2 relative">
