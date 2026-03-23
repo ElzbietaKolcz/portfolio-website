@@ -1,4 +1,5 @@
 import { Link } from "react-scroll";
+import { t } from "../i18n";
 
 const COLOR_MAP = {
   primary: "text-primary-100",
@@ -27,8 +28,8 @@ function Segment({ seg }) {
         duration={500}
         role="link"
         tabIndex={0}
-        title="Go to contact section"
-        aria-label="Navigate to contact section"
+        title={t("nav.goToContact")}
+        aria-label={t("nav.navigateToContact")}
       >
         {seg.text}
         <span className="underline-animation absolute bottom-0 left-0 right-full h-0.5 rounded-full bg-orange transition-all duration-400 ease-out" />
