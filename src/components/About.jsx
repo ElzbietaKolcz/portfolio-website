@@ -41,7 +41,7 @@ export default function About() {
             srcSet="/images/fot_Julia_Krzemianowska-400w.webp 400w, /images/fot_Julia_Krzemianowska-640w.webp 640w, /images/fot_Julia_Krzemianowska.webp 640w"
             sizes="(max-width: 768px) 280px, 320px"
             alt="A woman in elegant clothes working at a computer and writing notes."
-            className="rounded-3xl w-full max-w-[280px] lg:max-w-[320px] aspect-auto"
+            className="rounded-3xl w-full max-w-[280px] lg:max-w-[320px] aspect-auto border-1 border-[hsl(20,96%,50%)]"
             width="320"
             height="480"
             loading="lazy"

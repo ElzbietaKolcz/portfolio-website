@@ -10,20 +10,7 @@ export default function Home() {
         aria-labelledby="home-heading"
         className={`${styles.flexCenter} flex-col md:flex-row`}
       >
-        <img
-          src="/images/avatar_fot_Julia_Krzemianowska.webp"
-          srcSet="/images/avatar_fot_Julia_Krzemianowska-400w.webp 400w, /images/avatar_fot_Julia_Krzemianowska-600w.webp 600w, /images/avatar_fot_Julia_Krzemianowska.webp 600w"
-          sizes="(max-width: 768px) 50vw, 40vw"
-          alt="A woman in elegant clothes standing with her hands at waist level, smiling gently."
-          className="w-1/2 md:w-2/5 pt-28 md:pl-2 lg:px-5 lg:mx-10 aspect-auto"
-          fetchpriority="high"
-          width="600"
-          height="600"
-          data-aos="zoom-in"
-          data-aos-delay="300"
-        />
-
-        <div className="flex-1 flex-col md:w-3/5 text-center item-center px-6 md:pt-20 md:text-left md:mx-5 xl:mx-10">
+        <div className="flex-1 flex-col md:w-3/5 text-center item-center px-6 pt-28 md:pt-20 md:text-left md:mx-5 xl:mx-6">
           <h1
             id="home-heading"
             className={`${styles.heading1} !mb-2 !pb-0`}
@@ -87,6 +74,19 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
+        <img
+          src="/images/avatar_fot_Julia_Krzemianowska.webp"
+          srcSet="/images/avatar_fot_Julia_Krzemianowska-400w.webp 400w, /images/avatar_fot_Julia_Krzemianowska-600w.webp 600w, /images/avatar_fot_Julia_Krzemianowska.webp 600w"
+          sizes="(max-width: 768px) 50vw, 40vw"
+          alt="A woman in elegant clothes standing with her hands at waist level, smiling gently."
+          className="w-1/2 md:w-2/5 md:pl-2 lg:px-5 lg:mx-10 aspect-auto pt-28"
+          fetchpriority="high"
+          width="600"
+          height="600"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        />
       </section>
     </header>
   );

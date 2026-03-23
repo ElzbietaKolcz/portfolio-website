@@ -35,12 +35,13 @@ function ProjectCard({ project }) {
         </p>
         <div className="pb-4 m-2 px-2 text-center md:text-left">
           <a
-            className="font-semibold underline hover:no-underline text-primary-100"
+            className={styles.link}
             href={project.behanceUrl}
             target="_blank"
             rel="noreferrer"
           >
             {t("projects.learnMore")}
+            <span className={styles.linkUnderline} />
           </a>
         </div>
       </div>

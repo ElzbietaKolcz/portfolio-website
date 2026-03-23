@@ -2,12 +2,14 @@ const styles = {
   boxWidth: "xl:max-w-[1280px] w-full",
 
   heading1:
-    "text-5xl md:text-6xl font-medium font-LifeSugarly my-8 md:pb-4 lg:pb-4 lg:mb-4 leading-tight text-primary-100 ss:text-[24px]",
+    "text-5xl md:text-6xl font-medium font-LifeSugarly my-8 md:pb-4 lg:pb-4 lg:mb-4 leading-tight text-primary-50 ss:text-[24px]",
   heading1Left:
-    "text-5xl md:text-6xl font-medium font-LifeSugarly my-2 md:pb-5 lg:pb-4 lg:mb-4 leading-5 text-primary-100  ss:text-[24px] lg:text-left",
+    "text-5xl md:text-6xl font-medium font-LifeSugarly my-2 md:pb-5 lg:pb-4 lg:mb-4 leading-5 text-primary-50 ss:text-[24px] lg:text-left",
   heading2:
     "font-Assistant text-lg text-white xs:leading-[76.8px] leading-[66.8px] w-full",
   paragraph: "font-Assistant text-[1.125rem] leading-[1.7]",
+  link: "font-semibold underline decoration-2 decoration-[hsl(20,96%,50%)] mobilehover:hover:no-underline relative mobilehover:hover:text-primary-50",
+  linkUnderline: "underline-animation absolute bottom-0 left-0 right-full h-0.5 rounded-full bg-[hsl(20,96%,50%)] transition-all duration-400 ease-out",
   
 
   flexCenter: "flex justify-center items-center",

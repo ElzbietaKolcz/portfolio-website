@@ -1,9 +1,10 @@
 import { Link } from "react-scroll";
 import { t } from "../i18n";
+import styles from "../style";
 
 const COLOR_MAP = {
   primary: "text-primary-100",
-  orange: "text-orange",
+  orange: "text-primary-50",
   black: "text-black",
   purple: "text-primary-50",
 };
@@ -12,7 +13,7 @@ function Segment({ seg }) {
   const classes = [
     seg.bold ? "font-semibold" : "",
     seg.italic ? "italic" : "",
-    seg.color ? (COLOR_MAP[seg.color] ?? "") : seg.italic ? "text-orange" : "",
+    seg.color ? (COLOR_MAP[seg.color] ?? "") : seg.italic ? "text-primary-50" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -20,7 +21,7 @@ function Segment({ seg }) {
   if (seg.link) {
     return (
       <Link
-        className="font-semibold underline mobilehover:hover:no-underline relative text-primary-100 mobilehover:hover:text-primary-50"
+        className={styles.link}
         to={seg.link.to}
         spy
         smooth
@@ -32,7 +33,7 @@ function Segment({ seg }) {
         aria-label={t("nav.navigateToContact")}
       >
         {seg.text}
-        <span className="underline-animation absolute bottom-0 left-0 right-full h-0.5 rounded-full bg-orange transition-all duration-400 ease-out" />
+        <span className={styles.linkUnderline} />
       </Link>
     );
   }

@@ -12,7 +12,7 @@
   }
 
   h2 {
-    @apply text-xl font-medium leading-[1.6] pb-1;
+    @apply text-xl font-bold leading-[1.6] pb-1;
     font-family: "Work Sans", sans-serif;
   }
 
@@ -54,7 +54,7 @@ a:hover .underline-animation {
 
   --color-black: hsl(250, 85%, 5%);
   --color-white: hsl(20, 100%, 99%);
-  --color-orange: hsl(30, 100%, 35%);
+  --color-orange: hsl(30, 100%, 30%);
   --color-primary-40: hsl(280, 60%, 90%);
   --color-primary-50: hsl(280, 100%, 35%);
   --color-primary-100: hsl(295, 75%, 30%);
