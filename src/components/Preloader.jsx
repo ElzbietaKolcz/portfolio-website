@@ -7,29 +7,44 @@
 import { useState, useEffect } from 'react';
 import LogoAnimation from './LogoAnimation';
 
-const DELAY_MS = 500;
-const FADE_DURATION_MS = 700;
+const DELAY_MS = 200;
+const FADE_DURATION_MS = 500;
+const MAX_WAIT_MS = 1500;
 
 export default function Preloader() {
   const [fading, setFading] = useState(false);
   const [gone, setGone] = useState(false);
 
   useEffect(() => {
+    let delayTimer;
+    let removeTimer;
+
     function startFadeOut() {
-      const delayTimer = setTimeout(() => {
+      delayTimer = setTimeout(() => {
         setFading(true);
-        const removeTimer = setTimeout(() => setGone(true), FADE_DURATION_MS);
-        return () => clearTimeout(removeTimer);
+        removeTimer = setTimeout(() => setGone(true), FADE_DURATION_MS);
       }, DELAY_MS);
-      return () => clearTimeout(delayTimer);
     }
 
-    if (document.readyState === 'complete') {
-      return startFadeOut();
+    // Start on DOMContentLoaded (or immediately if already ready)
+    // with a hard cap of MAX_WAIT_MS so LCP is never blocked
+    const maxTimer = setTimeout(startFadeOut, MAX_WAIT_MS);
+
+    if (document.readyState !== 'loading') {
+      clearTimeout(maxTimer);
+      startFadeOut();
+    } else {
+      document.addEventListener('DOMContentLoaded', () => {
+        clearTimeout(maxTimer);
+        startFadeOut();
+      }, { once: true });
     }
 
-    window.addEventListener('load', startFadeOut, { once: true });
-    return () => window.removeEventListener('load', startFadeOut);
+    return () => {
+      clearTimeout(maxTimer);
+      clearTimeout(delayTimer);
+      clearTimeout(removeTimer);
+    };
   }, []);
 
   if (gone) return null;
@@ -42,7 +57,7 @@ export default function Preloader() {
         transition: `opacity ${FADE_DURATION_MS}ms ease-out`,
         opacity: fading ? 0 : 1,
       }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-white/90 backdrop-blur-xs pointer-events-none"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-white pointer-events-none"
     >
       <LogoAnimation />
     </div>
