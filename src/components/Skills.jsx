@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
-import { db } from "../firebase";
+import { skills, certification, education, experience, accomplishments } from "../data/skills";
 
 import styles from "../style";
 import { t } from "../i18n";
@@ -87,30 +85,8 @@ function SubSection({ heading, aosDirection, className = "", children }) {
   );
 }
 
-const COLLECTIONS = ["skills", "certification", "education", "experience", "accomplishments"];
-
 export default function Skills() {
-  const [data, setData] = useState({
-    skills: [],
-    certification: [],
-    education: [],
-    experience: [],
-    accomplishments: [],
-  });
-
-  useEffect(() => {
-    const fetchCollection = async (name) => {
-      const q = query(collection(db, name), orderBy("id"));
-      const snapshot = await getDocs(q);
-      return snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    };
-
-    Promise.all(COLLECTIONS.map(fetchCollection)).then(
-      ([skills, certification, education, experience, accomplishments]) => {
-        setData({ skills, certification, education, experience, accomplishments });
-      }
-    );
-  }, []);
+  const data = { skills, certification, education, experience, accomplishments };
 
   return (
     <section id="skills" aria-labelledby="skills-heading" className={`${styles.flexCol}`}>

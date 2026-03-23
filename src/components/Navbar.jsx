@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, scroller } from "react-scroll";
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
-import { db } from "../firebase";
+import { menu as menuData } from "../data/menu";
 import { logo } from "../assets/index";
 import { FocusTrap } from "focus-trap-react";
 import { SCROLL, TIMING, INTERSECTION } from "../constants";
@@ -9,7 +8,7 @@ import { t } from "../i18n";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [menu, setMenu] = useState([]);
+  const menu = menuData;
   const [onDarkSection, setOnDarkSection] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
@@ -22,20 +21,6 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isMenuOpen]);
-
-  useEffect(() => {
-    const fetchMenu = async () => {
-      const q = query(collection(db, "menu"), orderBy("id"));
-      const data = await getDocs(q);
-      setMenu(
-        data.docs.map((doc) => {
-          const { name, path } = doc.data();
-          return { id: name, name, path };
-        }),
-      );
-    };
-    fetchMenu();
-  }, []);
 
   useEffect(() => {
     const darkSections = document.querySelectorAll('[data-dark="true"]');

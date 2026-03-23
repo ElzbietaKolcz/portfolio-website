@@ -11,7 +11,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['preact', 'preact/compat', 'preact/hooks'],
-          firebase: ['firebase/app', 'firebase/firestore'],
         },
       },
     },
