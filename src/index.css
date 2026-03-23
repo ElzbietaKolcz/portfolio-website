@@ -71,6 +71,18 @@ a:hover .underline-animation {
   }
 }
 
+:focus-visible {
+  outline: 3px solid var(--color-primary-100);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .bg-fixed {
+    background-attachment: scroll;
+  }
+}
+
 @layer components {
   .button {
     @apply uppercase gap-2 min-h-[50px] font-semibold text-base text-center drop-shadow;
