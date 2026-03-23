@@ -33,6 +33,12 @@ export default function SocialButton({
       onMouseLeave={() => {
         if (!shouldDisableAnimation) setHovered(false);
       }}
+      onFocus={() => {
+        if (!shouldDisableAnimation) setHovered(true);
+      }}
+      onBlur={() => {
+        if (!shouldDisableAnimation) setHovered(false);
+      }}
       className="flex items-center rounded-full border-2 border-primary-50 bg-white text-primary-50 font-medium p-1"
       aria-label={ariaLabel}
       title={ariaLabel}
