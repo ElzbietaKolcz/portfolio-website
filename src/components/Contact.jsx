@@ -7,14 +7,14 @@ import { t } from "../i18n";
 
 export default function Contact() {
   return (
-    <section id="contact">
+    <section id="contact" aria-labelledby="contact-heading">
       <div className="pb-3 md:pb-0">
         {/* Grid layout: 3 kolumny — lewa, środek (logo), prawa */}
         <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-6 items-start">
 
           {/* Left — heading, description, email & CV */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h2 className={`${styles.heading1}`}>{t("contact.heading")}</h2>
+            <h2 id="contact-heading" className={`${styles.heading1}`}>{t("contact.heading")}</h2>
             <p className="max-w-[55ch] pb-6">{t("contact.description")}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <EmailButton
@@ -41,7 +41,7 @@ export default function Contact() {
 
           {/* Right — social links */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h2 className={`${styles.heading1}`}>{t("socialMedia.heading")}</h2>
+            <h3 className={`${styles.heading1}`}>{t("socialMedia.heading")}</h3>
             {/* Ten paragraf będzie wyrównany w pionie z lewym */}
             <p className="max-w-[55ch] pb-4">{t("socialMedia.description")}</p>
             
@@ -49,7 +49,7 @@ export default function Contact() {
               <SocialButton
                 icon={linkedIn}
                 text={t("socialMedia.linkedinButton")}
-                link="https://www.linkedin.com/in/"
+                link="https://www.linkedin.com/in/elzbieta-kolcz/"
                 ariaLabel={t("socialButton.openLinkedin")}
               />
               <SocialButton
