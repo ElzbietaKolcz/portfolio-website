@@ -140,6 +140,7 @@ export default function Navbar() {
                   to={item.name}
                   title={t("nav.menu.goTo", { section: item.name })}
                   aria-label={t("nav.menu.goTo", { section: item.name })}
+                  aria-current={activeSection === item.name.toLowerCase() ? "true" : undefined}
                   spy
                   smooth
                   offset={SCROLL.OFFSET_DEFAULT}
@@ -218,6 +219,7 @@ export default function Navbar() {
                   to={item.name}
                   title={t("nav.menu.goTo", { section: item.name })}
                   aria-label={t("nav.menu.goTo", { section: item.name })}
+                  aria-current={activeSection === item.name.toLowerCase() ? "true" : undefined}
                   spy
                   smooth
                   offset={SCROLL.OFFSET_DEFAULT}
