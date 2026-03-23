@@ -19,6 +19,7 @@ export default function Home() {
           fetchpriority="high"
           width="600"
           height="600"
+          sizes="(max-width: 768px) 50vw, 40vw"
           data-aos="zoom-in"
           data-aos-delay="300"
         />

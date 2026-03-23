@@ -19,6 +19,9 @@ function ProjectCard({ project }) {
             src={project.imageUrl}
             alt={project.alt}
             title={project.description}
+            width="640"
+            height="640"
+            loading="lazy"
           />
         </div>
       </div>
@@ -71,6 +74,8 @@ function ProjectThumbnail({ project, isActive, onClick }) {
         alt=""
         title={project.title}
         loading="lazy"
+        width="320"
+        height="128"
       />
     </div>
   );
