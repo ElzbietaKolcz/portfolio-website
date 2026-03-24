@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'preact/compat';
 import { useState, useEffect, useRef } from 'preact/hooks';
-import 'aos/dist/aos.css';
+import { initScrollAnimations } from './utils/animations';
 import styles from "./style";
 import { LangContext } from "./LangContext";
 import {
@@ -56,12 +56,7 @@ export default function App() {
     // Remove static hero placeholder now that React has rendered
     document.getElementById('static-hero')?.remove();
 
-    import('aos').then(({ default: AOS }) => {
-      AOS.init({
-        once: true,
-        disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth < 768,
-      });
-    });
+    initScrollAnimations();
   }, []);
 
   const setLanguage = (newLang) => {
