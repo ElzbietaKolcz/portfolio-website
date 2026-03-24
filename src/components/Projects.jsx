@@ -18,7 +18,6 @@ function ProjectCard({ project }) {
             className="absolute aspect-auto inset-0 w-full h-full object-cover rounded-t-lg md:rounded-l-lg transition-opacity duration-500"
             src={project.imageUrl}
             alt={project.alt}
-            title={project.description}
             width="640"
             height="640"
             loading="lazy"
@@ -73,7 +72,6 @@ function ProjectThumbnail({ project, isActive, onClick }) {
         className="object-cover w-full h-32 aspect-auto"
         src={project.imageUrl}
         alt=""
-        title={project.title}
         loading="lazy"
         width="320"
         height="128"
