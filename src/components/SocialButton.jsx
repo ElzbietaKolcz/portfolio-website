@@ -43,7 +43,7 @@ export default function SocialButton({
       aria-label={ariaLabel}
       title={ariaLabel}
     >
-      <img src={icon} alt="" className="w-6 h-6" />
+      <img src={icon} alt="" className="w-6 h-6" loading="lazy" />
 
       <div
         style={style}

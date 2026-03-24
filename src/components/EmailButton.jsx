@@ -19,7 +19,7 @@ export default function EmailButton({ icon, text, copyText }) {
       aria-label={t("emailButton.ariaLabel", { email: copyText })}
       title={t("emailButton.ariaLabel", { email: copyText })}
     >
-      <img src={icon} alt="" className="w-6 h-6" />
+      <img src={icon} alt="" className="w-6 h-6" loading="lazy" />
       <span className={isCopied ? "text-green-500 font-semibold" : ""}>
         {isCopied ? t("emailButton.copied") : text}
       </span>
