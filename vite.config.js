@@ -35,18 +35,8 @@ export default defineConfig({
           )
             return "ui-libs";
         },
-        chunkFileNames: "assets/js/[name]-[hash].js",
-        entryFileNames: "assets/js/[name]-[hash].js",
-        assetFileNames: ({ names }) => {
-          const name = names?.[0] ?? "";
-          if (/\.(woff2?|ttf|eot)$/.test(name))
-            return "assets/fonts/[name]-[hash][extname]";
-          if (/\.(png|jpe?g|webp|avif|svg|gif)$/.test(name))
-            return "assets/images/[name]-[hash][extname]";
-          if (/\.css$/.test(name))
-            return "assets/css/[name]-[hash][extname]";
-          return "assets/[name]-[hash][extname]";
-        },
+        chunkFileNames: "assets/[name]-[hash].js",
+        entryFileNames: "assets/[name]-[hash].js",
       },
     },
   },
