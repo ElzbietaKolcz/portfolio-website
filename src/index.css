@@ -49,8 +49,7 @@ a:hover .underline-animation {
 @theme {
 
   --font-LifeSugarly: "LifeSugarlyUP", sans-serif;
-  --font-PlayfairDisplay: "Playfair Display", serif;
-  --font-WorkSans: "WorkSans", sans-serif;
+  --font-WorkSans: "Work Sans", sans-serif;
 
   --color-black: hsl(250, 85%, 5%);
   --color-white: hsl(20, 100%, 99%);
