@@ -106,7 +106,7 @@ export default function Navbar() {
             title={t("nav.logo.title")}
             aria-label={t("nav.logo.ariaLabel")}
           >
-            <img src={logo} alt="" className="h-11" />
+            <img src={logo} alt="" className="h-11" width="111" height="44" />
           </a>
 
           {/* Desktop menu */}
