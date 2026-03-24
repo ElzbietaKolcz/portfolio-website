@@ -18,15 +18,8 @@ export default defineConfig({
     minify: "esbuild",
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes("node_modules/preact")) return "vendor";
-          if (
-            id.includes("node_modules/react-scroll") ||
-            id.includes("node_modules/react-responsive") ||
-            id.includes("node_modules/react-device-detect") ||
-            id.includes("node_modules/focus-trap")
-          )
-            return "ui-libs";
+        manualChunks: {
+          vendor: ["preact", "preact/compat", "preact/hooks"],
         },
         chunkFileNames: "assets/[name]-[hash].js",
         entryFileNames: "assets/[name]-[hash].js",
