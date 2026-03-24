@@ -95,7 +95,6 @@ export default function App() {
         <Suspense fallback={
           <div
             className={styles.loadingOverlay}
-            style={{ backgroundImage: 'url(/images/logo_gif.gif)' }}
             role="status"
             aria-label="Loading content, please wait"
             aria-live="polite"

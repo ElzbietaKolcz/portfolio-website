@@ -123,6 +123,7 @@ export default function Navbar() {
                       : inactiveLinkClass
                   }`}
                   to={item.name}
+                  href={`#${item.name.toLowerCase()}`}
                   title={t("nav.menu.goTo", { section: item.name })}
                   aria-label={t("nav.menu.goTo", { section: item.name })}
                   aria-current={activeSection === item.name.toLowerCase() ? "true" : undefined}
@@ -202,6 +203,7 @@ export default function Navbar() {
                       : "text-black hover:border-b-4 hover:border-primary-100 hover:font-semibold hover:text-primary-100"
                   }`}
                   to={item.name}
+                  href={`#${item.name.toLowerCase()}`}
                   title={t("nav.menu.goTo", { section: item.name })}
                   aria-label={t("nav.menu.goTo", { section: item.name })}
                   aria-current={activeSection === item.name.toLowerCase() ? "true" : undefined}
