@@ -80,7 +80,7 @@ export default function Home() {
           srcSet="/images/avatar_fot_Julia_Krzemianowska-400w.webp 400w, /images/avatar_fot_Julia_Krzemianowska-600w.webp 600w, /images/avatar_fot_Julia_Krzemianowska.webp 600w"
           sizes="(max-width: 768px) 50vw, 40vw"
           alt="A woman in elegant clothes standing with her hands at waist level, smiling gently."
-          className="w-1/2 md:w-2/5 md:pl-2 lg:px-5 lg:mx-10 aspect-auto pt-28"
+          className="w-1/2 md:w-2/5 md:pl-2 lg:px-5 lg:mx-10 aspect-auto pt-28 order-first md:order-none"
           fetchpriority="high"
           width="600"
           height="600"
