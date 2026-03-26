@@ -17,11 +17,9 @@
   },
   "home": {
     "titleSpan": "",
-    "title": "Elżbieta Kołcz",
-    "fullName": "Accessibility & WCAG | UX/UI Designer | Design & Code",
+    "title": "Accessibility & UX/UI Designer",
+    "fullName": "My life's mission is to prove that accessibility can be beautiful.",
     "description": [
-      { "text": "My life's mission is to prove that " },
-      { "text": "accessibility can be beautiful.", "bold": true, "color": "orange" },
       { "text": " UX/UI Designer at the intersection of " },
       { "text": "design,", "bold": true, "color": "orange" },
       { "text": " " },
@@ -74,9 +72,9 @@
         "segments": [
           { "text": "Co-founder of the MAD", "bold": true },
           { "text": " " },
-          { "text": "academic club", "italic": true },
+          { "text": "academic club"},
           { "text": " - a student organisation focused on " },
-          { "text": "Apple", "italic": true },
+          { "text": "Apple"},
           { "text": " technology - and " },
           { "text": "co-founder of the IT conference", "bold": true },
           { "text": " " },
@@ -90,9 +88,11 @@
         "id": 4,
         "segments": [
           { "text": "Engineering thesis", "bold": true },
-          { "text": " - the " },
-          { "text": "ZodiaCal", "italic": true },
-          { "text": " mobile app, designed and built from scratch, defended with the highest grade (5.0). My Bachelor's degree was completed with " },
+          { "text": " - the ZodiaCal" },
+          { "text": " mobile app", "bold": true },
+          { "text": ", designed and built from scratch, defended with" },
+          { "text": " the highest grade", "italic": true },
+          { "text": " (5.0). My Bachelor's degree was completed with "},
           { "text": "distinction", "bold": true },
           { "text": " for " },
           { "text": "academic and organisational activity", "italic": true },
@@ -113,7 +113,7 @@
           { "text": ". In 2024, my iOS " },
           { "text": "app for painting style recognition", "bold": true },
           { "text": " - built with " },
-          { "text": "CreateML", "italic": true },
+          { "text": "CreateML"},
           { "text": " - was submitted to the international " },
           { "text": "Apple Swift Student Challenge.", "bold": true }
         ]
@@ -133,7 +133,10 @@
       }
     ]
   },
-  "interests": [
+  "interests": {
+    "heading": "Interests",
+    "items":
+   [
     {
       "id": 1,
       "icon": "🛼",
@@ -164,7 +167,8 @@
       "title": "Avant-garde cinema enthusiast",
       "description": "As a fan of unconventional films, I seek out the strangest ones that immerse me in extraordinary worlds."
     }
-  ],
+  ]
+  },
   "skills": {
     "heading": "Skills",
     "certification": "Certification",

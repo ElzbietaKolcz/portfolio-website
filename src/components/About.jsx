@@ -22,7 +22,7 @@ export default function About() {
       <h2 id="about-heading" className={`${styles.heading1}`}>{t("about.heading")}</h2>
 
       {/* Row 1: About | Photo | About */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 items-center pb-10 px-5 sm:px-10">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 items-center px-5 sm:px-10">
         {/* Left column */}
         <div className={`${paraClass}`}>
           {t("about.left").map((item) => (
@@ -57,8 +57,9 @@ export default function About() {
       </div>
 
       {/* Row 2: Interest cards */}
+        <h2 id="about-heading" className={`${styles.heading1}`}>{t("interests.heading")}</h2>
       <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 px-5 sm:px-10 pb-12">
-        {t("interests").map((interest) => (
+        {t("interests.items").map((interest) => (
           <InterestCard
             key={interest.id}
             icon={interest.icon}

@@ -10,7 +10,7 @@ export default function Home() {
         aria-labelledby="home-heading"
         className={`${styles.flexCenter} flex-col md:flex-row`}
       >
-        <div className="flex-1 flex-col md:w-3/5 text-center item-center px-6 pt-2 md:pt-20 md:text-left md:mx-5 xl:mx-6">
+        <div className="flex-1 flex-col text-center item-center pt-2 md:pt-32 md:text-left ">
           <h1
             id="home-heading"
             className={`${styles.heading1} !mb-2 !pb-0`}
