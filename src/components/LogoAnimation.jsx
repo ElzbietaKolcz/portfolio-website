@@ -2,21 +2,16 @@
 //
 // Animation sequence:
 //   Phase 1 (simultaneous):  /  I  K   — clip-path top → bottom
-//   Phase 2 (after phase 1): O         — stroke draws CW from 9 o'clock (left → right)
+//   Phase 2 (after phase 1): O         — stroke draws from ~9 o'clock (left → right)
 //   Phase 3 (simultaneous):  Z-góra (right→left)  Z-dół (left→right)
-//                            C — SVG mask with animated arc reveals the
-//                                original filled path from top → bottom
+//                            C — stroke-dashoffset draws from top gap to bottom gap
 //
-// C uses the original filled <path> (horizontal gap edges = pixel-perfect
-// bar junction). An SVG <mask> containing a wide-stroke arc draws from
-// the top gap CCW to the bottom gap, progressively revealing C.
-//
-// Loop: 5.5 s  |  0-1s phase1  |  1-1.8s phase2  |  1.8-3.5s phase3
-//              |  3-4.5s hold  |  4.5-3.5s fade+blank+restart
+// Loop: 3.5 s  |  0-18% phase1  |  18-33% phase2  |  33-55% phase3
+//              |  55-82% hold   |  82-89% fade     |  89-100% blank
 
 export default function LogoAnimation({ size } = /** @type {any} */({})) {
   const css = `
-    .laf { fill: #f7931e; }
+    .laf { fill: #FA5705; }
 
     /* ── Phase 1: /, I, K  (0% → 18%)  clip top → bottom ─── */
 
@@ -63,13 +58,10 @@ export default function LogoAnimation({ size } = /** @type {any} */({})) {
       89%, 100%  { clip-path: inset(0 100% 0 0); }
     }
 
-    /* ── Phase 3c: C mask arc  (33% → 55%) ──────────────── */
-    /*    The mask contains a wide-stroke arc (sw=50) at the  */
-    /*    C mid-radius. stroke-dashoffset draws it CCW from   */
-    /*    the top gap to the bottom gap, revealing the filled */
-    /*    C path underneath.                                   */
+    /* ── Phase 3c: C  (33% → 55%)  stroke draw top → bottom ─ */
+    /*    Path starts at top-right gap, ends at bottom-right gap */
 
-    .la-cmask-arc {
+    .la-c {
       stroke-dasharray: 100;
       animation: la-p3c 3.5s infinite;
     }
@@ -96,7 +88,7 @@ export default function LogoAnimation({ size } = /** @type {any} */({})) {
       .la-zgora, .la-zdol, .la-group {
         animation: none; clip-path: none; opacity: 1;
       }
-      .la-o, .la-cmask-arc {
+      .la-o, .la-c {
         animation: none; stroke-dashoffset: 0;
       }
     }
@@ -106,81 +98,56 @@ export default function LogoAnimation({ size } = /** @type {any} */({})) {
     <div className="flex justify-center items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 470.8 494.68"
+        viewBox="0 0 70 75"
         className={size === "small" ? "w-28 h-auto sm:w-36 md:w-44" : "w-40 h-auto sm:w-52 md:w-64"}
-
         aria-hidden="true"
         focusable="false"
       >
         <style>{css}</style>
-
-        <defs>
-          {/* Mask for C: arc at mid-radius (235.34) with wide stroke (70)
-              covers the full C thickness plus safety margin.
-              Arc extends ~8° past each gap for full coverage at junctions.
-              White stroke = visible area in mask. */}
-          <mask
-            id="la-cmask"
-            maskUnits="userSpaceOnUse"
-            x="0" y="0" width="470.8" height="494.68"
-          >
-            <path
-              className="la-cmask-arc"
-              d="M470,141.24 L457.44,141.24 L440.59,113.00 A235.34,235.34 0 1 0 468.05,329.14"
-              pathLength="100"
-              fill="none"
-              stroke="white"
-              strokeWidth="70"
-            />
-          </mask>
-        </defs>
 
         <g className="la-group">
 
           {/* ── Phase 1: /, I, K ──────────────────────────── */}
 
           <g className="la-slash">
-            <polygon className="laf" points="53.63 358.94 86.51 359.94 473.5 140.28 447.09 140.24 53.63 359.94"/>
+            <path className="laf" d="M69.3469 20.9582L13.4978 53.3574L8.55225 53.3574L64.1872 21.0825L69.2735 20.8317L69.3469 20.9582Z" />
           </g>
 
           <g className="la-i">
-            <path className="laf" d="M219.72,369.39s1.87.43,4,.83c1.59.31,3.31.59,4.41.75,1.6.23,4.16.58,6.18.79l3,.29V128.19s-1.15.08-2.38.2c-.77.07-1.66.19-2.14.25-1.12.13-3.18.41-4.26.55l-1.75.27c-1,.15-2.09.39-2.76.51-1.09.19-4.28.87-4.28.87Z"/>
+            <path className="laf" d="M32.2607 55.1641V19.2813C32.2607 19.2813 33.0154 19.045 33.5 18.9492C33.9846 18.8535 34.7424 18.7789 34.7424 18.7789V55.6719C34.7424 55.6719 33.9846 55.5499 33.5 55.4492C33.0154 55.3485 32.2607 55.1641 32.2607 55.1641Z" />
           </g>
 
           <g className="la-k">
-            <polygon className="laf" points="274.26 250.52 260.47 258.34 359.08 359.94 380.69 359.94 274.26 250.52"/>
-            <polygon className="laf" points="372.69 372.56 372.75 372.61 372.8 372.56 372.69 372.56"/>
+            <path className="laf" d="M55.8623 53.3857L52.4968 53.3857L38.9401 38.5864L41.1502 37.3252L55.8623 53.3857Z" />
           </g>
 
           {/* ── Phase 2: O ────────────────────────────────── */}
 
           <circle
             className="la-o"
-            cx="246.76" cy="250.12" r="114.74"
+            cx="37.2245" cy="37.2255" r="17.2828"
             pathLength="100"
-            fill="none" stroke="#f7931e" strokeWidth="15.14"
-            transform="scale(-1,1) translate(-493.52, 0) rotate(280, 246.76, 250.12)"
+            fill="none" stroke="#FA5705" strokeWidth="2.65889"
+            transform="scale(-1,1) translate(-74.449, 0) rotate(280, 37.2245, 37.2255)"
           />
 
-          {/* ── Phase 3: C (masked), then bars on top ─────── */}
+          {/* ── Phase 3: C, Z-góra, Z-dół ─────────────────── */}
 
-          {/* C: original filled path revealed by the animated mask.
-              Horizontal gap edges at y=141.24 and y=358.93 are
-              preserved exactly → pixel-perfect bar junction. */}
-          <g mask="url(#la-cmask)">
-            <path className="laf" d="M440.94,358.93a223.33,223.33,0,0,1-193.6,111.91c-123.44,0-223.51-100.08-223.51-223.5S123.9,23.83,247.34,23.83A223.46,223.46,0,0,1,444.09,141.24H470.8C431.08,57.73,346,0,247.34,0,110.74,0,0,110.74,0,247.34S110.74,494.68,247.34,494.68c96.43,0,179.91-55.22,220.71-135.74Z"/>
-          </g>
+          {/* C: stroke path drawn from top-right gap to bottom-right gap.
+              Bars render on top to cover any stroke end artifacts. */}
+          <path
+            className="la-c"
+            d="M67.6238 21.7131C61.9036 10.378 50.7777 2.48047 37.2162 2.48047C18.0325 2.48047 2.48096 18.0354 2.48096 37.2233C2.48096 56.4113 18.0325 71.9662 37.2162 71.9662C50.0732 71.9662 61.2986 64.9794 67.3045 54.5948C67.5388 54.1896 67.6238 53.9743 67.6238 53.3539"
+            pathLength="100"
+            fill="none" stroke="#FA5705" strokeWidth="3.72245"
+          />
 
-          {/* Bars render ON TOP of C → cover any mask edge
-              artifacts at the junction points */}
           <g className="la-zgora">
-            <path className="laf" d="M30.87,127.63h-.11v.19Z"/>
-            <path className="laf" d="M48.59,142.54h397.5q-3.76,-7.76,-8,-15.12H56.65C53.82,132.35,51.11,137.37,48.59,142.54Z"/>
+            <path className="laf" d="M68 21.0949V18.6133H10.0975C10.0975 18.6133 9.79926 19.0154 9.5 19.5C9.20074 19.9846 8.54688 21.0949 8.54688 21.0949H68Z" />
           </g>
 
           <g className="la-zdol">
-            <path className="laf" d="M60.18,372.66H434.41c3,-4.91,5.86,-9.99,8.54,-15.12H51.65C54.33,362.70,57.19,367.76,60.18,372.66Z"/>
-            <path className="laf" d="M34,372.43v.09H34Z"/>
+            <path className="laf" d="M68 53.3555H8.55029C8.55029 53.3555 9.19549 54.4646 9.49995 54.9492C9.80442 55.4338 10.1095 55.8371 10.1095 55.8371H68V53.3555Z" />
           </g>
 
         </g>
