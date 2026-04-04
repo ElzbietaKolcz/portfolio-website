@@ -19,10 +19,10 @@ export default function LogoAnimation({ size } = /** @type {any} */({})) {
       animation: la-p1 3.5s infinite;
     }
     @keyframes la-p1 {
-      0%         { clip-path: inset(0 0 100% 0); animation-timing-function: ease-out; }
-      18%        { clip-path: inset(0 0 0    0); }
-      82%        { clip-path: inset(0 0 0    0); animation-timing-function: step-end; }
-      89%, 100%  { clip-path: inset(0 0 100% 0); }
+      0%         { clip-path: inset(0 0 100% 0) view-box; animation-timing-function: ease-out; }
+      18%        { clip-path: inset(0 0 0    0) view-box; }
+      82%        { clip-path: inset(0 0 0    0) view-box; animation-timing-function: step-end; }
+      89%, 100%  { clip-path: inset(0 0 100% 0) view-box; }
     }
 
     /* ── Phase 2: O  (18% → 33%)  stroke draw ────────────── */
@@ -42,20 +42,20 @@ export default function LogoAnimation({ size } = /** @type {any} */({})) {
 
     .la-zgora { animation: la-p3rl 3.5s infinite; }
     @keyframes la-p3rl {
-      0%, 33%    { clip-path: inset(0 0 0 100%); animation-timing-function: ease-out; }
-      55%        { clip-path: inset(0 0 0 0   ); }
-      82%        { clip-path: inset(0 0 0 0   ); animation-timing-function: step-end; }
-      89%, 100%  { clip-path: inset(0 0 0 100%); }
+      0%, 33%    { clip-path: inset(0 0 0 100%) view-box; animation-timing-function: ease-out; }
+      55%        { clip-path: inset(0 0 0 0   ) view-box; }
+      82%        { clip-path: inset(0 0 0 0   ) view-box; animation-timing-function: step-end; }
+      89%, 100%  { clip-path: inset(0 0 0 100%) view-box; }
     }
 
     /* ── Phase 3b: Z-dół  (33% → 55%)  clip left → right ─── */
 
     .la-zdol { animation: la-p3lr 3.5s infinite; }
     @keyframes la-p3lr {
-      0%, 33%    { clip-path: inset(0 100% 0 0); animation-timing-function: ease-out; }
-      55%        { clip-path: inset(0 0    0 0); }
-      82%        { clip-path: inset(0 0    0 0); animation-timing-function: step-end; }
-      89%, 100%  { clip-path: inset(0 100% 0 0); }
+      0%, 33%    { clip-path: inset(0 100% 0 0) view-box; animation-timing-function: ease-out; }
+      55%        { clip-path: inset(0 0    0 0) view-box; }
+      82%        { clip-path: inset(0 0    0 0) view-box; animation-timing-function: step-end; }
+      89%, 100%  { clip-path: inset(0 100% 0 0) view-box; }
     }
 
     /* ── Phase 3c: C  (33% → 55%)  stroke draw top → bottom ─ */
@@ -86,7 +86,7 @@ export default function LogoAnimation({ size } = /** @type {any} */({})) {
     @media (prefers-reduced-motion: reduce) {
       .la-slash, .la-i, .la-k,
       .la-zgora, .la-zdol, .la-group {
-        animation: none; clip-path: none; opacity: 1;
+        animation: none; clip-path: inset(0 0 0 0) view-box; opacity: 1;
       }
       .la-o, .la-c {
         animation: none; stroke-dashoffset: 0;
